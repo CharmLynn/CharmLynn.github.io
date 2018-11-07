@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "Struct Streaming项目开发"
+date:   2018-11-07 15:53:09 +0900
+comments:  true
+tags:
+- spark
+---
+
 ###前言
 从spark 2.2开始推出structer streming作为实时计算工具
 
