@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaveAnswer - 一键保存 AI 回答，随时搜到 | Save AI answers you'll reuse</title>
+  <meta name="description" content="SaveAnswer 是一个 Chrome / Edge 扩展：在 ChatGPT、Claude、DeepSeek、豆包、通义、Gemini、Grok 的回答旁加一个保存按钮，用标签和全文搜索随时找回，导出 Markdown / Word / PDF。数据只存在本地浏览器。">
+  <meta property="og:title" content="SaveAnswer - Save the AI answers you'll reuse">
+  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek and more. Search later, export to Markdown/Word/PDF. Local-only, no account.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/search.jpg">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="sa-title" data-title-zh="SaveAnswer - 一键保存 AI 回答，随时搜到" data-title-en="SaveAnswer - Save the AI answers you'll reuse">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#how"><span data-lang="zh">怎么用</span><span data-lang="en">How it works</span></a>
+        <a class="hide-sm" href="#install"><span data-lang="zh">安装</span><span data-lang="en">Install</span></a>
+        <a class="hide-sm" href="#faq">FAQ</a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <span class="eyebrow"><span data-lang="zh">免费 · 无需账号 · 数据只在本地</span><span data-lang="en">Free · No account · Local-only</span></span>
+        <h1>
+          <span data-lang="zh">AI 的好回答，<br>存下来，随时搜到。</span>
+          <span data-lang="en">Save the AI answers<br>you'll reuse.</span>
+        </h1>
+        <p class="lead">
+          <span data-lang="zh">同时用 ChatGPT、Claude、DeepSeek？好回答散落在各个聊天记录里，过几天就翻不到了。SaveAnswer 在每条回答旁加一个「保存」按钮，存进一个能全文搜索的本地库，需要时一搜就有，还能导出成 Word / PDF / Markdown。</span>
+          <span data-lang="en">Good answers get buried in long chat histories. SaveAnswer adds a Save button beside each reply, keeps only the ones you choose in a searchable local library, and exports them to Markdown, Word or PDF when you need them.</span>
+        </p>
+        <div class="install">
+          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+            <span data-lang="zh">免费添加到 <span data-store-name>Chrome</span></span><span data-lang="en">Add to <span data-store-name>Chrome</span> — free</span>
+          </a>
+          <a class="btn btn-ghost" href="#install"><span data-lang="zh">打不开商店？</span><span data-lang="en">Can't open the store?</span></a>
+          <p class="install-note" data-browser-note="cn-chromium" hidden>
+            <span data-lang="zh">检测到你在用国产浏览器：如果打不开 Chrome 商店，请看下方「其他安装方式」。</span>
+            <span data-lang="en">If the Chrome Web Store doesn't open in your browser, see "Other ways to install" below.</span>
+          </p>
+          <p class="install-note" data-browser-note="safari" hidden>
+            <span data-lang="zh">SaveAnswer 目前只支持 Chrome、Edge 等 Chromium 内核浏览器。</span>
+            <span data-lang="en">SaveAnswer currently works in Chrome, Edge and other Chromium browsers.</span>
+          </p>
+          <p class="install-note" data-browser-note="firefox" hidden>
+            <span data-lang="zh">SaveAnswer 目前只支持 Chrome、Edge 等 Chromium 内核浏览器。</span>
+            <span data-lang="en">SaveAnswer currently works in Chrome, Edge and other Chromium browsers.</span>
+          </p>
+          <p class="install-note" data-browser-note="mobile" hidden>
+            <span data-lang="zh">这是电脑浏览器扩展，请在电脑上打开本页安装。</span>
+            <span data-lang="en">This is a desktop browser extension. Open this page on your computer to install.</span>
+          </p>
+        </div>
+        <p class="platforms">
+          <span data-lang="zh">支持：</span><span data-lang="en">Works on: </span>
+          <b>ChatGPT · Claude · Gemini · DeepSeek · <span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span> · Grok · <span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></b>
+        </p>
+      </div>
+      <div class="hero-media">
+        <img src="assets/demo.gif" alt="SaveAnswer demo: click Save beside an AI answer" width="960" height="568">
+      </div>
+    </header>
+
+    <section class="block" id="how">
+      <h2><span data-lang="zh">三步：保存、找回、带走</span><span data-lang="en">Save it. Find it. Take it with you.</span></h2>
+      <p class="sub">
+        <span data-lang="zh">不是把所有聊天都备份一遍，只留下你以后真的会再用的那几条。</span>
+        <span data-lang="en">Not another archive of every chat — just the few replies you'll actually come back to.</span>
+      </p>
+      <div class="steps">
+        <div class="step">
+          <img src="assets/save-ui.jpg" alt="" loading="lazy" width="660" height="566">
+          <div class="step-body">
+            <div class="step-num">01</div>
+            <h3><span data-lang="zh">看到好回答，点「保存」</span><span data-lang="en">Click Save on a good answer</span></h3>
+            <p><span data-lang="zh">按钮就在每条 AI 回答自己的操作栏里，可以顺手加个标签。DeepSeek 长对话也不会错位。</span><span data-lang="en">The button sits in each reply's own action bar. Add a tag if you like. Works in long DeepSeek chats too.</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <img src="assets/search-ui.jpg" alt="" loading="lazy" width="660" height="566">
+          <div class="step-body">
+            <div class="step-num">02</div>
+            <h3><span data-lang="zh">几天后，一搜就有</span><span data-lang="en">Search it days later</span></h3>
+            <p><span data-lang="zh">按问题和回答全文搜索、按标签筛选，所有平台的回答都在一个库里，还能一键回到原对话。</span><span data-lang="en">Full-text search across questions and answers from every platform, filter by tag, and jump back to the original chat.</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <img src="assets/export-ui.jpg" alt="" loading="lazy" width="660" height="566">
+          <div class="step-body">
+            <div class="step-num">03</div>
+            <h3><span data-lang="zh">导出或分享</span><span data-lang="en">Export or share</span></h3>
+            <p><span data-lang="zh">选中的回答可导出 Markdown / Word / PDF / HTML，保留代码块、来源和时间；也能生成一张分享卡片。</span><span data-lang="en">Export selected answers to Markdown, Word, PDF or HTML with code blocks, source and date — or turn one into a share card.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="split">
+        <div>
+          <h2><span data-lang="zh">你的内容只在你的浏览器里</span><span data-lang="en">Your answers stay in your browser</span></h2>
+          <ul class="checklist">
+            <li><span data-lang="zh">保存的内容存在 <code>chrome.storage.local</code>，不上传任何服务器</span><span data-lang="en">Saved items live in <code>chrome.storage.local</code> and are never uploaded</span></li>
+            <li><span data-lang="zh">不需要注册账号，没有统计和追踪代码</span><span data-lang="en">No account, no analytics or tracking code</span></li>
+            <li><span data-lang="zh">只保存你主动点过「保存」的那一条回答</span><span data-lang="en">Only the replies you explicitly click Save on are stored</span></li>
+          </ul>
+          <p class="not-for">
+            <span data-lang="zh">需要说清楚的边界：不会自动备份全部聊天，不能恢复已经消失的对话，也没有跨设备同步。如果你要的是全量自动归档，其他工具可能更合适。</span>
+            <span data-lang="en">To be clear: it doesn't auto-archive every chat, can't recover conversations you didn't save, and has no cross-device sync. If you need a full automatic archive, another tool may fit better.</span>
+          </p>
+        </div>
+        <img src="assets/privacy.jpg" alt="" loading="lazy" width="1280" height="800">
+      </div>
+    </section>
+
+    <section class="block" id="install">
+      <h2><span data-lang="zh">安装方式</span><span data-lang="en">Ways to install</span></h2>
+      <p class="sub">
+        <span data-lang="zh">Chrome 商店能正常打开就直接装；打不开的往下看。</span>
+        <span data-lang="en">If the Chrome Web Store opens for you, install directly. If not, see below.</span>
+      </p>
+      <div class="install" style="margin-bottom: 24px;">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">Chrome Web Store</a>
+        <a class="btn btn-ghost" data-install="edge" href="#" target="_blank" rel="noopener">
+          <span data-lang="zh">Edge 加载项商店（审核中）</span><span data-lang="en">Edge Add-ons (in review)</span>
+        </a>
+      </div>
+      <p class="not-for">
+        <span data-lang="zh"><strong>打不开 Chrome 商店？</strong>我们正在提交 <strong>Edge 加载项商店</strong>——国内可以直接访问，而且 Windows 自带 Edge。通过审核后这里会第一时间更新。想在能装的时候收到通知，可以在 <a href="feedback.html">反馈页</a> 留个邮箱。360、QQ 浏览器和国内扩展站的收录也在计划中。</span>
+        <span data-lang="en"><strong>Can't open the Chrome Web Store?</strong> We're submitting to the <strong>Edge Add-ons store</strong>, which is reachable in mainland China. This page will be updated as soon as it's approved. Leave an email on the <a href="feedback.html">feedback page</a> if you'd like to be told when it's installable.</span>
+      </p>
+    </section>
+
+    <section class="block faq" id="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary><span data-lang="zh">和直接用 ChatGPT 自带的聊天记录搜索有什么区别？</span><span data-lang="en">How is this different from ChatGPT's own history search?</span></summary>
+        <p><span data-lang="zh">聊天记录搜索只能搜标题或单个平台，而且好回答混在大量闲聊里。SaveAnswer 只收你挑出来的回答，跨 ChatGPT、Claude、DeepSeek 等平台放在同一个库里，按问题和回答全文搜索。</span><span data-lang="en">Built-in history covers one platform and mixes good answers with everything else. SaveAnswer keeps only the replies you pick, across ChatGPT, Claude, DeepSeek and more, in one full-text-searchable library.</span></p>
+      </details>
+      <details>
+        <summary><span data-lang="zh">换电脑或重装浏览器，数据还在吗？</span><span data-lang="en">What happens if I switch computers?</span></summary>
+        <p><span data-lang="zh">数据只存在当前浏览器里，没有云同步。需要迁移或备份时，可以先导出 Markdown / Word / PDF。</span><span data-lang="en">Data lives only in the current browser; there is no sync. Export to Markdown, Word or PDF to back up or move it.</span></p>
+      </details>
+      <details>
+        <summary><span data-lang="zh">收费吗？</span><span data-lang="en">Is it free?</span></summary>
+        <p><span data-lang="zh">免费，没有账号体系，也没有付费功能。</span><span data-lang="en">Yes. No account and no paid tier.</span></p>
+      </details>
+      <details>
+        <summary><span data-lang="zh">我用的 AI 不在支持列表里怎么办？</span><span data-lang="en">My AI chat isn't supported. Can you add it?</span></summary>
+        <p><span data-lang="zh">欢迎在 <a href="feedback.html">反馈页</a> 告诉我们，提的人多的平台会优先适配。</span><span data-lang="en">Tell us on the <a href="feedback.html">feedback page</a>. The most requested platforms get added first.</span></p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 SaveAnswer</span>
+      <span>
+        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
+        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

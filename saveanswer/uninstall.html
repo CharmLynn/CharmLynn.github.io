@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>SaveAnswer 已卸载</title>
+  <meta name="sa-title" data-title-zh="SaveAnswer 已卸载 - 一个问题" data-title-en="SaveAnswer removed - one question">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="survey">
+    <h1><span data-lang="zh">SaveAnswer 已卸载</span><span data-lang="en">SaveAnswer has been removed</span></h1>
+    <p class="sub">
+      <span data-lang="zh">能占用你 10 秒钟吗？只有一个问题，帮我们知道哪里没做好。</span>
+      <span data-lang="en">Could you spare 10 seconds? One question helps us understand what didn't work.</span>
+    </p>
+
+    <form data-survey="uninstall" data-thanks="#thanks">
+      <label class="choice"><input type="radio" name="reason" value="button_missing" required>
+        <span><span data-lang="zh">在我用的 AI 页面上没看到「保存」按钮，或保存失败</span><span data-lang="en">The Save button didn't show up or saving failed</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="platform_missing">
+        <span><span data-lang="zh">不支持我常用的 AI 平台</span><span data-lang="en">My AI platform isn't supported</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="want_auto_save">
+        <span><span data-lang="zh">我想要自动保存全部对话，不想手动点</span><span data-lang="en">I wanted every chat saved automatically</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="need_sync">
+        <span><span data-lang="zh">需要跨设备同步 / 手机上也能看</span><span data-lang="en">I need sync across devices or on mobile</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="rarely_used">
+        <span><span data-lang="zh">装了之后很少用到</span><span data-lang="en">I rarely ended up using it</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="other">
+        <span><span data-lang="zh">其他原因</span><span data-lang="en">Something else</span></span></label>
+
+      <label class="field" for="detail"><span data-lang="zh">愿意多说一句吗？（可不填）</span><span data-lang="en">Anything else? (optional)</span></label>
+      <textarea id="detail" name="detail" maxlength="1000" data-placeholder-zh="比如：在哪个平台、哪一步遇到了问题" data-placeholder-en="e.g. which platform, which step went wrong"></textarea>
+
+      <label class="field" for="email"><span data-lang="zh">修好后想收到通知？留个邮箱（可不填）</span><span data-lang="en">Want to hear when it's fixed? Leave an email (optional)</span></label>
+      <input type="email" id="email" name="email" maxlength="200" placeholder="you@example.com">
+
+      <p class="privacy-note">
+        <span data-lang="zh">只会提交你在本页填写的内容、扩展版本号和浏览器类型，不包含任何你保存过的回答。</span>
+        <span data-lang="en">Only what you enter here, the extension version and browser type are sent — never any saved answers.</span>
+      </p>
+      <button class="btn btn-primary" type="submit"><span data-lang="zh">提交</span><span data-lang="en">Send</span></button>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <span data-lang="zh">收到了，谢谢你！如果之后想再试试，随时可以从 <a href="./">这里</a> 重新安装。</span>
+      <span data-lang="en">Got it — thank you! If you want to try again later, you can reinstall from <a href="./">here</a>.</span>
+    </div>
+  </main>
+
+  <script src="site.js"></script>
+</body>
+</html>
