@@ -1,7 +1,7 @@
 // SaveAnswer site: language switch, browser-aware install buttons, survey submission.
 // No cookies, no analytics. The only network request is the optional survey POST the visitor submits.
 const SITE_CONFIG = {
-  version: '1.0.18',
+  version: '1.0.20',
   chromeStore: 'https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm',
   // Fill in after the Edge Add-ons listing is approved; until then the Edge button stays disabled.
   edgeStore: '',
@@ -12,14 +12,24 @@ const SITE_CONFIG = {
 
 (function () {
   const params = new URLSearchParams(location.search);
+  const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+
+  function withUtm(url) {
+    const target = new URL(url);
+    UTM_KEYS.forEach(key => {
+      const value = params.get(key);
+      if (value) target.searchParams.set(key, value);
+    });
+    return target.toString();
+  }
 
   // ----- Language -----
   function detectLang() {
     const fromQuery = params.get('lang');
     if (fromQuery === 'zh' || fromQuery === 'en') return fromQuery;
     const saved = localStorage.getItem('sa_site_lang');
-    if (saved === 'zh' || saved === 'en') return saved;
-    return /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+    // Default to English. Chinese users can toggle using the top-right button.
+    return 'en';
   }
 
   function applyLang(lang) {
@@ -60,16 +70,16 @@ const SITE_CONFIG = {
 
   document.querySelectorAll('[data-install="primary"]').forEach(btn => {
     if (browser === 'edge' && SITE_CONFIG.edgeStore) {
-      btn.href = SITE_CONFIG.edgeStore;
+      btn.href = withUtm(SITE_CONFIG.edgeStore);
       btn.querySelectorAll('[data-store-name]').forEach(el => { el.textContent = 'Edge'; });
     } else {
-      btn.href = SITE_CONFIG.chromeStore;
+      btn.href = withUtm(SITE_CONFIG.chromeStore);
     }
   });
 
   document.querySelectorAll('[data-install="edge"]').forEach(btn => {
     if (SITE_CONFIG.edgeStore) {
-      btn.href = SITE_CONFIG.edgeStore;
+      btn.href = withUtm(SITE_CONFIG.edgeStore);
     } else {
       btn.setAttribute('aria-disabled', 'true');
       btn.removeAttribute('href');
