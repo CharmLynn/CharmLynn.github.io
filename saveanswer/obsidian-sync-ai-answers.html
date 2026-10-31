@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 问答如何自动同步到 Obsidian 本地双链知识库 | Sync AI Answers to Obsidian Vault</title>
+  <meta name="description" content="告别繁琐手动复制！SaveAnswer 让 ChatGPT、Claude、DeepSeek、Gemini 的高质量回答在浏览器中一键保存，并自动同步到你的本地 Obsidian Vault。自动生成标准 YAML 属性、标签与原文链接，纯本地存储，无缝接入双链与 Dataview。">
+  <meta property="og:title" content="How to Sync AI Answers Directly into Obsidian Vault">
+  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek & Gemini directly to your local Obsidian vault. Standard YAML frontmatter, 100% local-first.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/obsidian-sync.png">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="sa-title" data-title-zh="AI 问答如何自动同步到 Obsidian 本地知识库 - SaveAnswer" data-title-en="How to Sync AI Answers Directly to Obsidian Vault - SaveAnswer">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Sync AI Answers to Obsidian Vault Locally",
+    "description": "Step-by-step guide to seamlessly capture AI responses from ChatGPT, Claude, and DeepSeek directly into your local Obsidian markdown vault with YAML frontmatter.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install SaveAnswer",
+        "text": "Add SaveAnswer to Chrome or Edge browser."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Configure Obsidian Folder",
+        "text": "Select your local Obsidian Vault folder in SaveAnswer settings using the native File System API."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Save and Query in Obsidian",
+        "text": "Click Save on any AI page. The clean Markdown file appears immediately in your vault, ready for Dataview and graph queries."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a>
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a>
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 820px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Obsidian 进阶工作流</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">如何将 7 大主流 AI 的优质回答，1 秒无缝归档到本地 Obsidian 知识库？</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">更新日期：2026-10-31 · 适用 Obsidian 1.5+ 及所有本地 Markdown 知识库</p>
+      </div>
+
+      <p class="lead">
+        Obsidian 用户崇尚 **Local-First（本地优先）、纯纯文本与数据自主权**。但每当我们用 ChatGPT、Claude、DeepSeek 或 Gemini 解决了复杂的工程难题，想要把它沉淀进 Obsidian 时，传统流程痛苦不堪：建新笔记、复制提示词、全选复制回答、修补被破坏的代码缩进、补上 YAML 属性、贴上原始链接——**单次整理耗时 30~60 秒，最终绝大多数优质思考都在会话历史中沉没。**
+      </p>
+
+      <h2>传统「复制粘贴到 Obsidian」的三大硬伤</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. 摩擦力过高，无法持续</h3>
+            <p>只要一次留存需要超过 3 次点击和窗口切换，人在高强度工作下就会放弃沉淀，知识库沦为断档的摆设。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. 格式破坏与元数据缺失</h3>
+            <p>手动粘贴常遗失源 URL、平台标识、生成时间，日后在 Obsidian 知识图谱中根本无法回溯当初是向哪个模型提问、也无法点击回到原网页继续追问。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. 云端剪藏扩展破坏本地纯粹性</h3>
+            <p>市面上多数 AI 剪藏插件依赖第三方云端账号或中转服务，随时面临泄密、服务关停与订阅制收费风险，违背了 Obsidian 的本地离线初衷。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>SaveAnswer：为 Obsidian 量身打造的本地无感归档</h2>
+      <p>
+        SaveAnswer 通过 Chrome 原生 File System Access API，让你的浏览器直接连通本地 Obsidian Vault：
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>网页原生 1 键归档：</strong>在 ChatGPT、Claude、DeepSeek、Gemini、Grok、通义千问、豆包页面，点击每条回复旁的 Save 按钮，笔记立刻落盘到你指定的本地 Vault 目录。</li>
+        <li><strong>自动生成标准 YAML Frontmatter：</strong>包含标题、来源模型、标签、原始会话 URL 与保存时间戳，完美兼容 Dataview 插件快速筛选。</li>
+        <li><strong>保留原生 Markdown 排版与代码块：</strong>代码高亮语言声明、表格、公式和嵌套列表原汁原味入库。</li>
+        <li><strong>一键溯源原网址追问：</strong>每篇笔记顶部均有原始 AI 会话链接，点击直接重返上下文继续深化探讨。</li>
+        <li><strong>100% 本地优先，无任何中转：</strong>浏览器直接写入本地磁盘文件夹。零网络请求传输笔记内容，不建账号，无云端数据库。</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 28px 0;">
+        <h3 style="margin-top: 0;">YAML Frontmatter 样例</h3>
+        <pre style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-family: monospace; font-size: 13px;">---
+title: "Python 并发任务中 asyncio 与多线程混合调度的最佳实践"
+source: "https://chatgpt.com/c/67123456-abcd-ef01"
+platform: "ChatGPT"
+model: "GPT-4o"
+tags:
+  - ai-saved
+  - python
+  - architecture
+date: 2026-10-31 22:30:15
+---
+
+## Question
+如何在 Python 中高效混合使用 asyncio 协程和阻塞型第三方库？
+
+## Answer
+在混合调度场景下，核心推荐使用 `asyncio.to_thread()` 或 `loop.run_in_executor()`...</pre>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">让 AI 问答真正成为你 Obsidian 知识图谱的一部分</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">支持 Chrome 与 Edge 浏览器 · 免费 · 纯本地存储</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          免费添加到 <span data-store-name>Chrome</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Obsidian Workflow Guide</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">How to Sync AI Answers to Obsidian Vault Locally with 1 Click</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Updated: 2026-10-31 · Built for Obsidian 1.5+ and local Markdown vaults</p>
+      </div>
+
+      <p class="lead">
+        Obsidian users love **local-first control, plain Markdown text, and data longevity**. But when you extract a brilliant architectural solution or code breakdown from ChatGPT, Claude, DeepSeek, or Gemini, saving it to Obsidian requires high friction: creating notes, copying prompts, fixing indentation, writing YAML frontmatter, and pasting links. **With 30-60 seconds of manual work per save, valuable insights end up rotting inside web chat history.**
+      </p>
+
+      <h2>Pain Points of Manual Copying to Obsidian</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. High cognitive friction</h3>
+            <p>Switching windows and reformatting kills deep focus. If saving takes more than one click, you won't build a sustainable knowledge archive.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. Missing context and source URLs</h3>
+            <p>Pasted snippets lack metadata. Weeks later, you cannot recall which AI generated the answer or jump back to the original conversation to continue exploring.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. Cloud web clippers compromise local-first privacy</h3>
+            <p>Most commercial web clippers force you to create cloud accounts and upload your notes to remote servers, violating Obsidian's core ethos.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The SaveAnswer Solution: Direct-to-Vault Local Archiving</h2>
+      <p>
+        SaveAnswer leverages the browser's native File System Access API to connect directly to your local Obsidian folder without any middleman:
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>1-Click Native Save:</strong> On ChatGPT, Claude, DeepSeek, Gemini, and Grok, click Save next to any answer. A clean Markdown file lands directly in your designated Obsidian Vault folder.</li>
+        <li><strong>Automatic YAML Frontmatter:</strong> Generates clean frontmatter containing title, platform, tags, date, and original thread URL—ready for Dataview queries.</li>
+        <li><strong>Preserves Formatting:</strong> Tables, math notation, and syntax-highlighted code blocks remain 100% intact.</li>
+        <li><strong>Click-to-Source Link:</strong> Every generated file includes the source conversation URL to resume dialogue with one click.</li>
+        <li><strong>100% Local-First:</strong> Zero cloud servers, zero account signups, zero telemetry. Your notes never leave your computer.</li>
+      </ul>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Integrate AI Answers into Your Obsidian Knowledge Graph</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">Works on Chrome and Edge · Free · 100% Local-First</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          Add to <span data-store-name>Chrome</span> — free
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 SaveAnswer</span>
+      <span>
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a> ·
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a> ·
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a> ·
+        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
+        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

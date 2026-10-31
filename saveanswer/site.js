@@ -28,6 +28,7 @@ const SITE_CONFIG = {
     const fromQuery = params.get('lang');
     if (fromQuery === 'zh' || fromQuery === 'en') return fromQuery;
     const saved = localStorage.getItem('sa_site_lang');
+    if (saved === 'zh' || saved === 'en') return saved;
     // Default to English. Chinese users can toggle using the top-right button.
     return 'en';
   }

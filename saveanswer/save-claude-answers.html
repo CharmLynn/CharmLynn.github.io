@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude 回答如何本地保存与导出整理 | How to Save Claude Answers Locally</title>
+  <meta name="description" content="Claude 长对话历史翻不到、好代码与长文分析容易沉没？使用 SaveAnswer 扩展，在 claude.ai 页面一键保存高质量回答，保留 Markdown 代码块与格式排版，支持离线全文搜索与导出 Markdown/Word/PDF。数据全部在本地浏览器。">
+  <meta property="og:title" content="How to Save and Organize Claude Answers Locally">
+  <meta property="og:description" content="One-click save on Claude web. Keep valuable coding, analysis & long-context answers in a local searchable library. Free, no tracking.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/search-ui.jpg">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="sa-title" data-title-zh="Claude 回答如何本地保存与导出整理 - SaveAnswer" data-title-en="How to Save Claude Answers Locally - SaveAnswer">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Save Claude Answers Locally",
+    "description": "How to save valuable Claude responses, coding snippets, and long-context analysis to a local searchable archive without relying on cloud chat history.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install SaveAnswer",
+        "text": "Add SaveAnswer to Chrome or Edge browser."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Click Save beside any Claude answer",
+        "text": "In claude.ai, click the native Save button under any reply."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Search, Sync, and Export",
+        "text": "Instantly find answers by keyword or tag in your browser toolbar, sync to your Obsidian vault, or export to Markdown/Word/PDF."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出指南</span><span data-lang="en">ChatGPT Export</span></a>
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 保存指南</span><span data-lang="en">DeepSeek Guide</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 820px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Claude 深度使用指南</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">Claude 的高质量回答、代码与长文分析，如何一键保存并随时找回？</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">更新日期：2026-10-31 · 适用于 claude.ai</p>
+      </div>
+
+      <p class="lead">
+        Claude（包括 Claude 3.5 Sonnet / Opus）因其出色的代码生成、复杂逻辑推理和长文分析能力，深受广大程序员、研究员与内容创作者的青睐。然而在长期高频使用中，**那些曾经惊艳的架构分析、重构建议和严密论证，往往沉入深不见底的会话历史中，再难找寻。**
+      </p>
+
+      <h2>Claude 重度用户的常见痛点</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. 缺乏跨会话正文全文搜索</h3>
+            <p>Claude 官方侧边栏仅能通过标题粗略翻找，无法直接搜索回答正文里的具体类名、报错信息、算法细节或文献引用。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. 会话过长导致定位繁琐</h3>
+            <p>多次追问后单个会话可能包含数十轮交互，要翻出其中某一段关键代码或中间推导，必须来回长时间上下滚动。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. 多 AI 混用时资料割裂</h3>
+            <p>日常工作中经常 Claude 写代码、ChatGPT 做头脑风暴、DeepSeek 做数学推演，各平台的优质资产分散在不同标签页中，难以统一整理。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>SaveAnswer 解决方案：在 Claude 页面原生嵌入「保存」</h2>
+      <p>
+        SaveAnswer 专门对 <code>claude.ai</code> 进行了无缝深度适配。每当 Claude 完成一条回复，操作栏旁都会常驻一个统一尺寸的 <strong>Save</strong> 按钮：
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>一键即存，上下文不跑偏：</strong>点击保存即可同时锁定对应问题与回答，长对话滚动中也能准确定位。</li>
+        <li><strong>完美还原 Markdown 格式：</strong>代码块语法高亮、缩进、表格、嵌套列表原样保留。</li>
+        <li><strong>多模型统一全文检索：</strong>在浏览器扩展中键入关键词，毫秒级搜出 Claude、ChatGPT、DeepSeek 等所有平台的历史收藏。</li>
+        <li><strong>保留原始会话回溯链接：</strong>每条记录都包含该轮回答对应的 claude.ai 真实会话链接，随时点击一键回溯追问。</li>
+        <li><strong>支持无缝同步至 Obsidian：</strong>可配置本地同步目录，自动将收藏转为规范的 Markdown 与 YAML frontmatter。</li>
+        <li><strong>灵活导出与分享卡片：</strong>支持单条或批量导出为 Markdown、Word、PDF，或生成精致的社交媒体分享卡片。</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 28px 0;">
+        <h3 style="margin-top: 0;">为什么坚持 Local-First 纯本地存储？</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0;">
+          在 Claude 中处理的内容通常包含核心业务代码、商业策略或敏感分析。SaveAnswer 采用 100% 本地优先原则，所有问答仅存储在您本机的 <code>chrome.storage.local</code> 中。<strong>无中心服务器、无账号登录要求、零云端遥测与追踪。</strong> 在注重隐私与安全的企业开发环境下亦可放心使用。
+        </p>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">让 Claude 的每一次精彩思考沉淀为长期资产</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">支持 Chrome 与 Edge 浏览器 · 免费 · 纯本地存储</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          免费添加到 <span data-store-name>Chrome</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Claude Guide</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">How to Save and Organize Claude Answers Locally</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Updated: 2026-10-31 · Works on claude.ai</p>
+      </div>
+
+      <p class="lead">
+        Claude (including Claude 3.5 Sonnet / Opus) is widely celebrated for its nuanced writing, robust coding abilities, and deep reasoning across huge context windows. But as your chat history grows, finding that exact architectural breakdown or refactoring blueprint from days ago becomes a frustrating treasure hunt.
+      </p>
+
+      <h2>Common Challenges with Claude Web History</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. No full-text search across conversation bodies</h3>
+            <p>The native sidebar only displays high-level chat titles, making it impossible to search for specific code snippets, functions, or nuanced explanations buried inside answers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. Long threads cause navigation fatigue</h3>
+            <p>In iterative programming or deep-dive chats, scrolling up and down dozens of messages to locate a single output wastes valuable focus.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. Knowledge fragmentation across multiple AIs</h3>
+            <p>When you use Claude alongside ChatGPT or DeepSeek, your best answers are trapped in separate browser tabs without a centralized home.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The SaveAnswer Solution: Seamless 1-Click Local Capture</h2>
+      <p>
+        SaveAnswer integrates directly into <code>claude.ai</code>, placing a native <strong>Save</strong> button right beside the action controls of each answer:
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>One-Click Save:</strong> Instantly captures the answer and its matching prompt with accurate alignment.</li>
+        <li><strong>Preserves Formatting:</strong> Syntax highlighting, indentation, markdown tables, and code formatting remain pristine.</li>
+        <li><strong>Instant Full-Text Search:</strong> Search across all your saved Claude, ChatGPT, and DeepSeek items in milliseconds from the extension popup.</li>
+        <li><strong>Jump Back to Source:</strong> Reopen the exact claude.ai conversation URL anytime to continue prompting.</li>
+        <li><strong>Obsidian Vault Sync:</strong> Automatically synchronize saved responses into your local Obsidian vault with clean YAML frontmatter.</li>
+        <li><strong>Flexible Exports:</strong> Export to Markdown, Word, PDF, or render beautiful image cards for social sharing.</li>
+        <li><strong>100% Local-First:</strong> All records stay in your local browser storage. No accounts, no servers, zero telemetry.</li>
+      </ul>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Never Lose a Great Claude Answer Again</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">Works on Chrome and Edge · Free · Local-only</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          Add to <span data-store-name>Chrome</span> — free
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 SaveAnswer</span>
+      <span>
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a> ·
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a> ·
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
+        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

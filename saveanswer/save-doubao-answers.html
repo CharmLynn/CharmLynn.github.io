@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>豆包回答如何本地保存与导出整理 | How to Save Doubao Answers Locally</title>
+  <meta name="description" content="豆包历史对话繁多不易查、优质回答与写作资料容易遗失？使用 SaveAnswer 扩展，在 doubao.com 页面一键保存高质量回答，保留 Markdown 格式与表格排版，支持离线全文搜索与导出 Markdown/Word/PDF。数据全部在本地浏览器。">
+  <meta property="og:title" content="How to Save and Organize Doubao Answers Locally">
+  <meta property="og:description" content="One-click save on Doubao web. Keep valuable summaries, code, and explanations in a local searchable library. Free, no tracking.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/search-ui.jpg">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="sa-title" data-title-zh="豆包回答如何本地保存与导出整理 - SaveAnswer" data-title-en="How to Save Doubao Answers Locally - SaveAnswer">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Save Doubao Answers Locally",
+    "description": "How to save valuable Doubao responses, writing drafts, and learning notes to a local searchable archive without losing them in chat history.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install SaveAnswer",
+        "text": "Add SaveAnswer to Chrome or Edge browser."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Click Save beside any Doubao answer",
+        "text": "In doubao.com, click the native Save button under any reply."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Search, Sync, and Export",
+        "text": "Instantly find answers by keyword or tag in your browser toolbar, sync to Obsidian, or export to Markdown/Word/PDF."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出指南</span><span data-lang="en">ChatGPT Export</span></a>
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 保存指南</span><span data-lang="en">DeepSeek Guide</span></a>
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 保存指南</span><span data-lang="en">Claude Guide</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 820px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">豆包使用指南</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">豆包的高质量回答、写作草稿与知识解答，如何一键本地沉淀与检索？</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">更新日期：2026-10-31 · 适用于 doubao.com</p>
+      </div>
+
+      <p class="lead">
+        字节跳动旗下的「豆包」以其流畅自然的中文表达、便捷的搜索整合与多场景应用，成为数千万用户的日常 AI 助手。但在高频使用中，**随着对话列表不断拉长，那些精彩的文章润色建议、学习要点总结和代码片段，常常在长长的侧边栏里难以迅速重新翻找。**
+      </p>
+
+      <h2>豆包用户的典型痛点</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. 缺乏针对回答正文的全文检索</h3>
+            <p>豆包网页端侧边栏仅展示对话历史标题，无法按回答正文里的关键短语、术语或代码片段快速检索。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. 格式复制繁琐易走样</h3>
+            <p>手动选中豆包生成的表格、多级列表或公式时，容易连带复制页面干扰信息或破坏排版。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. 与其他 AI 知识库割裂</h3>
+            <p>日常在豆包做中文初稿与信息查证，在 ChatGPT/Claude 上写深度代码，资产分散在不同平台，缺少集中管理的本地中枢。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>SaveAnswer 解决方案：在豆包页面原生嵌入「保存」</h2>
+      <p>
+        SaveAnswer 专门对 <code>doubao.com</code> 进行深度适配，在每条豆包回答的操作栏旁自动嵌入规范的 <strong>Save</strong> 按钮：
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>一键秒级留存：</strong>点击即存，自动截取完整问题与豆包回答，长页面滚动无错位。</li>
+        <li><strong>排版与结构完整保留：</strong>保留 Markdown 标题、表格、代码块及加粗引用样式，整洁规范。</li>
+        <li><strong>多模型统一本地检索：</strong>在浏览器工具栏弹窗内直接搜索，毫秒级搜出豆包、DeepSeek、ChatGPT 等全部平台的历史问答。</li>
+        <li><strong>随时一键回到原会话：</strong>每条保存卡片附带豆包原始网页链接，点击直接重返会话继续追问。</li>
+        <li><strong>自动同步至 Obsidian 双链知识库：</strong>可设置本地同步目录，自动将收藏转为规范 Markdown 文档与 YAML 属性。</li>
+        <li><strong>多格式导出与长图分享：</strong>支持导出为纯净 Markdown、Word、PDF 或一键生成精美知识分享卡片。</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 28px 0;">
+        <h3 style="margin-top: 0;">坚守 Local-First 纯本地存储</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0;">
+          向豆包提问的文案与思路往往包含个人创作与日常隐私。SaveAnswer 坚守本地优先原则，所有问答仅保存在您电脑浏览器的 <code>chrome.storage.local</code> 中。<strong>不建账号、不传云端数据库、无遥测数据追踪。</strong> 让您的知识库完全属于您自己。
+        </p>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">让豆包的每一次灵感与解答真正沉淀下来</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">支持 Chrome 与 Edge 浏览器 · 免费 · 纯本地存储</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          免费添加到 <span data-store-name>Chrome</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Doubao Guide</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">How to Save and Organize Doubao Answers Locally</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Updated: 2026-10-31 · Works on doubao.com</p>
+      </div>
+
+      <p class="lead">
+        ByteDance's Doubao has rapidly become one of the most accessible AI assistants for writing, research, and daily workflow tasks. However, as dynamic conversations roll on, finding that helpful summary or drafting feedback from last week can be difficult inside the standard chat list.
+      </p>
+
+      <h2>Common Challenges with Doubao Web History</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. No full-text search across answer content</h3>
+            <p>The web sidebar only displays brief conversation topics. You cannot search through the text of past replies by specific keywords.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. Text copying loses rich formatting</h3>
+            <p>Manually copying tables, lists, or styled text often results in jumbled formatting that takes extra effort to clean up.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. Disconnected from your broader AI tools</h3>
+            <p>When you switch between Doubao, DeepSeek, and ChatGPT, keeping your best responses organized in one place becomes painful.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The SaveAnswer Solution: Native 1-Click Local Archive</h2>
+      <p>
+        SaveAnswer embeds seamlessly into <code>doubao.com</code> with a dedicated <strong>Save</strong> button beneath each answer:
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>One-Click Save:</strong> Pairs user prompt and Doubao answer with zero alignment errors.</li>
+        <li><strong>Preserves Formatting:</strong> Tables, lists, quotes, and code blocks stay perfectly formatted.</li>
+        <li><strong>Unified Full-Text Search:</strong> Search through your Doubao, DeepSeek, and ChatGPT replies in one fast local popup.</li>
+        <li><strong>Direct Source Link:</strong> Reopen the exact Doubao conversation anytime with the saved link.</li>
+        <li><strong>Obsidian Vault Sync:</strong> Automatically export your saves to your Obsidian vault as Markdown notes with YAML metadata.</li>
+        <li><strong>Clean Exports:</strong> Export to Markdown, Word, PDF, or generate beautiful PNG cards for sharing.</li>
+        <li><strong>100% Local-First:</strong> Stored locally in your browser storage. Zero tracking, no login required.</li>
+      </ul>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Preserve Your Best Doubao Answers</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">Works on Chrome and Edge · Free · Local-only</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          Add to <span data-store-name>Chrome</span> — free
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 SaveAnswer</span>
+      <span>
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a> ·
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a> ·
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a> ·
+        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
+        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

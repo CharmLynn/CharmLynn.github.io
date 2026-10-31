@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SaveAnswer - Save the AI answers you'll reuse</title>
-  <meta name="description" content="SaveAnswer is a local-first Chrome extension: adds a Save button beside answers on ChatGPT, Claude, DeepSeek, Gemini, Grok, Doubao, and Qwen. Full-text search and export to Markdown/Word/PDF. 100% local-only. Edge Add-ons listing coming soon.">
+  <meta name="description" content="SaveAnswer is a local-first Chrome extension: adds a Save button beside answers on ChatGPT, Claude, DeepSeek, Gemini, Grok, Doubao, and Qwen. Full-text search, direct Obsidian Vault sync, and export to Markdown/Word/PDF. 100% local-only. Edge Add-ons listing coming soon.">
   <meta property="og:title" content="SaveAnswer - Save the AI answers you'll reuse">
-  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek, Gemini, Grok, Doubao and Qwen. Search later, export to Markdown/Word/PDF. Local-only, no account.">
+  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek, Gemini, Grok, Doubao and Qwen. Search later, sync to Obsidian, export to Markdown/Word/PDF. Local-only, no account.">
   <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/search.jpg">
   <link rel="icon" href="assets/icon.png">
   <link rel="stylesheet" href="style.css">
@@ -17,7 +17,9 @@
     <div class="wrap nav-inner">
       <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
       <div class="nav-links">
-        <a class="hide-sm" href="#how"><span data-lang="zh">怎么用</span><span data-lang="en">How it works</span></a>
+        <a class="hide-sm" href="#how"><span data-lang="zh">功能流程</span><span data-lang="en">How it works</span></a>
+        <a class="hide-sm" href="#platforms"><span data-lang="zh">支持平台</span><span data-lang="en">Supported AI</span></a>
+        <a class="hide-sm" href="#obsidian"><span data-lang="zh">Obsidian 同步</span><span data-lang="en">Obsidian Sync</span></a>
         <a class="hide-sm" href="#install"><span data-lang="zh">安装</span><span data-lang="en">Install</span></a>
         <a class="hide-sm" href="#faq">FAQ</a>
         <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
@@ -34,8 +36,8 @@
           <span data-lang="en">Save the AI answers<br>you'll reuse.</span>
         </h1>
         <p class="lead">
-          <span data-lang="zh">同时用 ChatGPT、Claude、DeepSeek？好回答散落在各个聊天记录里，过几天就翻不到了。SaveAnswer 在每条回答旁加一个「保存」按钮，存进一个能全文搜索的本地库，需要时一搜就有，还能导出成 Word / PDF / Markdown。</span>
-          <span data-lang="en">Good answers get buried in long chat histories. SaveAnswer adds a Save button beside each reply, keeps only the ones you choose in a searchable local library, and exports them to Markdown, Word or PDF when you need them.</span>
+          <span data-lang="zh">同时用 ChatGPT、Claude、DeepSeek 等大模型？好回答散落在各个聊天记录里，过几天就翻不到了。SaveAnswer 在每条回答旁加一个「保存」按钮，存进一个能全文搜索的本地库，需要时一搜就有，还能直接同步至 Obsidian 或导出成 Word / PDF / Markdown。</span>
+          <span data-lang="en">Good answers get buried across multiple AI chat histories. SaveAnswer adds a native Save button beside each reply, keeps only the ones you choose in a searchable local library, syncs directly to Obsidian, and exports to Markdown, Word, or PDF.</span>
         </p>
         <div class="install">
           <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
@@ -60,8 +62,8 @@
           </p>
         </div>
         <p class="platforms">
-          <span data-lang="zh">支持：</span><span data-lang="en">Works on: </span>
-          <b>ChatGPT · Claude · Gemini · DeepSeek · <span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span> · Grok · <span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></b>
+          <span data-lang="zh">已原生支持 7 大平台：</span><span data-lang="en">Works natively on 7 platforms: </span>
+          <b><a href="#platforms" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">ChatGPT · Claude · Gemini · DeepSeek · <span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span> · Grok · <span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></a></b>
         </p>
       </div>
       <div class="hero-media">
@@ -81,7 +83,7 @@
           <div class="step-body">
             <div class="step-num">01</div>
             <h3><span data-lang="zh">看到好回答，点「保存」</span><span data-lang="en">Click Save on a good answer</span></h3>
-            <p><span data-lang="zh">按钮就在每条 AI 回答自己的操作栏里，可以顺手加个标签。DeepSeek 长对话也不会错位。</span><span data-lang="en">The button sits in each reply's own action bar. Add a tag if you like. Works in long DeepSeek chats too.</span></p>
+            <p><span data-lang="zh">按钮原生嵌入每条 AI 回答底部的操作栏中，统一 32px 紧凑设计，自适应浅色与深色模式。保存时即刻打标签，在流式生成或 DeepSeek 长对话中也绝不发生漂移与错位。</span><span data-lang="en">The 32px Save button attaches directly to each reply's native action bar with dark mode support. Add tags on the fly. Stays locked to the correct answer without shifting, even in long DeepSeek chats.</span></p>
           </div>
         </div>
         <div class="step">
@@ -89,16 +91,235 @@
           <div class="step-body">
             <div class="step-num">02</div>
             <h3><span data-lang="zh">几天后，一搜就有</span><span data-lang="en">Search it days later</span></h3>
-            <p><span data-lang="zh">按问题和回答全文搜索、按标签筛选，所有平台的回答都在一个库里，还能一键回到原对话。</span><span data-lang="en">Full-text search across questions and answers from every platform, filter by tag, and jump back to the original chat.</span></p>
+            <p><span data-lang="zh">毫秒级全文检索，同时搜索问题、回答正文及代码片段；支持按标签与 AI 来源一键筛选。所有平台的碎片回答归于一处，随时点击来源链接一秒跳回原对话上下文。</span><span data-lang="en">Instant full-text search across questions, answers, and code blocks. Filter by custom tags or AI source. Jump back to the original conversation context anytime with one click.</span></p>
           </div>
         </div>
         <div class="step">
           <img src="assets/export-ui.jpg" alt="" loading="lazy" width="660" height="566">
           <div class="step-body">
             <div class="step-num">03</div>
-            <h3><span data-lang="zh">导出或分享</span><span data-lang="en">Export or share</span></h3>
-            <p><span data-lang="zh">选中的回答可导出 Markdown / Word / PDF / HTML，保留代码块、来源和时间；也能生成一张分享卡片。</span><span data-lang="en">Export selected answers to Markdown, Word, PDF or HTML with code blocks, source and date — or turn one into a share card.</span></p>
+            <h3><span data-lang="zh">导出、同步或分享</span><span data-lang="en">Export, sync or share</span></h3>
+            <p><span data-lang="zh">选中的回答可导出为 Markdown、Word (.docx)、PDF 或 HTML，支持自选目录；可自动同步至本地 Obsidian 双链知识库；还可通过离线 Canvas 2D 生成 4 套高颜值主题的分享卡片。</span><span data-lang="en">Export selected answers to Markdown, Word, PDF, or HTML. Sync directly with your local Obsidian vault as atomic notes, or generate beautiful PNG cards across 4 curated themes offline.</span></p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="platforms">
+      <h2>
+        <span data-lang="zh">原生支持主流大模型平台</span>
+        <span data-lang="en">Natively Built for Leading AI Chat Platforms</span>
+      </h2>
+      <p class="sub">
+        <span data-lang="zh">跨模型统一知识库：无论你在哪个大模型找到了好答案，SaveAnswer 都能原生挂载并汇聚成统一的个人知识库。</span>
+        <span data-lang="en">Stop losing great insights across scattered tabs. SaveAnswer attaches natively to your daily AI chat assistants and brings them together into one unified library.</span>
+      </p>
+
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">ChatGPT</h3>
+            <span class="platform-domain">chatgpt.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">2026 最新架构适配</span><span data-lang="en">2026 UI Overhaul Ready</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">深度适配 OpenAI 最新 DOM 布局与流式渲染，原生挂载到回答操作栏中，完整捕获代码块、列表与思考过程。</span>
+            <span data-lang="en">Tailored for OpenAI's latest layout and streaming answers. Seamlessly mounted inside the response action bar to preserve code blocks, tables, and reasoning.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="export-chatgpt-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看 ChatGPT 导出指南 →</span>
+              <span data-lang="en">ChatGPT Export Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">Claude</h3>
+            <span class="platform-domain">claude.ai</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">长上下文与 Artifacts</span><span data-lang="en">Long Context & Artifacts</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">完美支持 Anthropic Claude 的超长上下文对话、深度推导与编程代码输出，一键沉淀完整分析思路。</span>
+            <span data-lang="en">Captures Anthropic Claude's in-depth analytical reasoning, coding artifacts, and long-turn dialogues with rich formatting intact.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-claude-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看 Claude 保存指南 →</span>
+              <span data-lang="en">Claude Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">DeepSeek</h3>
+            <span class="platform-domain">chat.deepseek.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">R1 / V3 深度思考调优</span><span data-lang="en">R1 / V3 Reasoning Optimized</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">针对 DeepSeek 深度思考模型专门调优，彻底解决长对话流式渲染下按钮错位问题，精准提取正式回答与思维链。</span>
+            <span data-lang="en">Specially optimized for DeepSeek reasoning models. Fixes button shifting in long chats and cleanly extracts answers alongside chain-of-thought steps.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-deepseek-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看 DeepSeek 保存指南 →</span>
+              <span data-lang="en">DeepSeek Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">Google Gemini</h3>
+            <span class="platform-domain">gemini.google.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">多模态与引用链接</span><span data-lang="en">Multimodal & Citations</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">适配 Google Gemini 网页端界面，支持多模态分析问答、复杂 Markdown 表格与行内搜索引用链接的完整保存。</span>
+            <span data-lang="en">Supports Gemini's web interface, cleanly capturing complex data tables, markdown formatting, and inline source citation links.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-gemini-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看 Gemini 保存指南 →</span>
+              <span data-lang="en">Gemini Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">Grok (xAI)</h3>
+            <span class="platform-domain">grok.com / x.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">动态响应式架构</span><span data-lang="en">Reactive Web UI</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">完美兼容 xAI Grok 的动态响应式前端框架，确保在快速多轮问答下按钮稳定挂载、问答对精确关联。</span>
+            <span data-lang="en">Seamless compatibility with xAI Grok's dynamic reactive UI, guaranteeing rock-solid button binding and question-answer pairing.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-grok-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看 Grok 保存指南 →</span>
+              <span data-lang="en">Grok Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">豆包 (Doubao)</h3>
+            <span class="platform-domain">doubao.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">字节跳动 AI 助手</span><span data-lang="en">ByteDance Doubao</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">原生适配豆包网页端对话结构，支持高频日常对话、灵感总结与工作学习问答的一键秒存。</span>
+            <span data-lang="en">Native integration for Doubao web chats, allowing one-click capture of daily research, writing drafts, and learning notes.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-doubao-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看豆包保存指南 →</span>
+              <span data-lang="en">Doubao Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <h3 class="platform-name">通义千问 (Qwen)</h3>
+            <span class="platform-domain">tongyi.aliyun.com</span>
+          </div>
+          <span class="platform-badge"><span data-lang="zh">阿里云大模型</span><span data-lang="en">Alibaba Qwen LLM</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">深度支持通义千问网页端，无论是编程辅助、文档问答还是专业报告分析，都能原样保留排版与结构。</span>
+            <span data-lang="en">Full support for Qwen web chats, capturing code blocks, document summaries, and technical explanations with original hierarchy.</span>
+          </p>
+          <div style="margin-top:12px;">
+            <a href="save-qwen-answers.html" style="font-size:13px;color:var(--primary-dark);font-weight:500;text-decoration:none;">
+              <span data-lang="zh">查看千问保存指南 →</span>
+              <span data-lang="en">Qwen Guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="platform-card" style="border-style:dashed;background:transparent;">
+          <div class="platform-header">
+            <h3 class="platform-name" style="color:var(--primary-dark);">
+              <span data-lang="zh">更多模型持续接入</span>
+              <span data-lang="en">More AI Platforms Coming</span>
+            </h3>
+          </div>
+          <span class="platform-badge" style="background:var(--border);color:var(--text-secondary);"><span data-lang="zh">社区驱动</span><span data-lang="en">Community Driven</span></span>
+          <p class="platform-desc">
+            <span data-lang="zh">有常用的大模型网页端未在列表中？欢迎通过 <a href="feedback.html">反馈页面</a> 告诉我们，高频需求平台将以最快速度完成适配。</span>
+            <span data-lang="en">Using another AI chat tool regularly? Let us know on the <a href="feedback.html">feedback page</a> and requested platforms will be prioritized.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="obsidian">
+      <div class="split">
+        <div>
+          <span class="platform-badge" style="margin-bottom:12px;">
+            <span data-lang="zh">🔥 本地双链知识库直连</span>
+            <span data-lang="en">Second Brain Integration</span>
+          </span>
+          <h2>
+            <span data-lang="zh">一键同步到本地 Obsidian 知识库</span>
+            <span data-lang="en">Direct Obsidian Vault Sync: AI Answers as Atomic Notes</span>
+          </h2>
+          <p class="sub" style="margin-bottom:20px;">
+            <span data-lang="zh">基于现代浏览器 File System Access API 原生直写本地磁盘，无需部署后端服务或配置云端 Key。保存 AI 回答的同时，自动在你的 Obsidian 仓库生成结构化 Markdown 卡片。</span>
+            <span data-lang="en">Powered by the browser's native File System Access API to write directly to your local disk. Zero cloud servers or API keys needed — every save creates an atomic, structured Markdown card in your Obsidian vault.</span>
+          </p>
+          <ul class="checklist">
+            <li>
+              <strong><span data-lang="zh">标准 YAML Frontmatter</span><span data-lang="en">Standard YAML Frontmatter</span></strong>:
+              <span data-lang="zh">自动注入 <code>title</code>、<code>source</code>、<code>url</code>、<code>date</code> 和自定义 <code>tags</code>，完美兼容 Obsidian Dataview 插件、全文检索与双链图谱。</span>
+              <span data-lang="en">Auto-generates clean metadata (<code>title</code>, <code>source</code>, <code>url</code>, <code>date</code>, <code>tags</code>) for seamless use with Obsidian Dataview, graph view, and backlinks.</span>
+            </li>
+            <li>
+              <strong><span data-lang="zh">规范原子化命名 (Atomic Notes)</span><span data-lang="en">Atomic Note Filenames</span></strong>:
+              <span data-lang="zh">按 <code>YYYY-MM-DD_平台_问题.md</code> 自动安全命名，每条问答独立成卡，方便使用 <code>[[双向链接]]</code> 进行网状知识串联。</span>
+              <span data-lang="en">Structured as <code>YYYY-MM-DD_Platform_Question.md</code>, turning every answer into an atomic note ideal for <code>[[bidirectional links]]</code>.</span>
+            </li>
+            <li>
+              <strong><span data-lang="zh">自定义 Vault 目录与全量同步</span><span data-lang="en">Custom Vault & Instant Batch Sync</span></strong>:
+              <span data-lang="zh">自由选取电脑中的 Obsidian 仓库（可指定子目录如 <code>SaveAnswer</code>），支持“一键同步全库”，具备幂等写入保护，不产生重复脏文件。</span>
+              <span data-lang="en">Choose your vault and optional subfolder (e.g. <code>SaveAnswer</code>). Supports "Sync All Answers Now" with idempotent deduplication to keep files clean.</span>
+            </li>
+            <li>
+              <strong><span data-lang="zh">100% 离线与隐私安全</span><span data-lang="en">100% Local-First & Private</span></strong>:
+              <span data-lang="zh">浏览器直接向你授权的本地文件夹写入文件，纯离线执行，任何笔记内容均不上云，完全归你所有。</span>
+              <span data-lang="en">Direct local file handle access inside the browser sandbox. Zero network telemetry, zero cloud storage — your knowledge stays strictly on your device.</span>
+            </li>
+          </ul>
+
+          <div class="code-preview">
+            <pre><span class="yaml-comment"># Generated atomic markdown card for Obsidian:</span>
+---
+<span class="yaml-key">title</span>: <span class="yaml-str">"React 19 vs React 18: Key Differences"</span>
+<span class="yaml-key">source</span>: <span class="yaml-str">"Claude"</span>
+<span class="yaml-key">url</span>: <span class="yaml-str">"https://claude.ai/chat/..."</span>
+<span class="yaml-key">date</span>: <span class="yaml-str">"2026-10-30 10:15:00"</span>
+<span class="yaml-key">tags</span>:
+  - <span class="yaml-tag">"ai-answer"</span>
+  - <span class="yaml-tag">"react"</span>
+  - <span class="yaml-tag">"frontend"</span>
+---
+> **Source**: Claude | **Saved**: 2026-10-30 | [View original conversation](...)</pre>
+          </div>
+
+          <div style="margin-top:20px;">
+            <a href="obsidian-sync-ai-answers.html" class="btn btn-secondary">
+              <span data-lang="zh">查看 Obsidian 自动同步专属指南 →</span>
+              <span data-lang="en">Read Obsidian Sync Guide →</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <img src="assets/obsidian-sync.png" alt="SaveAnswer Obsidian Vault Sync UI" loading="lazy" width="1280" height="800">
         </div>
       </div>
     </section>
@@ -142,6 +363,14 @@
     <section class="block faq" id="faq">
       <h2>FAQ</h2>
       <details>
+        <summary><span data-lang="zh">使用 Obsidian 同步需要安装额外插件或云端账号吗？</span><span data-lang="en">Do I need an Obsidian plugin or cloud account for Vault Sync?</span></summary>
+        <p><span data-lang="zh">完全不需要。SaveAnswer 基于现代 Chromium 浏览器的原生 File System Access API 直接向你选中的本地 Obsidian 文件夹写入标准 Markdown 文件，零网络上传，没有第三方插件依赖，离线也能秒级同步。</span><span data-lang="en">No. SaveAnswer uses the native File System Access API in Chromium browsers to write standard Markdown notes directly into your chosen local folder or Obsidian vault. Zero network requests, no plugin dependencies, and fully functional offline.</span></p>
+      </details>
+      <details>
+        <summary><span data-lang="zh">除了 ChatGPT 和 DeepSeek，还支持哪些大模型？</span><span data-lang="en">Which AI platforms are supported?</span></summary>
+        <p><span data-lang="zh">目前已深度原生支持 7 大主流 AI 平台：ChatGPT、Claude、Google Gemini、DeepSeek、Grok、豆包 (Doubao) 与通义千问 (Qwen)。随着各平台界面更新，我们会持续维护选择器，并在社区反馈中优先适配高频提议的新模型。</span><span data-lang="en">We natively support 7 major AI platforms: ChatGPT, Claude, Google Gemini, DeepSeek, Grok, Doubao, and Qwen. We continuously maintain selector compatibility as platforms evolve and prioritize adding new models based on user feedback.</span></p>
+      </details>
+      <details>
         <summary><span data-lang="zh">和直接用 ChatGPT 自带的聊天记录搜索有什么区别？</span><span data-lang="en">How is this different from ChatGPT's own history search?</span></summary>
         <p><span data-lang="zh">聊天记录搜索只能搜标题或单个平台，而且好回答混在大量闲聊里。SaveAnswer 只收你挑出来的回答，跨 ChatGPT、Claude、DeepSeek 等平台放在同一个库里，按问题和回答全文搜索。</span><span data-lang="en">Built-in history covers one platform and mixes good answers with everything else. SaveAnswer keeps only the replies you pick, across ChatGPT, Claude, DeepSeek and more, in one full-text-searchable library.</span></p>
       </details>
@@ -164,8 +393,14 @@
     <div class="wrap">
       <span>© 2026 SaveAnswer</span>
       <span>
-        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出指南</span><span data-lang="en">ChatGPT Export Guide</span></a> ·
-        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 保存指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="obsidian-sync-ai-answers.html"><span data-lang="zh">Obsidian 同步</span><span data-lang="en">Obsidian Sync</span></a> ·
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a> ·
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a> ·
+        <a href="save-gemini-answers.html"><span data-lang="zh">Gemini 指南</span><span data-lang="en">Gemini Guide</span></a> ·
+        <a href="save-grok-answers.html"><span data-lang="zh">Grok 指南</span><span data-lang="en">Grok Guide</span></a> ·
+        <a href="save-qwen-answers.html"><span data-lang="zh">通义千问</span><span data-lang="en">Qwen Guide</span></a> ·
+        <a href="save-doubao-answers.html"><span data-lang="zh">豆包</span><span data-lang="en">Doubao Guide</span></a> ·
         <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
         <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
       </span>
