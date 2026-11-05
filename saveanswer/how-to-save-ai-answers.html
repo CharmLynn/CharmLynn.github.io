@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Save AI Answers & Build Your Knowledge Base (ChatGPT, Claude, DeepSeek) — SaveAnswer</title>
+  <meta name="description" content="Stop losing high-value AI answers. Learn how to capture, organize, and sync AI responses from ChatGPT, Claude, DeepSeek, and Gemini directly into your local Markdown or Obsidian knowledge base with 1 click. 100% free and local-first.">
+  <meta name="keywords" content="save AI answers,save ChatGPT answers,save Claude answers,save DeepSeek answers,AI knowledge library,organize AI responses,sync AI to Obsidian,AI answer organizer">
+  <meta property="og:title" content="How to Save AI Answers & Build a Personal Knowledge Library">
+  <meta property="og:description" content="Stop losing brilliant AI answers. One-click capture from ChatGPT, Claude, DeepSeek, and Gemini into your local knowledge base. 100% free and local-first.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/obsidian-sync.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://charmlynn.github.io/saveanswer/how-to-save-ai-answers.html">
+  <link rel="canonical" href="https://charmlynn.github.io/saveanswer/how-to-save-ai-answers.html">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <meta name="sa-title" data-title-zh="如何保存 AI 回答并构建个人知识库 (ChatGPT, Claude, DeepSeek) - SaveAnswer" data-title-en="How to Save AI Answers & Build Your Knowledge Base - SaveAnswer">
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Save AI Answers & Build Your Personal Knowledge Library",
+      "description": "A comprehensive guide on preserving and organizing answers from ChatGPT, Claude, DeepSeek, and Gemini into a structured, searchable, local-first knowledge base.",
+      "url": "https://charmlynn.github.io/saveanswer/how-to-save-ai-answers.html",
+      "datePublished": "2026-11-03",
+      "dateModified": "2026-11-03",
+      "author": {
+        "@type": "Organization",
+        "name": "SaveAnswer",
+        "url": "https://charmlynn.github.io/saveanswer/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SaveAnswer",
+        "url": "https://charmlynn.github.io/saveanswer/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why not just bookmark the AI conversation URL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bookmarking a chat URL only saves a link to an entire conversational thread. When threads grow long, finding a specific code block or solution is painful. If the conversation is altered, deleted, or behind a expired login, access is lost. Dedicated capture stores the exact, sanitized answer text, code blocks, and metadata directly on your computer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SaveAnswer free, or is there a subscription paywall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SaveAnswer is 100% free to use. Unlike commercial clippers that charge $12/month or $120/year for browser extension capture, all core features—in-page 1-click capture across 8 major AI platforms, local search, Obsidian sync, and multi-format exports—are completely free without account registration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI platforms support native 1-click capture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SaveAnswer automatically injects a native 'Save' button directly into the action bars of ChatGPT, Claude.ai, Gemini, Grok, DeepSeek, Qwen (通义千问), Doubao (豆包), and Kimi. You do not need to manually copy and paste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does SaveAnswer protect user data privacy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SaveAnswer is built on a 100% Local-First architecture. All answers, tags, and search indexes are stored locally in your browser's IndexedDB. There are no remote tracking servers, no cloud databases, and no account requirements. Your proprietary code and private research remain entirely on your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I sync saved answers directly to Obsidian or local Markdown files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Using the browser's native File System Access API, SaveAnswer can write newly captured answers directly into your local Obsidian Vault folder. Each note is saved as a clean Markdown file with standard YAML frontmatter (tags, platform, source URL, date) ready for Dataview and graph exploration."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="obsidian-sync-ai-answers.html"><span data-lang="zh">Obsidian 同步</span><span data-lang="en">Obsidian Sync</span></a>
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a>
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a>
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 840px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">AI 知识管理与效率指南</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">如何保存 AI 回答？将 ChatGPT、Claude、DeepSeek 变成你的专属长效知识库</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">发布于 2026-11-03 · 9 分钟阅读 · 适用于所有主流大模型用户</p>
+      </div>
+
+      <p class="lead">
+        你在 Claude 或 ChatGPT 中询问了一个极其棘手的数据库分布式死锁问题。模型推导严谨，给出了包含架构设计图、带注释的 SQL 代码和迁移避坑指南的绝妙回答。你用它解决了眼前的 Bug，关闭标签页，继续投入工作。两周后，团队面临同样的架构决策，你清楚地记得当初 AI 给出的精妙见解，但翻遍数以百计的聊天历史记录，那段回答早已石沉大海。
+      </p>
+
+      <div style="background: var(--bg-card); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0;">
+        <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">这就是经典的「AI 回答蒸发陷阱 (The Ephemeral AI Trap)」</strong>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">大模型每天都在生成高质量的定制化知识，但如果缺乏低摩擦的留存手段，对话一旦关闭，知识即刻蒸发。重新向模型提问不仅耗费时间与 Token，模型还可能生成完全不同或不可复现的答案。</p>
+      </div>
+
+      <h2>为什么传统保存方式注定失效？</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. 聊天历史记录不是知识库 (Chat History is a Log, Not a Vault)</h3>
+            <p>聊天记录是按时间线性堆叠的流水账。对话越滚越长，不仅缺少多维标签，搜索功能也极其孱弱，无法跨平台联想，更无法与你本地的研究笔记产生连接。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. 手动复制粘贴摩擦力巨大 (Copy-Paste Tax)</h3>
+            <p>复制到笔记软件中，代码块高亮常被破坏、表格错位、公式乱码，更丢失了原始 Prompt、生成模型、提问日期和原文会话链接。每次整理耗时数十秒，人在专注时根本无法坚持。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. 书签只保存网址，不保存当时的思考与内容</h3>
+            <p>收藏夹仅记录 URL，随着账号状态切换、会话被清空或模型页面改版，收藏夹随时失效，根本无法离线阅读。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>4. 截图无法检索，代码无法复制</h3>
+            <p>截图不仅占用相册，且无法复制纯文本和代码，遇到数十行复杂逻辑完全无法直接复用。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>5. 商业剪藏工具每月收取昂贵订阅费</h3>
+            <p>部分商业剪藏插件对一个简单的浏览器按钮收取每月 $12 美元（一年 $120+）的订阅费，且往往只支持一两家模型，其他大模型仍要求你手动复制粘贴，甚至将你的所有对话上传至云端服务器。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>谁最需要建立专属的 AI 问答知识库？</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">💻 软件工程师与全栈开发者</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">留存复杂正则、SQL 调优、CI/CD 脚本、报错排查方案。点击一次，代码块原样入库，随时全局毫秒级检索。</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">🔬 科研人员与文献学者</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">保留论文核心概念剖析、公式推导与跨模型比对。为每个课题打上专属 Tag，构建垂直领域的结构化索引。</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">📚 学生与深度自学者</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">告别期末考前在海量会话记录里漫无目的地翻找。将 AI 的通俗解构变成复习手卡，离线随时复盘。</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">📊 职场专业人士与创作者</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">留存工作 SOP、行业分析框架、文案策略。避免每周针对相同的工作流程重复向 AI 提问消耗 Token。</p>
+        </div>
+      </div>
+
+      <h2>理想的解决方案：SaveAnswer 的 1 键工作流</h2>
+      <p>
+        一个可持续的 AI 知识管理体系，核心必须满足三大原则：<strong>零摩擦捕获、本地数据安全、以及完全融入个人现有知识生态</strong>。
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>8 大主流平台原生支持：</strong>在 ChatGPT、Claude.ai、Gemini、Grok、DeepSeek、通义千问、豆包、Kimi 的每条回答操作栏旁自动嵌入“Save”按钮，点击即存，无需切屏。</li>
+        <li><strong>100% 免费无订阅：</strong>完全免费使用，无需购买昂贵的商业月费套餐，没有保存条数配额限制。</li>
+        <li><strong>100% Local-First（本地优先）：</strong>数据直接沉淀在浏览器本地 IndexedDB 中，无需注册账号，没有云端中转服务器，彻底杜绝企业代码与私有研究泄露。</li>
+        <li><strong>无缝直通 Obsidian 本地知识库：</strong>基于浏览器原生 File System Access API，一键将回答保存为带 YAML 属性的规范 Markdown 文件，自动落盘至你本地的 Obsidian Vault 文件夹。</li>
+        <li><strong>多样化格式导出与社交长图卡片：</strong>支持导出 Markdown、独立 HTML、Word 文档、PDF，并可一键渲染生成设计感极佳的高清分享卡片。</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0;">
+        <h3 style="margin-top: 0;">一键生成的本地 Markdown 样例 (完美契合 Obsidian / Logseq)</h3>
+        <pre style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-family: monospace; font-size: 13px;">---
+title: "Distributed Lock implementation with Redis Redlock vs Raft"
+source: "https://claude.ai/chat/499b2c8e-abcd-ef01"
+platform: "Claude"
+tags:
+  - backend
+  - system-design
+  - distributed-systems
+date: 2026-11-03 14:20:00
+---
+
+## Question
+In a high-throughput microservice architecture, when should we use Redis Redlock over a consensus-backed distributed lock like etcd?
+
+## Answer
+While Redis Redlock provides high availability and fast acquisition times, it relies on synchronized wall-clock assumptions that can fail under GC pauses or network partitions...</pre>
+      </div>
+
+      <h2>常见问题解答 (FAQ)</h2>
+      <div style="margin: 24px 0;">
+        <h4 style="margin-bottom: 6px;">Q: SaveAnswer 为什么完全免费，是否会有隐私安全问题？</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">SaveAnswer 采用 100% 本地优先（Local-First）架构，所有数据只存放在你本地电脑的浏览器安全沙箱内，不设任何外部数据收集或云存储服务器，因此运维成本极低。你不需要注册账号，你的思考和敏感业务代码绝对安全。</p>
+
+        <h4 style="margin-bottom: 6px;">Q: 我使用的是通义千问、豆包或 DeepSeek，也能一键保存吗？</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">可以。很多国外剪藏插件仅支持 Claude，而 SaveAnswer 针对中文主流大模型（DeepSeek、通义千问、豆包、Kimi）进行了深度 DOM 适配，所有模型均提供统一丝滑的原生一键归档体验。</p>
+
+        <h4 style="margin-bottom: 6px;">Q: 导出的文件如何兼容 Dataview 插件？</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">SaveAnswer 同步至 Obsidian 的每份 Markdown 均自动附带标准的 YAML Frontmatter（包含 platform、tags、date、source 等键值），在 Obsidian 中可通过一行简单的 Dataview 查询语法按平台、标签聚合查阅。</p>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 28px; margin: 36px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">立即搭建属于你的永久 AI 知识底座</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 15px;">支持 Chrome 与 Edge 浏览器 · 100% 本地优先 · 免费使用</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          免费添加到 <span data-store-name>Chrome</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">AI Knowledge Management Guide</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">How to Save AI Answers & Build a Reusable Knowledge Library</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Published November 3, 2026 · 9 min read · For ChatGPT, Claude, DeepSeek & Gemini</p>
+      </div>
+
+      <p class="lead">
+        You ask Claude or ChatGPT a challenging database concurrency question. You receive a structured, comprehensive answer complete with annotated code snippets, architectural trade-offs, and edge-case warnings. You solve the issue, close the browser tab, and carry on. Two weeks later, a colleague faces the exact same challenge. You vividly remember that brilliant AI breakdown, but after scrolling through dozens of unstructured chat threads, that knowledge is gone forever.
+      </p>
+
+      <div style="background: var(--bg-card); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0;">
+        <strong style="color: var(--text-primary); display: block; margin-bottom: 6px;">The Ephemeral AI Answer Trap</strong>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">Large Language Models are constantly synthesizing tailored insights. Yet without frictionless capture, valuable answers evaporate the moment you close the tab. Re-prompting the model wastes time and tokens, and often fails to recreate the original nuance.</p>
+      </div>
+
+      <h2>Why Traditional Saving Methods Fail</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. Chat History is a Chronological Log, Not a Knowledge Base</h3>
+            <p>Chat interfaces bury critical insights beneath hundreds of conversational turns. There are no tags, cross-platform searching is impossible, and conversations cannot link to your project notes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. The Copy-Paste Tax Destroys Focus</h3>
+            <p>Manually copying answers into Notion or Apple Notes breaks code indentations, strips LaTeX math equations, and leaves out crucial metadata like the prompt, model name, date, and conversation URL.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. Browser Bookmarks Save Links, Not Content</h3>
+            <p>Bookmarking a thread URL only points to an online page. If the thread is deleted, if the platform alters UI elements, or if your session expires, the insight is lost.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>4. Screenshots are Unsearchable Images</h3>
+            <p>Screenshots cannot be searched by text, cannot be edited, and code cannot be copied directly. They end up cluttering your camera roll without practical reuse.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>5. Commercial Clippers Lock Basic Buttons Behind $12/mo Paywalls</h3>
+            <p>Some commercial tools charge upwards of $12/month ($120+/year) just to give you a browser button on one platform, force manual copy-pasting for ChatGPT, and store your private prompts on their cloud servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Who Benefits from Building an AI Answer Library?</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">💻 Software Engineers</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">Preserve architecture solutions, complex regex, refactoring guides, and debugging patterns. Search across all models with millisecond speed.</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">🔬 Researchers & Writers</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">Capture literature syntheses and comparative analyses. Organize findings with project tags to build coherent topic dossiers.</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">📚 Students & Self-Learners</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">Stop scrolling through massive chat histories before exams. Turn high-yield explanations into structured study archives.</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+          <h4 style="margin-top: 0; color: var(--text-primary);">📊 Professionals & Operators</h4>
+          <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">Preserve standard operating procedures, email frameworks, and strategic templates. Stop burning tokens on identical prompts every week.</p>
+        </div>
+      </div>
+
+      <h2>The SaveAnswer Solution: 1-Click Local-First Archiving</h2>
+      <p>
+        A sustainable knowledge system requires <strong>zero-friction capture, absolute data privacy, and native interoperability</strong> with your existing tools.
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>Native 1-Click Save Across 8 Platforms:</strong> Injects a seamless "Save" button directly into the action bars of ChatGPT, Claude.ai, Gemini, Grok, DeepSeek, Qwen, Doubao, and Kimi.</li>
+        <li><strong>100% Free with No Subscription Paywall:</strong> No monthly fees, no credit card required, and no artificial save limits.</li>
+        <li><strong>100% Local-First & Zero-Cloud:</strong> All data stays stored inside your browser's local IndexedDB. No accounts, no telemetry, and zero risk of proprietary code leaks.</li>
+        <li><strong>Direct Obsidian Vault Synchronization:</strong> Connect directly to your local Obsidian folder via the native File System Access API. Captures land instantly as clean Markdown notes with YAML frontmatter.</li>
+        <li><strong>Flexible Multi-Format Exports:</strong> Export individual or batched notes to Markdown, standalone HTML, Word, PDF, or visually polished social sharing cards.</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 32px 0;">
+        <h3 style="margin-top: 0;">Clean Markdown Sample with YAML Frontmatter (Obsidian & Logseq Ready)</h3>
+        <pre style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-family: monospace; font-size: 13px;">---
+title: "Distributed Lock implementation with Redis Redlock vs Raft"
+source: "https://claude.ai/chat/499b2c8e-abcd-ef01"
+platform: "Claude"
+tags:
+  - backend
+  - system-design
+  - distributed-systems
+date: 2026-11-03 14:20:00
+---
+
+## Question
+In a high-throughput microservice architecture, when should we use Redis Redlock over a consensus-backed distributed lock like etcd?
+
+## Answer
+While Redis Redlock provides high availability and fast acquisition times, it relies on synchronized wall-clock assumptions that can fail under GC pauses or network partitions...</pre>
+      </div>
+
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div style="margin: 24px 0;">
+        <h4 style="margin-bottom: 6px;">Q: Is SaveAnswer truly free? How is privacy handled?</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">SaveAnswer is 100% free. Because it operates on a strictly Local-First architecture, your answers and tags are stored only on your computer's local storage. There are no remote database servers to maintain, eliminating both subscription costs and privacy concerns.</p>
+
+        <h4 style="margin-bottom: 6px;">Q: How does SaveAnswer compare to tools charging $12/month?</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">Commercial tools often charge $12/month ($120+/year) while only offering one-click buttons on one or two platforms and forcing manual copy-pasting for ChatGPT. SaveAnswer provides true native in-page 1-click capture across 8 major AI platforms, with zero paywalls and full Obsidian vault integration.</p>
+
+        <h4 style="margin-bottom: 6px;">Q: Can I use SaveAnswer with Obsidian and Dataview?</h4>
+        <p style="color: var(--text-secondary); margin-top: 0;">Yes. SaveAnswer formats every synced file with clean YAML attributes (platform, tags, source URL, date), making it instantly filterable and queryable using the Obsidian Dataview plugin.</p>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 28px; margin: 36px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Build Your Permanent AI Knowledge Library Today</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 15px;">Available for Chrome & Edge · Free · 100% Local-First</p>
+        <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          Add to <span data-store-name>Chrome</span> — free
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 SaveAnswer</span>
+      <span>
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a> ·
+        <a href="obsidian-sync-ai-answers.html"><span data-lang="zh">Obsidian 同步</span><span data-lang="en">Obsidian Sync</span></a> ·
+        <a href="export-chatgpt-answers.html"><span data-lang="zh">ChatGPT 导出</span><span data-lang="en">ChatGPT Export</span></a> ·
+        <a href="save-claude-answers.html"><span data-lang="zh">Claude 指南</span><span data-lang="en">Claude Guide</span></a> ·
+        <a href="save-deepseek-answers.html"><span data-lang="zh">DeepSeek 指南</span><span data-lang="en">DeepSeek Guide</span></a> ·
+        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
+        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
