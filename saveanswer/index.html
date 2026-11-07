@@ -3,221 +3,464 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SaveAnswer - 一键保存 AI 回答，随时搜到 | Save AI answers you'll reuse</title>
-  <meta name="description" content="SaveAnswer 是一个 Chrome / Edge 扩展：在 ChatGPT、Claude、DeepSeek、豆包、通义、Gemini、Grok 的回答旁加一个保存按钮，用标签和全文搜索随时找回，导出 Markdown / Word / PDF。数据只存在本地浏览器。">
-  <meta property="og:title" content="SaveAnswer - Save the AI answers you'll reuse">
-  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek and more. Search later, export to Markdown/Word/PDF. Local-only, no account.">
-  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/search.jpg">
+  <title>SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库 | Save the AI answers you'll reuse</title>
+  <meta name="description" content="SaveAnswer 是一个面向开发者的本地优先 AI 知识库 Chrome 扩展：原生内嵌 ChatGPT、Claude、DeepSeek、Gemini、通义千问、Grok、豆包。420px 弹窗敏捷秒查，三栏桌面工作台深度研读，直写本地 Obsidian。零云端服务器，数据 100% 掌握在自己手中。">
+  <meta property="og:title" content="SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库">
+  <meta property="og:description" content="One-click save on ChatGPT, Claude, DeepSeek and more. Agile 420px popup, full-tab desktop workspace, and direct Obsidian vault sync. 100% local-first, zero telemetry.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/workspace-preview.png">
   <link rel="icon" href="assets/icon.png">
   <link rel="stylesheet" href="style.css">
-  <meta name="sa-title" data-title-zh="SaveAnswer - 一键保存 AI 回答，随时搜到" data-title-en="SaveAnswer - Save the AI answers you'll reuse">
+  <meta name="sa-title" data-title-zh="SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库" data-title-en="SaveAnswer - Save the AI answers you'll reuse">
 </head>
 <body>
-  <nav class="nav">
+<!-- Floating Glassmorphism Nav -->
+  <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
-      <div class="nav-links">
-        <a class="hide-sm" href="#how"><span data-lang="zh">怎么用</span><span data-lang="en">How it works</span></a>
-        <a class="hide-sm" href="#workspace"><span data-lang="zh">v1.1.0 工作台</span><span data-lang="en">v1.1.0 Workspace</span></a>
-        <a class="hide-sm" href="#install"><span data-lang="zh">安装</span><span data-lang="en">Install</span></a>
-        <a class="hide-sm" href="#faq">FAQ</a>
-        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
-      </div>
-    </div>
-  </nav>
-
-  <main class="wrap">
-    <header class="hero">
-      <div>
-        <span class="eyebrow"><span data-lang="zh">v1.1.0 大版本发布 · 免费 · 无需账号 · 100% 本地优先</span><span data-lang="en">v1.1.0 Major Release · Free · No account · 100% Local-First</span></span>
-        <h1>
-          <span data-lang="zh">AI 的好回答，<br>存下来，随时搜到。</span>
-          <span data-lang="en">Save the AI answers<br>you'll reuse.</span>
-        </h1>
-        <p class="lead">
-          <span data-lang="zh">同时用 ChatGPT、Claude、DeepSeek？好回答散落在各个聊天记录里，过几天就翻不到了。SaveAnswer v1.1.0 在每条回答旁加一个「保存」按钮，支持<b>多轮追问上下文合并（Round 1 ➔ Round 2）</b>、<b>三栏全屏桌面工作台</b>、<b>DeepSeek 思考链折叠</b>，并可直写本地目录作为 <b>Obsidian 与 Cursor / Claude Code 的专属外挂知识库</b>。</span>
-          <span data-lang="en">Good answers get buried in long chat histories. SaveAnswer v1.1.0 adds a 1-click Save button with <b>multi-turn context merging (Round 1 ➔ Round 2)</b>, a <b>full-tab 3-column desktop workspace</b>, <b>reasoning chain folding</b>, and direct local disk sync for <b>Obsidian &amp; AI Coding Agents</b>.</span>
-        </p>
-        <div class="install">
-          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
-            <span data-lang="zh">免费添加到 <span data-store-name>Chrome</span></span><span data-lang="en">Add to <span data-store-name>Chrome</span> — free</span>
-          </a>
-          <a class="btn btn-ghost" href="#install"><span data-lang="zh">打不开商店？</span><span data-lang="en">Can't open the store?</span></a>
-          <p class="install-note" data-browser-note="cn-chromium" hidden>
-            <span data-lang="zh">检测到你在用国产浏览器：如果打不开 Chrome 商店，请看下方「其他安装方式」。</span>
-            <span data-lang="en">If the Chrome Web Store doesn't open in your browser, see "Other ways to install" below.</span>
-          </p>
-          <p class="install-note" data-browser-note="safari" hidden>
-            <span data-lang="zh">SaveAnswer 目前只支持 Chrome、Edge 等 Chromium 内核浏览器。</span>
-            <span data-lang="en">SaveAnswer currently works in Chrome, Edge and other Chromium browsers.</span>
-          </p>
-          <p class="install-note" data-browser-note="firefox" hidden>
-            <span data-lang="zh">SaveAnswer 目前只支持 Chrome、Edge 等 Chromium 内核浏览器。</span>
-            <span data-lang="en">SaveAnswer currently works in Chrome, Edge and other Chromium browsers.</span>
-          </p>
-          <p class="install-note" data-browser-note="mobile" hidden>
-            <span data-lang="zh">这是电脑浏览器扩展，请在电脑上打开本页安装。</span>
-            <span data-lang="en">This is a desktop browser extension. Open this page on your computer to install.</span>
-          </p>
-        </div>
-        <p class="platforms">
-          <span data-lang="zh">支持：</span><span data-lang="en">Works on: </span>
-          <b>ChatGPT · Claude · Gemini · DeepSeek · <span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span> · Grok · <span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></b>
-        </p>
-      </div>
-      <div class="hero-media">
-        <img src="assets/demo.gif" alt="SaveAnswer demo: click Save beside an AI answer" width="960" height="568">
-      </div>
-    </header>
-
-    <section class="block" id="how">
-      <h2><span data-lang="zh">三步：保存、找回、带走</span><span data-lang="en">Save it. Find it. Take it with you.</span></h2>
-      <p class="sub">
-        <span data-lang="zh">不是把所有聊天都备份一遍，只留下你以后真的会再用的那几条。</span>
-        <span data-lang="en">Not another archive of every chat — just the few replies you'll actually come back to.</span>
-      </p>
-      <div class="steps">
-        <div class="step">
-          <img src="assets/save-ui.jpg" alt="" loading="lazy" width="660" height="566">
-          <div class="step-body">
-            <div class="step-num">01</div>
-            <h3><span data-lang="zh">看到好回答，点「保存」</span><span data-lang="en">Click Save on a good answer</span></h3>
-            <p><span data-lang="zh">按钮就在每条 AI 回答自己的操作栏里，可以顺手加个标签；追问排查时支持一键勾选「包含上一轮上下文（Round 1 ➔ Round 2）」，完整保留思维脉络。</span><span data-lang="en">The button sits in each reply's own action bar. Add tags or toggle "Include previous context (Round 1 ➔ Round 2)" to keep multi-turn debugging threads intact.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <img src="assets/search-ui.jpg" alt="" loading="lazy" width="660" height="566">
-          <div class="step-body">
-            <div class="step-num">02</div>
-            <h3><span data-lang="zh">几天后，一搜就有</span><span data-lang="en">Search it days later</span></h3>
-            <p><span data-lang="zh">按问题和回答全文搜索、按标签筛选，所有平台的回答都在一个库里，还能一键回到原对话。</span><span data-lang="en">Full-text search across questions and answers from every platform, filter by tag, and jump back to the original chat.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <img src="assets/export-ui.jpg" alt="" loading="lazy" width="660" height="566">
-          <div class="step-body">
-            <div class="step-num">03</div>
-            <h3><span data-lang="zh">导出或分享</span><span data-lang="en">Export or share</span></h3>
-            <p><span data-lang="zh">选中的回答可导出 Markdown / Word / PDF / HTML，保留代码块、来源和时间；分享卡片内置语法清洗，输出零生硬标记的高清长图。</span><span data-lang="en">Export selected answers to Markdown, Word, PDF or HTML with code blocks, source and date — or turn one into a pristine share card stripped of raw markdown tokens.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" id="workspace">
-      <div class="split">
-        <div>
-          <span class="eyebrow"><span data-lang="zh">全新 v1.1.0 桌面级工作台</span><span data-lang="en">New v1.1.0 Desktop Workspace</span></span>
-          <h2><span data-lang="zh">跳出 420px 弹窗，<br>在三栏大屏中沉浸研读</span><span data-lang="en">Leap out of 420px popups.<br>Immerse in a 3-column workspace.</span></h2>
-          <p class="lead" style="font-size: 15px;">
-            <span data-lang="zh">面对数千字的技术解析、宽屏代码块与长表格，小弹窗太挤？一键跃迁至全屏知识库工作台，享受舒适/紧凑双密度切换、DeepSeek 思考链折叠、多轮追问上下文合并、多篇合并 Markdown 报告合成与 Obsidian 纯本地直写。</span>
-            <span data-lang="en">Tired of reading 1,500-word technical deep-dives and wide code blocks inside a cramped popup? Expand into our full-tab desktop sanctuary with dual-density scanning, folding reasoning chains, multi-turn context preservation, batch report synthesis, and direct-to-vault Obsidian synchronization.</span>
-          </p>
-          <ul class="checklist">
-            <li><span data-lang="zh"><b>三栏知识架构</b>：左侧分类导航 + 中栏即时检索 + 右侧 Markdown 沉浸宽屏阅读</span><span data-lang="en"><b>3-Column Architecture</b>: Left category navigation, instant search, and wide reading pane</span></li>
-            <li><span data-lang="zh"><b>多轮上下文追溯</b>：勾选包含上一轮提问与回答（Round 1 ➔ Round 2），追问排查 Bug 链路不丢失</span><span data-lang="en"><b>Multi-Turn Context Save</b>: Bundle previous prompt & reply into one cohesive note</span></li>
-            <li><span data-lang="zh"><b>自然常青石墨设计</b>：温润灰白与深松墨绿，告别廉价刺眼的 AI 蓝紫渐变</span><span data-lang="en"><b>Natural Evergreen & Slate</b>: Organic paper tones & forest pine, zero plastic AI purple</span></li>
-            <li><span data-lang="zh"><b>推理模型思考链折叠</b>：DeepSeek-R1 / o1 等模型的 <code>&lt;think&gt;</code> 逻辑优雅收折</span><span data-lang="en"><b>Reasoning Chain Folding</b>: Automatically collapse <code>&lt;think&gt;</code> tags from DeepSeek-R1</span></li>
-            <li><span data-lang="zh"><b>面向人类与 AI Agent 的本地外挂知识库</b>：纯本地标准 Markdown 直写，不仅供 Obsidian / Logseq 查阅，任何 AI Agent（Cursor、Claude Code、Cline 等）与本地 RAG 均可直接挂载该目录作为经过实测验证的高质量专属知识库！</span><span data-lang="en"><b>Agent-Ready Local Knowledge Base</b>: Standard Markdown with YAML Frontmatter direct to disk. Not just for Obsidian / Logseq—any AI Agent (Cursor, Claude Code, Cline) or local RAG can mount this directory as a curated, private second brain!</span></li>
-            <li><span data-lang="zh"><b>纯净社交分享卡片</b>：Canvas 引擎自动剔除 #、** 等生硬语法标记，优雅出图</span><span data-lang="en"><b>Pristine Social Cards</b>: Automated syntax cleaning strips raw markdown symbols for clean exports</span></li>
-          </ul>
-        </div>
-        <img src="assets/workspace-preview.png" alt="SaveAnswer 3-Column Full-Tab Desktop Workspace" width="1440" height="900" loading="lazy" style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
-      </div>
-      <div class="steps" style="margin-top: 28px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-        <div class="step">
-          <img src="assets/02_density_compact_comparison.png" alt="Compact density scanning mode" loading="lazy" width="1440" height="900">
-          <div class="step-body">
-            <h3><span data-lang="zh">舒适 / 紧凑双密度切换</span><span data-lang="en">Dual Density Views</span></h3>
-            <p><span data-lang="zh">在 2 行图文预览的舒适模式与单屏容纳 25+ 条记录的紧凑模式间秒级切换，百条笔记快速扫视。</span><span data-lang="en">Switch instantly between spacious 2-line previews and high-density Compact mode for rapid scanning.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <img src="assets/04_thought_process_expanded.png" alt="DeepSeek-R1 reasoning chain folding" loading="lazy" width="1440" height="900">
-          <div class="step-body">
-            <h3><span data-lang="zh">推理思考链优雅折叠</span><span data-lang="en">Reasoning Chain Folding</span></h3>
-            <p><span data-lang="zh">自动识别并折叠 DeepSeek-R1 / o1 的长篇 <code>&lt;think&gt;</code> 推理过程，正文结论先行，思考逻辑按需展开。</span><span data-lang="en">Automatically folds <code>&lt;think&gt;</code> blocks from DeepSeek-R1 so conclusions come first and deep reasoning stays on demand.</span></p>
-          </div>
-        </div>
-        <div class="step">
-          <img src="assets/03_batch_report_export_modal.png" alt="Batch report synthesis with TOC" loading="lazy" width="1440" height="900">
-          <div class="step-body">
-            <h3><span data-lang="zh">跨模型批量报告合成</span><span data-lang="en">Batch Report Synthesis</span></h3>
-            <p><span data-lang="zh">勾选多条不同 AI 模型的问答，一键合成为带自动目录（TOC）与 YAML Frontmatter 的单篇 Markdown 报告。</span><span data-lang="en">Select multiple answers across models and merge them into one structured Markdown report with an automatic Table of Contents.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="split">
-        <div>
-          <h2><span data-lang="zh">你的内容只在你的浏览器里</span><span data-lang="en">Your answers stay in your browser</span></h2>
-          <ul class="checklist">
-            <li><span data-lang="zh">保存的内容存在 <code>chrome.storage.local</code>，不上传任何服务器</span><span data-lang="en">Saved items live in <code>chrome.storage.local</code> and are never uploaded</span></li>
-            <li><span data-lang="zh">不需要注册账号，没有统计和追踪代码</span><span data-lang="en">No account, no analytics or tracking code</span></li>
-            <li><span data-lang="zh">只保存你主动点过「保存」的那一条回答</span><span data-lang="en">Only the replies you explicitly click Save on are stored</span></li>
-          </ul>
-          <p class="not-for">
-            <span data-lang="zh">需要说清楚的边界：不会自动备份全部聊天，不能恢复已经消失的对话，也没有跨设备同步。如果你要的是全量自动归档，其他工具可能更合适。</span>
-            <span data-lang="en">To be clear: it doesn't auto-archive every chat, can't recover conversations you didn't save, and has no cross-device sync. If you need a full automatic archive, another tool may fit better.</span>
-          </p>
-        </div>
-        <img src="assets/privacy.jpg" alt="" loading="lazy" width="1280" height="800">
-      </div>
-    </section>
-
-    <section class="block" id="install">
-      <h2><span data-lang="zh">安装方式</span><span data-lang="en">Ways to install</span></h2>
-      <p class="sub">
-        <span data-lang="zh">Chrome 商店能正常打开就直接装；打不开的往下看。</span>
-        <span data-lang="en">If the Chrome Web Store opens for you, install directly. If not, see below.</span>
-      </p>
-      <div class="install" style="margin-bottom: 24px;">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">Chrome Web Store</a>
-        <a class="btn btn-ghost" data-install="edge" href="#" target="_blank" rel="noopener">
-          <span data-lang="zh">Edge 加载项商店（审核中）</span><span data-lang="en">Edge Add-ons (in review)</span>
+      <a class="brand" href="./">
+        <img class="brand-icon" src="assets/icon.png" alt="SaveAnswer logo" width="32" height="32">
+        <span>SaveAnswer</span>
+        <span class="brand-badge">v1.1.0</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a class="hide-sm" href="#features"><span data-lang="zh">核心特性</span><span data-lang="en">Features</span></a>
+        <a class="hide-sm" href="#video"><span data-lang="zh">实机演示</span><span data-lang="en">Demo</span></a>
+        <a class="hide-sm" href="#compare"><span data-lang="zh">方案对比</span><span data-lang="en">Why SaveAnswer</span></a>
+        <a class="hide-sm" href="#faq"><span data-lang="zh">常见问题</span><span data-lang="en">FAQ</span></a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-toggle" type="button" aria-label="Toggle language">
+          <span data-lang="zh">English</span>
+          <span data-lang="en">中文</span>
+        </button>
+        <a class="btn-nav-install" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          <img src="assets/icons/google-chrome.svg" alt="" width="16" height="16">
+          <span data-lang="zh">免费安装</span><span data-lang="en">Add to Chrome</span>
         </a>
       </div>
-      <p class="not-for">
-        <span data-lang="zh"><strong>打不开 Chrome 商店？</strong>我们正在提交 <strong>Edge 加载项商店</strong>——国内可以直接访问，而且 Windows 自带 Edge。通过审核后这里会第一时间更新。想在能装的时候收到通知，可以在 <a href="feedback.html">反馈页</a> 留个邮箱。360、QQ 浏览器和国内扩展站的收录也在计划中。</span>
-        <span data-lang="en"><strong>Can't open the Chrome Web Store?</strong> We're submitting to the <strong>Edge Add-ons store</strong>, which is reachable in mainland China. This page will be updated as soon as it's approved. Leave an email on the <a href="feedback.html">feedback page</a> if you'd like to be told when it's installable.</span>
-      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section (Monica.im Inspired High-Impact Centered Hero) -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span data-lang="zh">Chrome 扩展 · 本地优先</span>
+              <span data-lang="en">Chrome extension · Local-first</span>
+            </p>
+            <h1>
+              <span data-lang="zh">把 AI 的回答，<br>变成你自己的知识库。</span>
+              <span data-lang="en">Turn AI answers into a library you own.</span>
+            </h1>
+            <p class="lead">
+              <span data-lang="zh">在 8 个平台的对话里点一下保存。420px 弹窗秒查，整页工作台深读，Markdown 直接落进你的本地文件夹。不注册账号，不上传云端。</span>
+              <span data-lang="en">Save any reply from ChatGPT, Claude, DeepSeek and five more. Search it in a 420px popup, read it full screen, and keep it as Markdown in your own folder. No account, no server.</span>
+            </p>
+            <div class="hero-actions">
+              <a class="btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+                <img src="assets/icons/google-chrome.svg" alt="" width="18" height="18">
+                <span data-lang="zh">免费安装到 <span data-store-name>Chrome</span></span>
+                <span data-lang="en">Add to <span data-store-name>Chrome</span> — free</span>
+              </a>
+              <a class="btn-quiet" href="#video">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5 15.5 12 10 15.5Z" fill="currentColor" stroke="none"/></svg>
+                <span data-lang="zh">看 28 秒演示</span>
+                <span data-lang="en">Watch the 28-second demo</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-hidden="true">
+            <div class="hc-top">
+              <span class="hc-brand"><i></i>ChatGPT</span>
+              <span class="hc-model">GPT-4o</span>
+            </div>
+            <p class="hc-q">Why does Node.js RSS spike to 4 GB when streaming CSV to slow clients?</p>
+            <p class="hc-a">Pipe through <code>stream/promises.pipeline</code> so backpressure pauses the row generator instead of buffering it in the heap.</p>
+            <div class="hc-actions">
+              <span class="hc-btn">Copy</span>
+              <span class="hc-btn hc-btn-brand">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                Save
+              </span>
+            </div>
+            <div class="hc-toast">
+              <span class="hc-check">✓</span>
+              <span>Round 1 → 2 · #NodeJS · #Architecture</span>
+              <em>~/Obsidian/SaveAnswer</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-platforms">
+          <span class="hp-label"><span data-lang="zh">支持</span><span data-lang="en">Works with</span></span>
+          <span class="hp-item"><img src="assets/icons/chatgpt.svg" alt="">ChatGPT</span>
+          <span class="hp-item"><img src="assets/icons/claude.svg" alt="">Claude</span>
+          <span class="hp-item"><img src="assets/icons/deepseek.svg" alt="">DeepSeek</span>
+          <span class="hp-item"><img src="assets/icons/gemini.svg" alt="">Gemini</span>
+          <span class="hp-item"><img src="assets/icons/qwen.svg" alt=""><span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span></span>
+          <span class="hp-item"><img src="assets/icons/grok.svg" alt="">Grok</span>
+          <span class="hp-item"><img src="assets/icons/doubao.svg" alt=""><span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></span>
+          <span class="hp-item"><img src="assets/icons/kimi.png" alt="">Kimi</span>
+        </div>
+      </div>
     </section>
 
-    <section class="block faq" id="faq">
-      <h2>FAQ</h2>
-      <details>
-        <summary><span data-lang="zh">和直接用 ChatGPT 自带的聊天记录搜索有什么区别？</span><span data-lang="en">How is this different from ChatGPT's own history search?</span></summary>
-        <p><span data-lang="zh">聊天记录搜索只能搜标题或单个平台，而且好回答混在大量闲聊里。SaveAnswer 只收你挑出来的回答，跨 ChatGPT、Claude、DeepSeek 等平台放在同一个库里，按问题和回答全文搜索。</span><span data-lang="en">Built-in history covers one platform and mixes good answers with everything else. SaveAnswer keeps only the replies you pick, across ChatGPT, Claude, DeepSeek and more, in one full-text-searchable library.</span></p>
-      </details>
-      <details>
-        <summary><span data-lang="zh">换电脑或重装浏览器，数据还在吗？</span><span data-lang="en">What happens if I switch computers?</span></summary>
-        <p><span data-lang="zh">数据只存在当前浏览器里，没有云同步。需要迁移或备份时，可以先导出 Markdown / Word / PDF。</span><span data-lang="en">Data lives only in the current browser; there is no sync. Export to Markdown, Word or PDF to back up or move it.</span></p>
-      </details>
-      <details>
-        <summary><span data-lang="zh">收费吗？</span><span data-lang="en">Is it free?</span></summary>
-        <p><span data-lang="zh">免费，没有账号体系，也没有付费功能。</span><span data-lang="en">Yes. No account and no paid tier.</span></p>
-      </details>
-      <details>
-        <summary><span data-lang="zh">我用的 AI 不在支持列表里怎么办？</span><span data-lang="en">My AI chat isn't supported. Can you add it?</span></summary>
-        <p><span data-lang="zh">欢迎在 <a href="feedback.html">反馈页</a> 告诉我们，提的人多的平台会优先适配。</span><span data-lang="en">Tell us on the <a href="feedback.html">feedback page</a>. The most requested platforms get added first.</span></p>
-      </details>
+    <section class="surfaces" id="features">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow"><span data-lang="zh">怎么用</span><span data-lang="en">How it works</span></p>
+          <h2>
+            <span data-lang="zh">三个小入口，一个知识库。</span>
+            <span data-lang="en">Three small surfaces, one library.</span>
+          </h2>
+          <p class="section-lead">
+            <span data-lang="zh">对话里存一下，弹窗里查一下，文件落进自己的硬盘。每一步都短，不打断你手上的事。</span>
+            <span data-lang="en">Save inside the reply, look it up in the popup, keep it on your own disk. Each step is short and stays out of the way.</span>
+          </p>
+        </header>
+
+        <div class="surface-grid">
+          <article class="surface">
+            <div class="surface-frag">
+              <div class="frag-multi">
+                <div class="fm-row">
+                  <span class="fm-src"><i class="fm-dot"></i>ChatGPT</span>
+                  <span class="fm-q">Why does RSS spike to 4 GB?</span>
+                  <span class="fm-save">Save</span>
+                </div>
+                <div class="fm-row">
+                  <span class="fm-src"><i class="fm-dot d-claude"></i>Claude</span>
+                  <span class="fm-q">Compare CRDT and OT merging</span>
+                  <span class="fm-save">Save</span>
+                </div>
+                <div class="fm-row">
+                  <span class="fm-src"><i class="fm-dot d-deepseek"></i>DeepSeek</span>
+                  <span class="fm-q">HNSW ef_search tuning</span>
+                  <span class="fm-save">Save</span>
+                </div>
+                <div class="fm-more">
+                  <span data-lang="zh">+ Gemini · 通义千问 · Grok · 豆包 · Kimi</span>
+                  <span data-lang="en">+ Gemini · Qwen · Grok · Doubao · Kimi</span>
+                </div>
+              </div>
+            </div>
+            <div class="surface-body">
+              <p class="surface-index">01 — <span data-lang="zh">采集</span><span data-lang="en">Capture</span></p>
+              <h3><span data-lang="zh">8 个平台，同一个按钮</span><span data-lang="en">One button, eight platforms</span></h3>
+              <p><span data-lang="zh">ChatGPT、Claude、DeepSeek、Gemini、通义千问、Grok、豆包、Kimi。位置一致，多轮追问一样能串成一条。</span><span data-lang="en">ChatGPT, Claude, DeepSeek, Gemini, Qwen, Grok, Doubao and Kimi. Same place, same multi-turn handling.</span></p>
+            </div>
+          </article>
+
+          <article class="surface">
+            <div class="surface-frag">
+              <div class="frag-popup">
+                <div class="frag-popup-head">
+                  <span>▮ SaveAnswer <em>128</em></span>
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <div class="frag-popup-search">Search answers…</div>
+                <div class="frag-popup-item is-active">
+                  <span class="frag-src">ChatGPT</span>
+                  <b>Why is Node.js RSS spiking?</b>
+                </div>
+                <div class="frag-popup-item">
+                  <span class="frag-src frag-src-blue">DeepSeek</span>
+                  <b>pgvector HNSW memory tuning</b>
+                </div>
+              </div>
+            </div>
+            <div class="surface-body">
+              <p class="surface-index">02 — <span data-lang="zh">检索</span><span data-lang="en">Lookup</span></p>
+              <h3><span data-lang="zh">420px 弹窗秒查</span><span data-lang="en">The 420px popup</span></h3>
+              <p><span data-lang="zh">在任意标签页呼出，全文搜索、按模型筛选、代码一键复制。</span><span data-lang="en">Open it from any tab: full-text search, model filters, clean code copy.</span></p>
+            </div>
+          </article>
+
+          <article class="surface">
+            <div class="surface-frag">
+              <div class="frag-md"><span class="n-key">---</span>
+<span class="n-key">title</span>: <span class="n-str">"How do CRDTs converge?"</span>
+<span class="n-key">source</span>: <span class="n-val">ChatGPT</span>
+<span class="n-key">tags</span>: <span class="n-val">[architecture, dist]</span>
+<span class="n-key">---</span>
+
+<span class="n-com">## Answer</span>
+State-based CRDTs converge because the
+merge operator is commutative…</div>
+            </div>
+            <div class="surface-body">
+              <p class="surface-index">03 — <span data-lang="zh">沉淀</span><span data-lang="en">Keep</span></p>
+              <h3><span data-lang="zh">一个普通的 .md 文件</span><span data-lang="en">One ordinary .md file</span></h3>
+              <p><span data-lang="zh">带 YAML frontmatter 写进本地目录。Obsidian、Cursor、本地 Agent 都能读。</span><span data-lang="en">YAML frontmatter written to a local folder. Obsidian, Cursor and local agents all read it.</span></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="workspace">
+      <div class="wrap">
+        <div class="band-head">
+          <div>
+            <p class="eyebrow"><span data-lang="zh">整页工作台</span><span data-lang="en">The workspace</span></p>
+            <h2>
+              <span data-lang="zh">需要细读时，展开成整页。</span>
+              <span data-lang="en">When a popup isn't enough.</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="zh">三栏布局：左边分类，中间检索，右边宽屏正文。语法高亮、思考链折叠、批量导出都在这里。弹窗右上角一键过去，不用重新找。</span>
+            <span data-lang="en">Categories on the left, search in the middle, wide reading on the right. Syntax highlighting, folded reasoning chains and batch export all live here — one click from the popup.</span>
+          </p>
+        </div>
+      </div>
+      <div class="band-visual">
+        <img src="assets/workspace-preview.png" width="2880" height="1800" loading="lazy"
+             alt="SaveAnswer full-tab workspace with categories, search results and a saved answer">
+      </div>
+    </section>
+
+    <!-- Video Walkthrough Section (28-Second Product Demo) -->
+    <section class="video-section" id="video">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head-main">
+            <div class="section-badge">
+              <span data-lang="zh">实机演示</span><span data-lang="en">Product Demo</span>
+            </div>
+            <h2>
+              <span data-lang="zh">28 秒快速了解 SaveAnswer 核心体验</span>
+              <span data-lang="en">Experience SaveAnswer in 28 Seconds</span>
+            </h2>
+          </div>
+          <div class="section-head-desc">
+            <p>
+              <span data-lang="zh">体验网页一键保存、420px 弹窗敏捷秒查、三栏桌面工作台与本地知识库直写。</span>
+              <span data-lang="en">Watch 1-click in-situ save, 420px agile popup, full-tab 3-column workspace, and direct local Obsidian sync.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <video controls playsinline preload="none" poster="assets/walkthrough-poster.png">
+            <source src="assets/saveanswer-product-walkthrough.mp4" type="video/mp4">
+            <span data-lang="zh">您的浏览器不支持视频播放，请直接下载体验。</span>
+            <span data-lang="en">Your browser does not support the video tag.</span>
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Matrix Section -->
+    <section class="comparison-section" id="compare">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head-main">
+            <div class="section-badge">
+              <span data-lang="zh">方案对比 · 核心优势</span><span data-lang="en">Why SaveAnswer</span>
+            </div>
+            <h2>
+              <span data-lang="zh">不是又一个复制粘贴工具</span>
+              <span data-lang="en">Not another copy-paste tool</span>
+            </h2>
+          </div>
+          <div class="section-head-desc">
+            <p>
+              <span data-lang="zh">和手动整理、云端收藏类插件放在一起看，差别在数据最终落在哪、上下文丢不丢。</span>
+              <span data-lang="en">Put next to manual saving and cloud bookmark extensions, the difference is where the data ends up and whether context survives.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-col is-muted">
+            <p class="compare-label"><span data-lang="zh">手动复制 / 笔记粘贴</span><span data-lang="en">Manual copy-paste</span></p>
+            <ul>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">没有元数据</span><span data-lang="en">No metadata</span></b><span data-lang="zh">文件散落在各处，来源和日期靠回忆</span><span data-lang="en">Files scattered around; source and date from memory</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">格式常坏</span><span data-lang="en">Formatting breaks</span></b><span data-lang="zh">缩进和代码块粘贴后变形</span><span data-lang="en">Indentation and code blocks arrive mangled</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">上下文靠手动</span><span data-lang="en">Context by hand</span></b><span data-lang="zh">上一轮追问要自己再复制一遍</span><span data-lang="en">Prior turns have to be copied again</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">思考链淹没正文</span><span data-lang="en">Reasoning buries the answer</span></b><span data-lang="zh">几千字推导盖过结论</span><span data-lang="en">Thousands of words of traces over the conclusion</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">命名混乱</span><span data-lang="en">Inconsistent names</span></b><span data-lang="zh">几个月后自己也找不到</span><span data-lang="en">Unfindable a few months later</span></span></li>
+            </ul>
+          </article>
+
+          <article class="compare-col is-muted">
+            <p class="compare-label"><span data-lang="zh">云端收藏类插件</span><span data-lang="en">Cloud extension tools</span></p>
+            <ul>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">必须注册账号</span><span data-lang="en">Account required</span></b><span data-lang="zh">问答先经过对方的服务器</span><span data-lang="en">Conversations pass through their servers</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">只有一个小弹窗</span><span data-lang="en">One cramped popup</span></b><span data-lang="zh">长代码横向溢出，没法细读</span><span data-lang="en">Code overflows; no room to read</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">单条切片</span><span data-lang="en">Single-turn slices</span></b><span data-lang="zh">前后几轮彼此断开</span><span data-lang="en">Turns stored in isolation</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">没有思考链折叠</span><span data-lang="en">No reasoning folding</span></b><span data-lang="zh">DeepSeek-R1 的推导全量铺开</span><span data-lang="en">DeepSeek-R1 traces laid out in full</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">专有格式</span><span data-lang="en">Proprietary format</span></b><span data-lang="zh">导出受限，本地读不了</span><span data-lang="en">Limited export, unreadable locally</span></span></li>
+            </ul>
+          </article>
+
+          <article class="compare-col is-us">
+            <p class="compare-label">SaveAnswer</p>
+            <ul>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">本地存储 + 你自己的文件夹</span><span data-lang="en">Local storage, your own folder</span></b><span data-lang="zh">没有服务器，没有账号</span><span data-lang="en">No server, no account</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">双模：弹窗与整页工作台</span><span data-lang="en">Two modes: popup and workspace</span></b><span data-lang="zh">随手查用 420px，细读展开整页</span><span data-lang="en">420px for a glance, full page to read</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">Round 1 → 2 合成一条</span><span data-lang="en">Round 1 → 2 in one note</span></b><span data-lang="zh">勾一下就连成完整上下文</span><span data-lang="en">One checkbox keeps the whole thread</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">&lt;think&gt; 默认折叠</span><span data-lang="en">&lt;think&gt; folded by default</span></b><span data-lang="zh">结论在前，推导按需展开</span><span data-lang="en">Conclusion first, reasoning on demand</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">纯 Markdown + YAML</span><span data-lang="en">Plain Markdown with YAML</span></b><span data-lang="zh">Obsidian、Cursor、本地 Agent 都能读</span><span data-lang="en">Obsidian, Cursor and local agents all read it</span></span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Restful & Balanced Architecture) -->
+    <section class="faq-section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head-main">
+            <div class="section-badge">
+              <span data-lang="zh">答疑解惑 · 常见问题</span><span data-lang="en">FAQ &amp; Architecture Notes</span>
+            </div>
+            <h2>
+              <span data-lang="zh">常见问题解答与深度指南</span>
+              <span data-lang="en">Frequently Asked Questions</span>
+            </h2>
+          </div>
+          <div class="section-head-desc">
+            <p>
+              <span data-lang="zh">关于 420px 弹窗与桌面工作台双模式、数据隐私安全性、本地知识库同步与免费承诺的解答。</span>
+              <span data-lang="en">Everything you need to know about the dual-tier workflow, local storage privacy, Obsidian sync, and free commitment.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary><span data-lang="zh">420px 侧边轻弹窗和三栏全屏桌面工作台，分别在什么时候使用？</span><span data-lang="en">When should I use the 420px popup versus the 3-column desktop workspace?</span></summary>
+            <p><span data-lang="zh"><b>420px 侧边弹窗是高频日常使用的第一层场景</b>：在浏览网页或写代码时，随时呼出搜索历史问答、复制已保存的代码片段或临时打标签，无需中断当前工作流；当面对数千字的技术深度推导、多篇跨模型对比、或需要按复杂分类整理长文时，点击弹窗右上角一键跃迁至<b>三栏全屏工作台</b>，享受宽屏语法高亮与多选批量报告导出。</span><span data-lang="en"><b>The 420px popup is your daily high-frequency touchpoint</b>: search saved answers in-situ, copy syntax-highlighted code snippets, and organize tags without switching windows. When you need deep technical reading, long code analysis, or cross-model report merging, click the top-right button to expand into the <b>3-column desktop workspace</b>.</span></p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-lang="zh">和直接使用 ChatGPT 自带的历史搜索有什么区别？</span><span data-lang="en">How is this different from ChatGPT's own history search?</span></summary>
+            <p><span data-lang="zh">聊天记录搜索只能按单平台标题检索，且高价值结论深埋在海量闲聊与试错中。SaveAnswer 只收录你明确点过「保存」的有价值资产，跨越 ChatGPT、Claude、DeepSeek、Gemini 放在统一的三栏库中，按问题与回答全文秒级检索。</span><span data-lang="en">Built-in history covers one platform and mixes good answers with countless throwaway chats. SaveAnswer keeps only the replies you explicitly pick, across ChatGPT, Claude, DeepSeek and more, in one full-text-searchable desktop library.</span></p>
+          </details>
+
+          <details class="faq-item">
+            <summary><span data-lang="zh">我的数据真的不会上传到任何服务器吗？</span><span data-lang="en">Are my answers truly stored locally?</span></summary>
+            <p><span data-lang="zh">绝无任何上传。所有内容直接保存在当前浏览器的 <code>chrome.storage.local</code> 与你授权的本地目录中。没有后台服务器，没有用户分析与追踪代码，无需注册登录，扩展甚至不申请除目标 AI 域名之外的跨域网络权限。</span><span data-lang="en">Zero servers. All saved answers live in your browser's local storage and your authorized local disk folder. There is no cloud backend, no telemetry, and no accounts required.</span></p>
+          </details>
+
+          <details class="faq-item">
+            <summary><span data-lang="zh">如何与 Obsidian 和 AI Coding Agent（Cursor 等）联动？</span><span data-lang="en">How does it sync with Obsidian and AI Coding Agents?</span></summary>
+            <p><span data-lang="zh">在扩展中点击「Obsidian」面板，授权你本地的知识库文件夹（如 <code>SaveAnswer/</code>）。每次保存问答时，扩展会直接通过浏览器底层 File System Access API 写入标准 Markdown 文件（附带完整 YAML Frontmatter）。Cursor、Claude Code 或 Cline 可直接通过 <code>@Docs</code> 或上下文规则将该目录作为私域经验库进行索引！</span><span data-lang="en">Authorize your local notes directory via File System Access API. SaveAnswer writes atomic Markdown files with YAML frontmatter directly to disk. Any local agent (Cursor, Claude Code, Cline) can mount this folder as a verified knowledge base!</span></p>
+          </details>
+
+          <details class="faq-item">
+            <summary><span data-lang="zh">如果我换电脑或重装浏览器，如何备份与迁移数据？</span><span data-lang="en">What happens if I switch computers or reinstall Chrome?</span></summary>
+            <p><span data-lang="zh">由于坚持 100% 纯本地优先，重装浏览器前建议打开全屏工作台，使用「批量模式」一键将所有收藏问答导出为 Markdown 压缩包或合并长报告；若开启了本地目录同步，文件已全部静默安全保存在你的硬盘中。</span><span data-lang="en">Because data stays strictly local, use Batch Mode in the desktop workspace to export your library as a structured Markdown archive or enable direct-to-vault local sync before wiping your browser.</span></p>
+          </details>
+
+          <details class="faq-item">
+            <summary><span data-lang="zh">是否收费？后续会有付费版本吗？</span><span data-lang="en">Is SaveAnswer free?</span></summary>
+            <p><span data-lang="zh">SaveAnswer 是一个 100% 免费、本地优先的个人生产力工具。没有 Token 订阅制、没有付费会员墙，核心功能始终无保留开放给全球开发者与研究人员使用。</span><span data-lang="en">Yes, 100% free and local-first. No paid tiers, no token paywalls, and no subscription traps.</span></p>
+          </details>
+        </div>
+
+        <div class="faq-footer-help">
+          <div class="faq-help-text">
+            <span data-lang="zh">还有其他疑问？直接给开发者留一条反馈。</span>
+            <span data-lang="en">Still have questions? Send the developer a note.</span>
+          </div>
+          <a href="feedback.html" class="platform-pill" style="font-size: 12px; display: inline-flex;">
+            <span data-lang="zh">提交反馈 ➔</span><span data-lang="en">Send feedback ➔</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing action -->
+    <section class="closing">
+      <div class="wrap closing-inner">
+        <h2>
+          <span data-lang="zh">下次看到好答案，别再让它溜走。</span>
+          <span data-lang="en">Don't let the next good answer get away.</span>
+        </h2>
+        <p>
+          <span data-lang="zh">装好就能用，不用注册，也不用把对话交给第二台服务器。</span>
+          <span data-lang="en">Install it and start saving. No sign-up, and no second server holding your conversations.</span>
+        </p>
+        <a class="btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+          <img src="assets/icons/google-chrome.svg" alt="" width="18" height="18">
+          <span data-lang="zh">免费安装到 <span data-store-name>Chrome</span></span>
+          <span data-lang="en">Add to <span data-store-name>Chrome</span> — free</span>
+        </a>
+        <p class="closing-note">
+          <span data-lang="zh">8 个平台 · 100% 本地 · 无需账号</span>
+          <span data-lang="en">8 platforms · 100% local · no account</span>
+        </p>
+      </div>
     </section>
   </main>
 
-  <footer>
+  <!-- Multi-Column Footer (Monica Style) -->
+  <footer class="footer">
     <div class="wrap">
-      <span>© 2026 SaveAnswer (v1.1.0)</span>
-      <span>
-        <a href="how-to-save-ai-answers.html"><span data-lang="zh">使用指南</span><span data-lang="en">Guides</span></a> ·
-        <a href="obsidian-sync-ai-answers.html">Obsidian &amp; Agent Sync</a> ·
-        <a href="export-chatgpt-answers.html">ChatGPT</a> ·
-        <a href="save-claude-answers.html">Claude</a> ·
-        <a href="save-deepseek-answers.html">DeepSeek</a> ·
-        <a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy</span></a> ·
-        <a href="feedback.html"><span data-lang="zh">反馈建议</span><span data-lang="en">Feedback</span></a>
-      </span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>
+            <img src="assets/icon.png" alt="" width="24" height="24" style="border-radius: 6px;">
+            <span>SaveAnswer</span>
+          </h4>
+          <p>
+            <span data-lang="zh">面向工程师与研究者的本地优先 AI 知识库，让每一次深度人机对话都沉淀为可复用的长期生产力。</span>
+            <span data-lang="en">Local-first knowledge sanctuary for engineers and researchers who interact with modern LLMs daily.</span>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5><span data-lang="zh">功能特性</span><span data-lang="en">Features</span></h5>
+          <ul>
+            <li><a href="#features"><span data-lang="zh">网页一键保存</span><span data-lang="en">In-Situ Save</span></a></li>
+            <li><a href="#features"><span data-lang="zh">420px 敏捷看板</span><span data-lang="en">420px Popup</span></a></li>
+            <li><a href="#features"><span data-lang="zh">三栏桌面工作台</span><span data-lang="en">3-Col Workspace</span></a></li>
+            <li><a href="#features"><span data-lang="zh">Obsidian 本地直写</span><span data-lang="en">Obsidian Sync</span></a></li>
+            <li><a href="#features"><span data-lang="zh">纯净 4 色长图分享</span><span data-lang="en">Pristine Share Cards</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5><span data-lang="zh">适配平台</span><span data-lang="en">Supported AI</span></h5>
+          <ul>
+            <li><a href="export-chatgpt-answers.html">ChatGPT</a></li>
+            <li><a href="save-claude-answers.html">Claude</a></li>
+            <li><a href="save-deepseek-answers.html">DeepSeek</a></li>
+            <li><a href="save-gemini-answers.html">Gemini</a></li>
+            <li><a href="save-qwen-answers.html"><span data-lang="zh">通义千问</span><span data-lang="en">Qwen</span></a></li>
+            <li><a href="save-grok-answers.html">Grok</a></li>
+            <li><a href="save-doubao-answers.html"><span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5><span data-lang="zh">资源与支持</span><span data-lang="en">Resources</span></h5>
+          <ul>
+            <li><a href="how-to-save-ai-answers.html"><span data-lang="zh">使用实战指南</span><span data-lang="en">User Guide</span></a></li>
+            <li><a href="obsidian-sync-ai-answers.html">Obsidian &amp; Agent Sync</a></li>
+            <li><a href="privacy.html"><span data-lang="zh">隐私政策</span><span data-lang="en">Privacy Policy</span></a></li>
+            <li><a href="feedback.html"><span data-lang="zh">反馈与建议</span><span data-lang="en">Feedback</span></a></li>
+            <li><a href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">Chrome Web Store</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span data-lang="zh">© 2026 SaveAnswer (v1.1.0). 100% 本地优先 &amp; 永久免费。</span>
+          <span data-lang="en">© 2026 SaveAnswer (v1.1.0). 100% Local-First &amp; Free Forever.</span>
+        </div>
+        <div>
+          <span data-lang="zh">为追求极致设计品位的开发者精心打造。</span>
+          <span data-lang="en">Crafted for developers with high design taste.</span>
+        </div>
+      </div>
     </div>
   </footer>
 

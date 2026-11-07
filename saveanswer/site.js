@@ -1,7 +1,7 @@
 // SaveAnswer site: language switch, browser-aware install buttons, survey submission.
 // No cookies, no analytics. The only network request is the optional survey POST the visitor submits.
 const SITE_CONFIG = {
-  version: '1.0.20',
+  version: '1.1.0',
   chromeStore: 'https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm',
   // Fill in after the Edge Add-ons listing is approved; until then the Edge button stays disabled.
   edgeStore: '',
@@ -29,7 +29,8 @@ const SITE_CONFIG = {
     if (fromQuery === 'zh' || fromQuery === 'en') return fromQuery;
     const saved = localStorage.getItem('sa_site_lang');
     if (saved === 'zh' || saved === 'en') return saved;
-    // Default to English. Chinese users can toggle using the top-right button.
+    const navLang = (typeof navigator !== 'undefined' && (navigator.language || navigator.userLanguage)) || '';
+    if (/^zh/i.test(navLang)) return 'zh';
     return 'en';
   }
 
