@@ -3,8 +3,7 @@
 const SITE_CONFIG = {
   version: '1.1.0',
   chromeStore: 'https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm',
-  // Fill in after the Edge Add-ons listing is approved; until then the Edge button stays disabled.
-  edgeStore: '',
+  edgeStore: 'https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk',
   // A form backend that accepts a JSON POST (e.g. Formspree). Leave empty to fall back to email.
   formEndpoint: '',
   contactEmail: 'flvictory@gmail.com',

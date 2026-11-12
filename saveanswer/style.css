@@ -1658,18 +1658,20 @@ body {
 }
 
 .btn-nav-install {
-  background: var(--ink);
+  background: #0D6E5C;
+  color: #fff !important;
   border-radius: 8px;
-  padding: 7px 13px;
+  padding: 7px 14px;
   font-size: 13px;
   font-weight: 500;
-  box-shadow: none;
+  box-shadow: 0 1px 3px rgba(13, 110, 92, 0.16);
+  transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
 }
 
 .btn-nav-install:hover {
-  background: #000;
-  transform: none;
-  box-shadow: none;
+  background: #085446;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(13, 110, 92, 0.24);
 }
 
 /* ---- Hero ---- */
@@ -1727,21 +1729,55 @@ body {
   height: 46px;
   padding: 0 22px;
   border-radius: 10px;
-  background: var(--ink);
+  background: linear-gradient(180deg, #117D69 0%, #0D6E5C 100%);
   color: #fff !important;
   font-size: 14.5px;
   font-weight: 500;
   letter-spacing: -0.005em;
-  box-shadow: 0 1px 2px rgba(12, 18, 16, 0.18);
-  transition: background 0.16s ease, transform 0.16s ease;
+  border: 1px solid rgba(13, 110, 92, 0.22);
+  box-shadow: 0 1px 2px rgba(13, 110, 92, 0.12), 0 3px 10px rgba(13, 110, 92, 0.18);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn-primary:hover {
-  background: #000;
+  background: linear-gradient(180deg, #0D6E5C 0%, #085446 100%);
+  box-shadow: 0 2px 4px rgba(13, 110, 92, 0.16), 0 6px 16px rgba(13, 110, 92, 0.26);
   transform: translateY(-1px);
 }
 
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(13, 110, 92, 0.2);
+}
+
+.btn-edge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #0D6E5C !important;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid rgba(13, 110, 92, 0.28);
+  box-shadow: 0 1px 3px rgba(13, 110, 92, 0.08);
+  transition: all 0.18s ease;
+}
+
+.btn-edge:hover {
+  background: #F0FDF4;
+  border-color: #0D6E5C;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(13, 110, 92, 0.16);
+}
+
+.btn-edge:active {
+  transform: translateY(0);
+}
 
 .btn-quiet {
   display: inline-flex;
