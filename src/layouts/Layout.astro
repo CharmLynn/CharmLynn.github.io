@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "庄谷 (charmlynn) - 个人主页与技术思考",
-  description = "庄谷 (charmlynn) 的个人博客与自研项目展台。专注 AI 思考、Local-first 产品开发与独立软件构建。",
+  description = "庄谷 (charmlynn) 的个人主页。记录 AI 思考、Local-first 产品开发与自研工具实践。",
   image = "/saveanswer/assets/workspace-preview.png",
 } = Astro.props;
 
@@ -36,76 +36,52 @@ const currentPath = Astro.url.pathname;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
-
     <!-- RSS feed -->
     <link rel="alternate" type="application/rss+xml" title="庄谷 (charmlynn) RSS Feed" href="/rss.xml" />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#09090b] text-zinc-100 selection:bg-blue-900/40 selection:text-blue-200">
+  <body class="min-h-screen flex flex-col bg-[#faf9f6] text-stone-900 selection:bg-stone-200">
     <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#09090b]/80 border-b border-zinc-800/60">
-      <div class="max-w-4xl mx-auto px-5 h-16 flex items-center justify-between">
-        <!-- Logo / Brand -->
-        <a href="/" class="flex items-center gap-2.5 group">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-sm group-hover:scale-105 transition-transform duration-200">
-            C
-          </div>
-          <div class="flex flex-col">
-            <span class="font-medium text-sm text-zinc-100 group-hover:text-blue-400 transition-colors">庄谷</span>
-            <span class="text-[11px] text-zinc-400 font-mono -mt-0.5">charmlynn</span>
-          </div>
+    <header class="border-b border-stone-200/80 bg-[#faf9f6]/90 backdrop-blur-sm sticky top-0 z-40">
+      <div class="max-w-2xl mx-auto px-5 h-14 flex items-center justify-between">
+        <!-- Brand / Name -->
+        <a href="/" class="flex items-baseline gap-2 group">
+          <span class="font-medium text-base text-stone-900 group-hover:text-blue-600 transition-colors">庄谷</span>
+          <span class="text-xs text-stone-400 font-mono">charmlynn</span>
         </a>
 
-        <!-- Navigation Links -->
-        <nav class="flex items-center gap-1 sm:gap-2">
+        <!-- Navigation -->
+        <nav class="flex items-center gap-1 sm:gap-4 text-sm">
           <a
             href="/"
-            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
-              currentPath === '/' ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            class={`px-2 py-1 rounded transition-colors ${
+              currentPath === '/' ? 'text-stone-950 font-medium' : 'text-stone-500 hover:text-stone-900'
             }`}
           >
             首页
           </a>
           <a
+            href="/blog"
+            class={`px-2 py-1 rounded transition-colors ${
+              currentPath.startsWith('/blog') ? 'text-stone-950 font-medium' : 'text-stone-500 hover:text-stone-900'
+            }`}
+          >
+            文章
+          </a>
+          <a
             href="/projects"
-            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
-              currentPath.startsWith('/projects') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            class={`px-2 py-1 rounded transition-colors ${
+              currentPath.startsWith('/projects') ? 'text-stone-950 font-medium' : 'text-stone-500 hover:text-stone-900'
             }`}
           >
             项目
           </a>
           <a
-            href="/blog"
-            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
-              currentPath.startsWith('/blog') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
-            }`}
-          >
-            博客
-          </a>
-          <a
             href="/about"
-            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
-              currentPath.startsWith('/about') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            class={`px-2 py-1 rounded transition-colors ${
+              currentPath.startsWith('/about') ? 'text-stone-950 font-medium' : 'text-stone-500 hover:text-stone-900'
             }`}
           >
             关于
-          </a>
-
-          <div class="h-4 w-[1px] bg-zinc-800 mx-1 hidden sm:block"></div>
-
-          <!-- Direct Link to SaveAnswer Landing -->
-          <a
-            href="/saveanswer/"
-            class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all"
-            title="查看 SaveAnswer 项目官网"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-            SaveAnswer
           </a>
 
           <!-- GitHub -->
@@ -113,7 +89,7 @@ const currentPath = Astro.url.pathname;
             href="https://github.com/charmlynn"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+            class="text-stone-400 hover:text-stone-700 transition-colors ml-1 p-1"
             aria-label="GitHub"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -124,23 +100,19 @@ const currentPath = Astro.url.pathname;
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-5 py-10">
+    <!-- Main Content: Focused, readable column -->
+    <main class="flex-1 max-w-2xl w-full mx-auto px-5 py-10 sm:py-14">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-zinc-800/60 py-10 mt-16 text-xs text-zinc-400">
-      <div class="max-w-4xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <span>© 2026 庄谷 (charmlynn). Local-first & AI tools.</span>
-        </div>
+    <!-- Minimalist Footer -->
+    <footer class="border-t border-stone-200/80 py-8 text-xs text-stone-500">
+      <div class="max-w-2xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span>© 2026 庄谷 (charmlynn)</span>
         <div class="flex items-center gap-4">
-          <a href="/projects" class="hover:text-zinc-300 transition-colors">项目</a>
-          <a href="/blog" class="hover:text-zinc-300 transition-colors">博客</a>
-          <a href="/archive" class="hover:text-zinc-300 transition-colors">2018 旧文归档</a>
-          <a href="/rss.xml" class="hover:text-zinc-300 transition-colors">RSS</a>
-          <a href="https://github.com/charmlynn" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">GitHub</a>
+          <a href="/archive" class="hover:text-stone-800 transition-colors">2018 旧文存档</a>
+          <a href="/rss.xml" class="hover:text-stone-800 transition-colors">RSS</a>
+          <a href="https://github.com/charmlynn" target="_blank" rel="noopener noreferrer" class="hover:text-stone-800 transition-colors">GitHub</a>
         </div>
       </div>
     </footer>

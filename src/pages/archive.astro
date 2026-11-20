@@ -52,28 +52,28 @@ const legacyPosts = [
   description="庄谷 (charmlynn) 2018 年在数据工程、Spark 与 Rails 后端领域的技术旧文存档。"
 >
   <div class="space-y-8">
-    <div class="space-y-2 border-b border-zinc-800/60 pb-6">
-      <div class="flex items-center gap-2 text-xs font-mono text-zinc-500">
-        <a href="/blog" class="hover:text-zinc-300">← 返回主博客</a>
+    <div class="space-y-2 border-b border-stone-200/80 pb-4">
+      <div class="flex items-center gap-2 text-xs font-mono text-stone-400">
+        <a href="/blog" class="hover:text-stone-700">← 返回文章列表</a>
       </div>
-      <h1 class="text-3xl font-bold tracking-tight text-zinc-100">历史技术归档 (2018)</h1>
-      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
-        本页面收录了 2018 年旧站点（基于 Jekyll）时期的技术博文目录。为保持当前站点专注于 <strong>AI 思考与独立开发</strong>，旧文已从主信息流移出并归档保存。原始 Markdown 文件均完整保存在代码仓库的 <code class="text-xs bg-zinc-800 px-1 py-0.5 rounded">archive_legacy_posts/</code> 目录下。
+      <h1 class="text-2xl font-semibold tracking-tight text-stone-900">历史技术归档 (2018)</h1>
+      <p class="text-stone-600 text-sm leading-relaxed">
+        本页面收录了 2018 年旧站点（基于 Jekyll）时期的技术博文目录。为保持当前站点专注于 <strong>AI 思考与独立开发</strong>，旧文已从主信息流移出并归档保存。原始 Markdown 文件均完整保存在代码仓库的 <code class="text-xs bg-stone-100 px-1 py-0.5 rounded border border-stone-200">archive_legacy_posts/</code> 目录下。
       </p>
     </div>
 
     <!-- Legacy posts list -->
-    <div class="space-y-3">
+    <div class="space-y-4">
       {legacyPosts.map((post) => (
-        <div class="p-4 rounded-xl border border-zinc-800/80 bg-zinc-900/20 space-y-1.5">
-          <div class="flex items-center justify-between text-xs font-mono text-zinc-500">
+        <div class="space-y-1">
+          <div class="flex items-center justify-between text-xs font-mono text-stone-400">
             <time>{post.date}</time>
-            <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-zinc-400 text-[11px] font-mono">{post.tag}</span>
+            <span>{post.tag}</span>
           </div>
-          <h2 class="text-base font-medium text-zinc-200">
+          <h2 class="text-base font-medium text-stone-800">
             {post.title}
           </h2>
-          <p class="text-xs text-zinc-400 leading-relaxed">
+          <p class="text-xs text-stone-500 leading-relaxed">
             {post.desc}
           </p>
         </div>
