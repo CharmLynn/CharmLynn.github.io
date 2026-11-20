@@ -1,0 +1,148 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "庄谷 (charmlynn) - 个人主页与技术思考",
+  description = "庄谷 (charmlynn) 的个人博客与自研项目展台。专注 AI 思考、Local-first 产品开发与独立软件构建。",
+  image = "/saveanswer/assets/workspace-preview.png",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://charmlynn.github.io');
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/saveanswer/assets/icon.png" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- RSS feed -->
+    <link rel="alternate" type="application/rss+xml" title="庄谷 (charmlynn) RSS Feed" href="/rss.xml" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#09090b] text-zinc-100 selection:bg-blue-900/40 selection:text-blue-200">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#09090b]/80 border-b border-zinc-800/60">
+      <div class="max-w-4xl mx-auto px-5 h-16 flex items-center justify-between">
+        <!-- Logo / Brand -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-sm group-hover:scale-105 transition-transform duration-200">
+            C
+          </div>
+          <div class="flex flex-col">
+            <span class="font-medium text-sm text-zinc-100 group-hover:text-blue-400 transition-colors">庄谷</span>
+            <span class="text-[11px] text-zinc-400 font-mono -mt-0.5">charmlynn</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="flex items-center gap-1 sm:gap-2">
+          <a
+            href="/"
+            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
+              currentPath === '/' ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            }`}
+          >
+            首页
+          </a>
+          <a
+            href="/projects"
+            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
+              currentPath.startsWith('/projects') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            }`}
+          >
+            项目
+          </a>
+          <a
+            href="/blog"
+            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
+              currentPath.startsWith('/blog') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            }`}
+          >
+            博客
+          </a>
+          <a
+            href="/about"
+            class={`px-3 py-1.5 text-xs sm:text-sm rounded-md transition-colors ${
+              currentPath.startsWith('/about') ? 'text-zinc-100 bg-zinc-800/60 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+            }`}
+          >
+            关于
+          </a>
+
+          <div class="h-4 w-[1px] bg-zinc-800 mx-1 hidden sm:block"></div>
+
+          <!-- Direct Link to SaveAnswer Landing -->
+          <a
+            href="/saveanswer/"
+            class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all"
+            title="查看 SaveAnswer 项目官网"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+            SaveAnswer
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/charmlynn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+            aria-label="GitHub"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-5 py-10">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800/60 py-10 mt-16 text-xs text-zinc-400">
+      <div class="max-w-4xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span>© 2026 庄谷 (charmlynn). Local-first & AI tools.</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="/projects" class="hover:text-zinc-300 transition-colors">项目</a>
+          <a href="/blog" class="hover:text-zinc-300 transition-colors">博客</a>
+          <a href="/archive" class="hover:text-zinc-300 transition-colors">2018 旧文归档</a>
+          <a href="/rss.xml" class="hover:text-zinc-300 transition-colors">RSS</a>
+          <a href="https://github.com/charmlynn" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-300 transition-colors">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

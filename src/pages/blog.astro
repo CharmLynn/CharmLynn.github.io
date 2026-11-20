@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout
+  title="博客与思考 - 庄谷 (charmlynn)"
+  description="庄谷 (charmlynn) 关于 AI、Local-first 架构与独立开发的深度技术思考。"
+>
+  <div class="space-y-10">
+    <div class="space-y-2 border-b border-zinc-800/60 pb-6">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-100">博客与思考</h1>
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+        记录在 AI 时代关于软件工程、本地优先（Local-first）设计与独立产品研发的技术随笔。
+      </p>
+    </div>
+
+    <!-- Archive Banner -->
+    <div class="p-3.5 rounded-lg border border-zinc-800/70 bg-zinc-900/30 flex items-center justify-between text-xs text-zinc-400">
+      <div class="flex items-center gap-2">
+        <span class="text-zinc-500 font-mono">📦</span>
+        <span>主博客已开启全新篇章，专注 AI 与独立开发。</span>
+      </div>
+      <a href="/archive" class="text-blue-400 hover:text-blue-300 font-medium">
+        查看 2018 历史技术归档 (8篇) →
+      </a>
+    </div>
+
+    <!-- Blog Posts List -->
+    <div class="space-y-4">
+      {posts.map((post) => (
+        <article class="group relative rounded-xl border border-zinc-800/80 bg-zinc-900/20 hover:bg-zinc-900/50 hover:border-zinc-700/80 transition-all p-5 sm:p-6 space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono text-zinc-500">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+            </time>
+            <div class="flex items-center gap-1.5">
+              {post.data.tags.map((tag: string) => (
+                <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-zinc-400 text-[11px] font-mono">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <h2 class="text-lg font-semibold text-zinc-100 group-hover:text-blue-400 transition-colors">
+            <a href={`/blog/${post.id}/`} class="after:absolute after:inset-0">
+              {post.data.title}
+            </a>
+          </h2>
+
+          <p class="text-sm text-zinc-400 leading-relaxed line-clamp-3">
+            {post.data.description}
+          </p>
+
+          <div class="flex items-center gap-1 text-xs text-blue-400 font-medium pt-1">
+            <span>阅读全文</span>
+            <span>→</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

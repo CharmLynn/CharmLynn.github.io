@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const legacyPosts = [
+  {
+    title: "指标计算字典",
+    date: "2018-12-13",
+    tag: "数据仓库 / 流量指标",
+    desc: "针对互联网流量分析与用户行为度量常见指标的计算口径与字典规范。",
+  },
+  {
+    title: "数据仓库成功的评价标准",
+    date: "2018-11-07",
+    tag: "数据仓库 / 方法论",
+    desc: "分析以往数据仓库项目高失败率的成因，探讨介于成功与失败之间的评价维度与工程落地关键。",
+  },
+  {
+    title: "Struct Streaming 项目开发",
+    date: "2018-11-07",
+    tag: "Spark / 实时计算",
+    desc: "从 Spark 2.2 开始的 Structured Streaming 实时计算组件实践与项目开发要点。",
+  },
+  {
+    title: "数据仓库问题总结 (Super Basic)",
+    date: "2018-11-06",
+    tag: "数据仓库 / 架构",
+    desc: "数据仓库总线矩阵、一致性维度、事实表设计的核心概念与实战避坑指南。",
+  },
+  {
+    title: "Serialize Non-ActiveRecord Model Using ActiveModel::Serializer in Rails",
+    date: "2018-10-25",
+    tag: "Rails / Ruby",
+    desc: "在 Rails 中针对非数据库持久化模型进行灵活的 JSON 序列化输出处理。",
+  },
+  {
+    title: "Use `raise_error` matcher in Rspec",
+    date: "2018-10-25",
+    tag: "Ruby / 测试",
+    desc: "Rspec 中使用 raise_error 单行断言语法时的易错点与正确姿势。",
+  },
+  {
+    title: "Plot Financial Data Using Matplotlib (super basic)",
+    date: "2018-10-23",
+    tag: "Python / 数据可视化",
+    desc: "使用 Pandas 和 Matplotlib 对金融时序数据与股价走势进行快速可视化的基础脚本。",
+  },
+];
+---
+
+<Layout
+  title="历史博客存档 (2018) - 庄谷 (charmlynn)"
+  description="庄谷 (charmlynn) 2018 年在数据工程、Spark 与 Rails 后端领域的技术旧文存档。"
+>
+  <div class="space-y-8">
+    <div class="space-y-2 border-b border-zinc-800/60 pb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-zinc-500">
+        <a href="/blog" class="hover:text-zinc-300">← 返回主博客</a>
+      </div>
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-100">历史技术归档 (2018)</h1>
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+        本页面收录了 2018 年旧站点（基于 Jekyll）时期的技术博文目录。为保持当前站点专注于 <strong>AI 思考与独立开发</strong>，旧文已从主信息流移出并归档保存。原始 Markdown 文件均完整保存在代码仓库的 <code class="text-xs bg-zinc-800 px-1 py-0.5 rounded">archive_legacy_posts/</code> 目录下。
+      </p>
+    </div>
+
+    <!-- Legacy posts list -->
+    <div class="space-y-3">
+      {legacyPosts.map((post) => (
+        <div class="p-4 rounded-xl border border-zinc-800/80 bg-zinc-900/20 space-y-1.5">
+          <div class="flex items-center justify-between text-xs font-mono text-zinc-500">
+            <time>{post.date}</time>
+            <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-zinc-400 text-[11px] font-mono">{post.tag}</span>
+          </div>
+          <h2 class="text-base font-medium text-zinc-200">
+            {post.title}
+          </h2>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            {post.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

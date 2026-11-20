@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const recentPosts = posts.slice(0, 3);
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section class="space-y-6 pt-4 pb-12 border-b border-zinc-800/60">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/60 text-xs text-zinc-400">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>正在构建 AI 工具与本地优先应用</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+      你好，我是庄谷 <span class="text-zinc-500 font-normal">/ charmlynn</span>
+    </h1>
+
+    <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl">
+      独立开发者与全栈工程师。坚持 <strong class="text-zinc-200 font-medium">Local-first（本地优先）</strong> 与用户自主掌控的软件哲学。目前主要关注大模型应用、知识管理与开发者生产力工具。
+    </p>
+
+    <div class="flex items-center gap-3 pt-2 text-sm">
+      <a
+        href="/saveanswer/"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs sm:text-sm transition-colors shadow-sm"
+      >
+        <span>探索 SaveAnswer</span>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800/60 text-zinc-300 font-medium text-xs sm:text-sm transition-colors"
+      >
+        <span>阅读博客</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Project: SaveAnswer -->
+  <section class="py-12 border-b border-zinc-800/60 space-y-6">
+    <div class="flex items-center justify-between">
+      <div class="space-y-1">
+        <h2 class="text-xs uppercase tracking-wider text-blue-400 font-mono font-medium">Featured Project</h2>
+        <h3 class="text-xl font-semibold text-zinc-100">核心自研项目</h3>
+      </div>
+      <a href="/projects" class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1">
+        <span>全部项目</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Product Card -->
+    <div class="group relative rounded-xl border border-zinc-800/90 bg-zinc-900/30 hover:bg-zinc-900/50 hover:border-zinc-700/80 transition-all overflow-hidden p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <img
+            src="/saveanswer/assets/icon.png"
+            alt="SaveAnswer Icon"
+            class="w-14 h-14 rounded-xl shadow-md border border-zinc-700/40 p-1 bg-zinc-950"
+          />
+          <div>
+            <div class="flex items-center gap-2.5">
+              <h4 class="text-xl font-semibold text-zinc-100">SaveAnswer</h4>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">v1.1.0</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">Chrome Store</span>
+            </div>
+            <p class="text-sm text-zinc-400 mt-1">一键保存 AI 回答，建立你的本地私域知识库</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2.5 w-full sm:w-auto">
+          <a
+            href="/saveanswer/"
+            class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-zinc-700 bg-zinc-800/80 hover:bg-zinc-700 text-zinc-100 text-xs font-medium transition-colors"
+          >
+            <span>项目主页</span>
+            <span>→</span>
+          </a>
+          <a
+            href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors"
+          >
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0zm0 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
+            </svg>
+            <span>免费安装</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="text-sm text-zinc-400 leading-relaxed">
+        面向开发者的本地优先 AI 知识库 Chrome 扩展。原生支持 ChatGPT、Claude、DeepSeek、Gemini、通义千问、Grok、豆包。420px 敏捷秒查弹窗，三栏桌面工作台深度研读，直写本地 Obsidian。零云端服务器，数据 100% 掌握在自己手中。
+      </p>
+
+      <!-- Preview Image / Visual -->
+      <a href="/saveanswer/" class="block rounded-lg overflow-hidden border border-zinc-800/80 bg-zinc-950/80 hover:border-zinc-700 transition-colors">
+        <img
+          src="/saveanswer/assets/workspace-preview.png"
+          alt="SaveAnswer 桌面工作台预览"
+          class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+          loading="lazy"
+        />
+      </a>
+
+      <!-- Key Features Pills -->
+      <div class="flex flex-wrap items-center gap-2 pt-1 text-xs text-zinc-400">
+        <span class="px-2.5 py-1 rounded bg-zinc-800/40 border border-zinc-800 font-mono">⚡ 420px 敏捷秒查</span>
+        <span class="px-2.5 py-1 rounded bg-zinc-800/40 border border-zinc-800 font-mono">🖥️ 三栏桌面工作台</span>
+        <span class="px-2.5 py-1 rounded bg-zinc-800/40 border border-zinc-800 font-mono">💎 直写本地 Obsidian</span>
+        <span class="px-2.5 py-1 rounded bg-zinc-800/40 border border-zinc-800 font-mono">🔒 100% 本地优先无云端</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Writing Section -->
+  <section class="py-12 space-y-6">
+    <div class="flex items-center justify-between">
+      <div class="space-y-1">
+        <h2 class="text-xs uppercase tracking-wider text-zinc-400 font-mono font-medium">Recent Writing</h2>
+        <h3 class="text-xl font-semibold text-zinc-100">近期思考与博文</h3>
+      </div>
+      <a href="/blog" class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1">
+        <span>全部博客</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <div class="space-y-4">
+      {recentPosts.map((post) => (
+        <a
+          href={`/blog/${post.id}/`}
+          class="group block p-5 rounded-xl border border-zinc-800/80 bg-zinc-900/20 hover:bg-zinc-900/50 hover:border-zinc-700/80 transition-all space-y-2"
+        >
+          <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+            </time>
+            <div class="flex items-center gap-1.5">
+              {post.data.tags.slice(0, 2).map((tag: string) => (
+                <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-zinc-400">{tag}</span>
+              ))}
+            </div>
+          </div>
+          <h4 class="text-base font-medium text-zinc-200 group-hover:text-blue-400 transition-colors">
+            {post.data.title}
+          </h4>
+          <p class="text-xs sm:text-sm text-zinc-400 line-clamp-2 leading-relaxed">
+            {post.data.description}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

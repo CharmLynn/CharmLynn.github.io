@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="关于我 - 庄谷 (charmlynn)"
+  description="庄谷 (charmlynn) 的个人简介、技术栈与联系方式。"
+>
+  <div class="space-y-10 max-w-2xl">
+    <div class="space-y-2 border-b border-zinc-800/60 pb-6">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-100">关于我</h1>
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+        我是庄谷 (charmlynn)，一名专注于大模型效能与本地优先体验的开发者。
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="space-y-6 text-sm text-zinc-300 leading-relaxed">
+      <p>
+        我长期从事软件研发与数据工程。近年来随着以大语言模型（LLM）为代表的人工智能浪潮爆发，我的开发与思考重心逐步聚焦在 <strong>“AI 时代的个人知识沉淀”</strong> 与 <strong>“开发者生产力工具”</strong> 领域。
+      </p>
+
+      <h2 class="text-lg font-semibold text-zinc-100 pt-4">我的技术与产品哲学</h2>
+      <ul class="space-y-3 list-disc pl-5 text-zinc-400">
+        <li>
+          <strong class="text-zinc-200">Local-first（本地优先）</strong>：软件应将数据资产的所有权完整还给用户。零遥测、不搞不必要的云端中转、纯文本 Markdown 与开放标准胜过封闭孤岛。
+        </li>
+        <li>
+          <strong class="text-zinc-200">解决真痛点，拒绝伪需求</strong>：工具的存在是为了抹平繁琐与摩擦，而不是增加用户的认知负荷。
+        </li>
+        <li>
+          <strong class="text-zinc-200">长周期价值</strong>：比起追逐转瞬即逝的噱头，更在意软件能否在五年、十年后依然稳定运转并被信赖。
+        </li>
+      </ul>
+
+      <h2 class="text-lg font-semibold text-zinc-100 pt-4">当前正在做的事情</h2>
+      <div class="p-4 rounded-xl border border-zinc-800 bg-zinc-900/30 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+          <span class="font-medium text-zinc-200">迭代 <a href="/saveanswer/" class="text-blue-400 hover:underline">SaveAnswer</a></span>
+          <span class="text-xs text-zinc-500 font-mono">(v1.1.0)</span>
+        </div>
+        <p class="text-xs text-zinc-400">
+          一款面向开发者的本地优先 AI 知识库 Chrome 扩展，原生内嵌各主流模型网页端，无缝对接本地 Obsidian。
+        </p>
+      </div>
+
+      <h2 class="text-lg font-semibold text-zinc-100 pt-4">联系与交流</h2>
+      <p class="text-zinc-400">
+        欢迎交流 AI 产品构想、本地优先架构或任何技术探讨：
+      </p>
+      <div class="flex flex-col gap-2 pt-1 font-mono text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500 w-16">GitHub:</span>
+          <a href="https://github.com/charmlynn" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">
+            github.com/charmlynn
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500 w-16">Email:</span>
+          <a href="mailto:flvictory@gmail.com" class="text-zinc-300 hover:text-zinc-100">
+            flvictory@gmail.com
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500 w-16">RSS:</span>
+          <a href="/rss.xml" class="text-zinc-300 hover:text-zinc-100">
+            /rss.xml
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
