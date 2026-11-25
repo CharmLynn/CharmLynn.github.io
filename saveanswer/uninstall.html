@@ -7,7 +7,7 @@
   <title>SaveAnswer 已卸载</title>
   <meta name="sa-title" data-title-zh="SaveAnswer 已卸载 - 一个问题" data-title-en="SaveAnswer removed - one question">
   <link rel="icon" href="assets/icon.png">
-  <link rel="stylesheet" href="style.css?v=1.1.0-edge">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="nav">
@@ -28,17 +28,36 @@
 
     <form data-survey="uninstall" data-thanks="#thanks">
       <label class="choice"><input type="radio" name="reason" value="button_missing" required>
-        <span><span data-lang="zh">在我用的 AI 页面上没看到「保存」按钮，或保存失败</span><span data-lang="en">The Save button didn't show up or saving failed</span></span></label>
-      <label class="choice"><input type="radio" name="reason" value="platform_missing">
-        <span><span data-lang="zh">不支持我常用的 AI 平台</span><span data-lang="en">My AI platform isn't supported</span></span></label>
-      <label class="choice"><input type="radio" name="reason" value="want_auto_save">
-        <span><span data-lang="zh">我想要自动保存全部对话，不想手动点</span><span data-lang="en">I wanted every chat saved automatically</span></span></label>
-      <label class="choice"><input type="radio" name="reason" value="need_sync">
-        <span><span data-lang="zh">需要跨设备同步 / 手机上也能看</span><span data-lang="en">I need sync across devices or on mobile</span></span></label>
-      <label class="choice"><input type="radio" name="reason" value="rarely_used">
-        <span><span data-lang="zh">装了之后很少用到</span><span data-lang="en">I rarely ended up using it</span></span></label>
-      <label class="choice"><input type="radio" name="reason" value="other">
-        <span><span data-lang="zh">其他原因</span><span data-lang="en">Something else</span></span></label>
+        <span><span data-lang="zh">某 AI 平台没显示 Save 按钮 / 保存失效</span><span data-lang="en">Save button missing / broken on an AI platform</span></span></label>
+
+      <div id="platform-radar" hidden style="margin: 6px 0 14px 24px; padding: 12px 14px; border: 1px solid #d5e2df; border-radius: 8px; background: #f6faf9;">
+        <p style="margin: 0 0 8px; font-size: 13px; font-weight: 600;">
+          <span data-lang="zh">是哪个平台出问题了？选好后可直接一键反馈：</span>
+          <span data-lang="en">Which AI platform broke? Select one to send a quick report:</span>
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; margin-bottom: 10px; font-size: 13px;">
+          <label><input type="radio" name="platform" value="ChatGPT"> ChatGPT</label>
+          <label><input type="radio" name="platform" value="Claude"> Claude</label>
+          <label><input type="radio" name="platform" value="DeepSeek"> DeepSeek</label>
+          <label><input type="radio" name="platform" value="Gemini"> Gemini</label>
+          <label><input type="radio" name="platform" value="Kimi"> Kimi</label>
+          <label><input type="radio" name="platform" value="Doubao"> <span data-lang="zh">豆包</span><span data-lang="en">Doubao</span></label>
+          <label><input type="radio" name="platform" value="Qwen"> Qwen</label>
+          <label><input type="radio" name="platform" value="Grok"> Grok</label>
+          <label><input type="radio" name="platform" value="Other"> <span data-lang="zh">其他</span><span data-lang="en">Other</span></label>
+        </div>
+        <button class="btn btn-primary" type="submit" id="quick-report-btn" style="padding: 7px 14px; font-size: 13px;">
+          <span data-lang="zh">一键反馈该平台问题</span>
+          <span data-lang="en">Quick report this platform</span>
+        </button>
+      </div>
+
+      <label class="choice"><input type="radio" name="reason" value="missing_feature">
+        <span><span data-lang="zh">缺少想要的功能</span><span data-lang="en">Missing a feature</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="data_sync_concern">
+        <span><span data-lang="zh">担心本地数据丢失 / 需要跨设备同步</span><span data-lang="en">Concerned about local data loss / sync across devices</span></span></label>
+      <label class="choice"><input type="radio" name="reason" value="not_needed">
+        <span><span data-lang="zh">暂时用不上</span><span data-lang="en">Don't need it right now</span></span></label>
 
       <label class="field" for="detail"><span data-lang="zh">愿意多说一句吗？（可不填）</span><span data-lang="en">Anything else? (optional)</span></label>
       <textarea id="detail" name="detail" maxlength="1000" data-placeholder-zh="比如：在哪个平台、哪一步遇到了问题" data-placeholder-en="e.g. which platform, which step went wrong"></textarea>
@@ -59,7 +78,27 @@
     </div>
   </main>
 
-  <script src="site.js?v=1.1.0-edge"></script>
+  <script src="site.js?v=1.2.0"></script>
+  <script>
+    (function () {
+      const radar = document.getElementById('platform-radar');
+      const reasonRadios = document.querySelectorAll('input[name="reason"]');
+      const platformRadios = document.querySelectorAll('input[name="platform"]');
+      function syncRadar() {
+        const selected = document.querySelector('input[name="reason"]:checked');
+        const show = !!(selected && selected.value === 'button_missing');
+        radar.hidden = !show;
+        if (platformRadios.length > 0) {
+          platformRadios[0].required = show;
+        }
+        if (!show) {
+          platformRadios.forEach(r => { r.checked = false; });
+        }
+      }
+      reasonRadios.forEach(r => r.addEventListener('change', syncRadar));
+      syncRadar();
+    })();
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b4ba7bf8b4364ba891876910f6af5ec2"}'></script>
   <!-- End Cloudflare Web Analytics -->

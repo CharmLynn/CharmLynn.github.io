@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimi 回答如何本地保存与导出 Markdown | How to Save Kimi AI Answers Locally</title>
+  <meta name="description" content="Kimi 长文本总结与代码回答翻不到？使用 SaveAnswer 浏览器扩展，在 kimi.com 页面一键保存高质量问答，支持 Alt+K 跨平台对话内召回、离线全文检索、导出 Markdown/Word/PDF 与直写本地 Obsidian。零云端服务器，100% 本地优先。">
+  <meta property="og:title" content="How to Save and Organize Kimi AI Answers Locally">
+  <meta property="og:description" content="One-click save on kimi.com. Keep long-context summaries and code answers in a local searchable workspace. Free, local-first, zero tracking.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/workspace-preview.png">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css?v=1.2.0">
+  <meta name="sa-title" data-title-zh="Kimi 回答如何本地保存与导出整理 - SaveAnswer" data-title-en="How to Save Kimi AI Answers Locally - SaveAnswer">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Save Kimi AI Answers Locally",
+    "description": "Save valuable Kimi long-context answers and code outputs into a local searchable library and Markdown vault.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install SaveAnswer on Edge or Chrome",
+        "text": "Add SaveAnswer for free from Microsoft Edge Add-ons or Chrome Web Store."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Click Save under any Kimi reply",
+        "text": "On kimi.com, click the native Save button in the assistant action bar (or Alt+Click for instant auto-tagged save)."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Search, Recall with Alt+K, or Sync to Obsidian",
+        "text": "Search locally in milliseconds, press Alt+K to insert into future prompts, or export to Markdown, Word, and PDF."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="ai-agent-knowledge-base.html"><span data-lang="zh">Obsidian &amp; Agent 模板</span><span data-lang="en">Agent Vault Guide</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 820px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Kimi 深度使用指南</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">Kimi 的长文精读与优质回答，如何一键保存到本地并随时复用？</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">更新日期：2026-11-25 · 原生适配 kimi.com / www.kimi.com</p>
+      </div>
+
+      <p class="lead">
+        Kimi 擅长长文档精读、论文拆解与联网资料整合。但当你一周积累了几十个 Kimi 会话后，<strong>真正有价值的那一条核心总结、表格对比或代码方案，往往被淹没在漫长的侧边栏历史里，想用时根本翻不出来。</strong>
+      </p>
+
+      <h2>Kimi 高频用户的三大整理痛点</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>1. 长会话中核心结论难定位</h3>
+            <p>上传多份 PDF 让 Kimi 追问十几轮后，最关键的一轮提炼混杂在几十屏上下文里，手动复制经常漏掉表格结构或代码块缩进。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>2. 与 DeepSeek / ChatGPT / Claude 知识割裂</h3>
+            <p>用 Kimi 读文献、用 DeepSeek 推逻辑、用 Claude 写代码——不同模型的精华散落在多个网页标签里，缺乏统一检索入口。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>3. 存下来的内容无法直接喂给下一轮提问</h3>
+            <p>即便手动贴进了备忘录，下次在别的 AI 继续追问时，还要来回切窗口翻找复制。</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>SaveAnswer 解决方案：在 Kimi 原生嵌入「一键保存 + Alt+K 召回」</h2>
+      <p>
+        SaveAnswer 已原生适配 <code>kimi.com</code>。在每条 Kimi 回答底部的操作栏旁，都会安静地嵌入一个统一尺寸的 <strong>Save</strong> 按钮：
+      </p>
+
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>单轮或双轮上下文精准保存：</strong>支持单条保存，也支持勾选「合并上一轮追问（Round 1 ➔ Round 2）」，完整保留长文追问脉络。</li>
+        <li><strong>按住 Alt 一秒静默速存：</strong>自动识别代码块语言与主题打标，零弹窗打扰阅读心流。</li>
+        <li><strong>跨平台输入框 Alt+K 原地召回：</strong>把 Kimi 提炼的文献要点存下后，切到 DeepSeek 或 Claude 输入框按 <code>Alt+K</code>，即可原地搜索并一键插入当前提问框。</li>
+        <li><strong>直写本地 Obsidian 与多格式导出：</strong>支持导出排版整洁的 Markdown、Word (.docx)、PDF，或自动同步到本地目录并维护 <code>INDEX.md</code> 索引。</li>
+      </ul>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 28px 0;">
+        <h3 style="margin-top: 0;">100% 本地优先（Local-First），零云端隐私风险</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 0;">
+          你在 Kimi 中上传分析的行业研报、内部文档总结与业务代码只保存在你电脑浏览器本地与授权硬盘目录中。<strong>无需注册账号、无任何云端服务器上传、零遥测追踪。</strong>
+        </p>
+      </div>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">免费安装 SaveAnswer，沉淀每一条 Kimi 精华</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">支持 Edge 与 Chrome 双浏览器 · 永久免费 · 纯本地存储</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" style="background: #0D6E5C; border-color: rgba(13, 110, 92, 0.25);" href="https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk" target="_blank" rel="noopener">
+            Edge 商店免费直装（国内免翻墙）
+          </a>
+          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+            免费添加到 <span data-store-name>Chrome</span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Kimi AI Guide</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">How to Save and Reuse Kimi AI Answers Locally</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Updated: 2026-11-25 · Native support for kimi.com</p>
+      </div>
+
+      <p class="lead">
+        Kimi excels at long-context document synthesis, research summaries, and structured breakdowns. Yet once your sidebar fills with dozens of threads, refinding that one clean comparison table or code solution becomes frustratingly slow.
+      </p>
+
+      <h2>How SaveAnswer Upgrades Kimi</h2>
+      <ul class="checklist" style="margin: 20px 0;">
+        <li><strong>1-Click Native Capture:</strong> Click <strong>Save</strong> directly inside Kimi's assistant action bar (or <code>Alt+Click</code> for instant auto-tagged capture).</li>
+        <li><strong>Multi-Turn Context Bundling:</strong> Bundle Round 1 and Round 2 together so follow-up refinements stay attached to the parent prompt.</li>
+        <li><strong>Press <code>Alt+K</code> to Recall Anywhere:</strong> Recall saved Kimi research directly into ChatGPT, Claude, or DeepSeek prompts without switching tabs.</li>
+        <li><strong>Local Vault Sync &amp; Clean Exports:</strong> Sync atomic Markdown notes with YAML frontmatter straight to your local Obsidian or Agent folder, or export as Word, PDF, and PNG cards.</li>
+        <li><strong>100% Local-First Privacy:</strong> Zero accounts, zero cloud servers, and zero telemetry.</li>
+      </ul>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Start Building Your Local Kimi Library</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">Available for Chrome &amp; Microsoft Edge · 100% Free · Local-First</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+            Add to <span data-store-name>Chrome</span> — Free
+          </a>
+          <a class="btn btn-primary" style="background: #0D6E5C; border-color: rgba(13, 110, 92, 0.25);" href="https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk" target="_blank" rel="noopener">
+            Get it on Edge Add-ons
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script src="site.js?v=1.2.0"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b4ba7bf8b4364ba891876910f6af5ec2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
