@@ -1,0 +1,47 @@
+# SaveAnswer
+
+> SaveAnswer is a 100% free, 100% local-first Chrome and Microsoft Edge browser extension that saves AI answers from 8 AI chat platforms into a local knowledge workspace, syncs clean Markdown + `INDEX.md` to Obsidian, and works as zero-backend local MCP memory for Cursor and Claude Code. Zero cloud servers, zero tracking, no account required.
+
+## Install & Official Links
+
+- [Official Landing Page](https://charmlynn.github.io/saveanswer/): Overview, 38s walkthrough demo, feature comparison, and FAQ
+- [Chrome Web Store](https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm): Official Chrome extension listing
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk): Official Edge extension listing (direct access without VPN in mainland China)
+- [Feedback & Support](https://charmlynn.github.io/saveanswer/feedback.html): Submit bug reports, platform requests, or user feedback
+
+## Supported AI Platforms (8)
+
+- **ChatGPT** (`chatgpt.com`, `chat.openai.com`)
+- **Claude** (`claude.ai`)
+- **DeepSeek** (`chat.deepseek.com`)
+- **Gemini** (`gemini.google.com`)
+- **Qwen / 通义千问** (`tongyi.aliyun.com`, `chat.qwen.ai`, `qianwen.com`)
+- **Grok** (`grok.com`, `x.com/i/grok`)
+- **Doubao / 豆包** (`doubao.com`)
+- **Kimi** (`kimi.com`, `www.kimi.com`)
+
+## Core Capabilities
+
+- **1-Click Capture & Shortcuts**: Native `Save` button on every AI answer, `Alt+S` to quick-save the latest answer, `Alt+Click` for silent auto-tagged saving, and Highlight-to-Save for partial excerpts.
+- **Instant Recall Everywhere**: Press `Alt+K` inside any AI chat input box to search and insert saved notes in place; type `sa <query>` in the browser address bar (Omnibox) to search your vault from any tab.
+- **3-Column Desktop Workspace (`Alt+W`)**: Browse, tag, full-text search, batch-merge answers into Table-of-Contents reports, and jump back to the original conversation source with highlight anchoring.
+- **Cross-Model Context Relay**: `Copy as Prompt` packages saved Q&A with structured context so you can hand off work seamlessly between ChatGPT, Claude, DeepSeek, and other models.
+- **Reasoning & Code Preservation**: Preserves syntax-highlighted code blocks, LaTeX math, tables, and folds `<think>` reasoning chains cleanly.
+- **Obsidian & Agent MCP Memory**: Syncs clean Markdown with YAML frontmatter and an auto-maintained `INDEX.md` directly to a local Obsidian vault folder—ready to mount via `@modelcontextprotocol/server-filesystem` in Cursor or Claude Code.
+- **Export & Share**: Export single or merged answers as Markdown, Word (`.docx`), PDF, HTML, or offline 4-theme Share Cards; full JSON backup export/import with deduplication.
+- **Privacy Guarantee**: All data stays in local browser IndexedDB / chosen local directory. Zero cloud storage, zero analytics on user conversations, no sign-up.
+
+## Guides & Documentation
+
+- [How to Save AI Answers](https://charmlynn.github.io/saveanswer/how-to-save-ai-answers.html): Step-by-step guide to saving, tagging, and searching AI conversations locally
+- [AI Agent Knowledge Base & MCP Guide](https://charmlynn.github.io/saveanswer/ai-agent-knowledge-base.html): Using SaveAnswer `INDEX.md` + Obsidian Dataview with Cursor and Claude Code
+- [Obsidian Sync for AI Answers](https://charmlynn.github.io/saveanswer/obsidian-sync-ai-answers.html): Direct local folder sync setup with YAML frontmatter
+- [Export ChatGPT Answers](https://charmlynn.github.io/saveanswer/export-chatgpt-answers.html): Save ChatGPT replies and code blocks to Markdown, PDF, Word, and Obsidian
+- [Save DeepSeek Answers](https://charmlynn.github.io/saveanswer/save-deepseek-answers.html): Capture DeepSeek-R1 answers with `<think>` reasoning block folding
+- [Save Kimi Answers](https://charmlynn.github.io/saveanswer/save-kimi-answers.html): Save Kimi long-context answers locally
+- [Save Claude Answers](https://charmlynn.github.io/saveanswer/save-claude-answers.html): Save Claude responses and artifacts locally
+- [Save Gemini Answers](https://charmlynn.github.io/saveanswer/save-gemini-answers.html): Save Gemini responses locally
+- [Save Grok Answers](https://charmlynn.github.io/saveanswer/save-grok-answers.html): Save Grok responses locally
+- [Save Qwen Answers](https://charmlynn.github.io/saveanswer/save-qwen-answers.html): Save Qwen (通义千问) responses locally
+- [Save Doubao Answers](https://charmlynn.github.io/saveanswer/save-doubao-answers.html): Save Doubao (豆包) responses locally
+- [Privacy Policy](https://charmlynn.github.io/saveanswer/privacy.html): Local-first privacy commitments
