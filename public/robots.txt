@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://charmlynn.github.io/sitemap-index.xml
+Sitemap: https://charmlynn.github.io/saveanswer/sitemap.xml
