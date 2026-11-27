@@ -1,86 +1,194 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { getReadingTime, formatDotDate } from '../utils/readingTime';
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const focusedProjects = [
+  {
+    name: 'SaveAnswer',
+    kind: 'Chrome 扩展',
+    href: '/saveanswer/',
+    icon: '/saveanswer/assets/icon.png',
+    actionLabel: '项目详情',
+    summary: '面向开发者的本地优先 AI 知识库，一键提取 ChatGPT、Claude、DeepSeek 等对话并直写本地 Obsidian。',
+  },
+];
 ---
 
 <Layout>
-  <div class="space-y-12">
-    <!-- 1. 个人介绍 -->
-    <section class="space-y-4">
-      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900">
-        庄谷 <span class="text-stone-400 font-normal text-lg sm:text-xl font-mono">/ charmlynn</span>
-      </h1>
-      <p class="text-stone-600 leading-relaxed text-base">
-        全栈工程师与独立开发者。关注大模型应用、本地优先（Local-first）工作流与开发者生产力工具。喜欢打磨切实解决自己痛点的小工具，把思考沉淀为代码与文字。
-      </p>
-    </section>
-
-    <!-- 2. 近期关注与在做的项目 (简炼呈现，不喧宾夺主) -->
-    <section class="space-y-4 pt-2">
-      <div class="flex items-baseline justify-between border-b border-stone-200/80 pb-2">
-        <h2 class="text-xs font-mono uppercase tracking-wider text-stone-500 font-medium">近期项目</h2>
-        <a href="/projects" class="text-xs text-stone-400 hover:text-stone-700 transition-colors">
-          全部项目 →
-        </a>
+  <div class="space-y-12 sm:space-y-14">
+    <!-- 1. 个人介绍 / Monograph Intro -->
+    <section class="monograph-section">
+      <div class="space-y-1.5 pt-0.5">
+        <h1 class="font-editorial text-[26px] sm:text-[28px] font-semibold tracking-tight leading-tight" style="color: var(--ink);">
+          庄谷
+        </h1>
+        <p class="font-tabular text-[12.5px]" style="color: var(--ink-muted);">
+          @charmlynn
+        </p>
+        <div class="hidden md:inline-flex items-center gap-1.5 pt-1 text-[12px] font-tabular" style="color: var(--ink-faint);">
+          <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent);"></span>
+          <span>Local-first · AI</span>
+        </div>
       </div>
 
-      <ul class="space-y-4">
-        <li class="space-y-1">
-          <div class="flex items-center gap-2">
-            <a
-              href="/saveanswer/"
-              class="font-medium text-stone-900 hover:text-blue-600 transition-colors underline decoration-stone-300 underline-offset-4 hover:decoration-blue-400"
-            >
-              SaveAnswer
-            </a>
-            <span class="text-xs text-stone-400 font-mono">· Chrome 扩展</span>
-          </div>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            面向开发者的本地优先 AI 知识库。一键提取 ChatGPT、Claude、DeepSeek、Gemini 等主流大模型回答，直写本地 Obsidian，无需云端中转。
-            <a href="/saveanswer/" class="text-xs text-blue-600 hover:underline ml-1">访问项目主页 →</a>
-          </p>
-        </li>
-      </ul>
+      <div class="space-y-4">
+        <p class="text-[17px] sm:text-[18px] font-medium leading-snug tracking-tight" style="color: var(--ink);">
+          工程师与独立开发者，专注大模型应用与本地优先软件构建。
+        </p>
+
+        <p class="text-[15.5px] leading-[1.78]" style="color: var(--ink-secondary);">
+          早年深耕数据仓库与流式计算，如今将重心转向 AI 时代的个人知识工程与效率软件。相比把记忆托管给封闭的云端孤岛，我更偏爱纯文本、零遥测、十年后依然离线可读的工具。这里记录我的技术思考与正在打磨的产品。
+        </p>
+
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-[13.5px]" style="color: var(--ink-muted);">
+          <a
+            href="https://github.com/charmlynn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-inline inline-flex items-center gap-1"
+          >
+            <span>GitHub</span>
+            <span class="arrow-step-ne text-[11px]">↗</span>
+          </a>
+          <button
+            type="button"
+            id="copy-email-home"
+            class="link-inline cursor-pointer bg-transparent border-0 p-0 font-inherit text-[13.5px]"
+          >
+            Email
+          </button>
+          <a href="/rss.xml" class="link-inline font-tabular">RSS</a>
+          <a href="/about" class="inline-flex items-center gap-1 hover:text-[var(--ink)] transition-colors">
+            <span>更多关于我</span>
+            <span class="arrow-step">→</span>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- 3. 文章与思考 (作为博客主页的核心主体) -->
-    <section class="space-y-5 pt-2">
-      <div class="flex items-baseline justify-between border-b border-stone-200/80 pb-2">
-        <h2 class="text-xs font-mono uppercase tracking-wider text-stone-500 font-medium">文章与思考</h2>
-        <a href="/blog" class="text-xs text-stone-400 hover:text-stone-700 transition-colors">
-          全部文章 →
-        </a>
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
+
+    <!-- 2. 近期关注的项目 / Currently Building (克制精炼，一行一物，不喧宾夺主) -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>近期项目</span>
+      </div>
+
+      <div class="space-y-3">
+        <div class="spotlight-list space-y-3">
+          {focusedProjects.map((project) => (
+            <a
+              href={project.href}
+              class="spotlight-item ledger-row group block rounded-lg -mx-3 px-3 py-2.5 transition-colors hover:bg-[var(--bg-subtle)]/65"
+            >
+              <div class="flex items-center gap-2.5">
+                <img
+                  src={project.icon}
+                  alt=""
+                  width="20"
+                  height="20"
+                  class="w-5 h-5 rounded-[5px] shrink-0 border"
+                  style="border-color: var(--border-hairline);"
+                />
+                <span class="text-[15.5px] font-medium tracking-tight group-hover:text-[var(--accent)] transition-colors" style="color: var(--ink);">
+                  {project.name}
+                </span>
+                <span
+                  class="text-[12px] px-1.5 py-0.5 rounded font-tabular hidden sm:inline-block"
+                  style="background: var(--bg-subtle); color: var(--ink-muted);"
+                >
+                  {project.kind}
+                </span>
+                <span class="leader-line" aria-hidden="true"></span>
+                <span class="text-[13px] shrink-0 inline-flex items-center gap-1 group-hover:text-[var(--accent)] transition-colors" style="color: var(--ink-muted);">
+                  <span>{project.actionLabel}</span>
+                  <span class="arrow-step">→</span>
+                </span>
+              </div>
+              <p class="text-[14.5px] leading-relaxed mt-1.5 sm:pl-[30px]" style="color: var(--ink-secondary);">
+                {project.summary}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
+
+    <!-- 3. 文章与思考 / Writing (首页核心阅读流) -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>文章与思考</span>
+        <span class="font-tabular text-[12px]" style="color: var(--ink-faint);">{posts.length} 篇</span>
       </div>
 
       <div class="space-y-6">
-        {posts.map((post) => (
-          <article class="space-y-1.5 group">
-            <div class="flex items-center justify-between text-xs text-stone-400 font-mono">
-              <time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-              </time>
-              <div class="flex items-center gap-1.5">
-                {post.data.tags.slice(0, 2).map((tag: string) => (
-                  <span class="text-stone-400">#{tag}</span>
-                ))}
-              </div>
-            </div>
+        <div class="spotlight-list space-y-5">
+          {posts.map((post) => {
+            const mins = getReadingTime(post.body || '');
+            return (
+              <article class="spotlight-item ledger-row group">
+                <a
+                  href={`/blog/${post.id}/`}
+                  class="block rounded-lg -mx-3 px-3 py-2.5 transition-colors hover:bg-[var(--bg-subtle)]/65"
+                >
+                  <div class="flex items-baseline justify-between gap-6">
+                    <h2 class="text-[16px] sm:text-[16.5px] font-medium tracking-tight leading-snug group-hover:text-[var(--accent)] transition-colors" style="color: var(--ink);">
+                      {post.data.title}
+                    </h2>
+                    <time
+                      datetime={post.data.pubDate.toISOString()}
+                      class="font-tabular text-[12.5px] shrink-0 hidden sm:inline"
+                      style="color: var(--ink-muted);"
+                    >
+                      {formatDotDate(post.data.pubDate)}
+                    </time>
+                  </div>
 
-            <h3 class="text-base font-medium text-stone-900 group-hover:text-blue-600 transition-colors">
-              <a href={`/blog/${post.id}/`}>
-                {post.data.title}
-              </a>
-            </h3>
+                  <p class="text-[14.5px] leading-relaxed mt-1.5 line-clamp-2" style="color: var(--ink-secondary);">
+                    {post.data.description}
+                  </p>
 
-            <p class="text-sm text-stone-600 leading-relaxed line-clamp-2">
-              {post.data.description}
-            </p>
-          </article>
-        ))}
+                  <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-2 text-[12.5px] font-tabular" style="color: var(--ink-faint);">
+                    <time datetime={post.data.pubDate.toISOString()} class="sm:hidden whitespace-nowrap">
+                      {formatDotDate(post.data.pubDate)}
+                    </time>
+                    <span class="sm:hidden">·</span>
+                    <span class="whitespace-nowrap">{mins} min read</span>
+                    <span>·</span>
+                    <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      {post.data.tags.slice(0, 2).map((tag: string) => (
+                        <span class="whitespace-nowrap">#{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="pt-1 flex items-center justify-between text-[13.5px]" style="color: var(--ink-muted);">
+          <a href="/blog" class="link-inline inline-flex items-center gap-1">
+            <span>查看全部文章与标签检索</span>
+            <span class="arrow-step">→</span>
+          </a>
+        </div>
       </div>
     </section>
   </div>
+
+  <script is:inline>
+    document.getElementById('copy-email-home')?.addEventListener('click', () => {
+      navigator.clipboard?.writeText('flvictory@gmail.com');
+      if (window.__showSiteToast) {
+        window.__showSiteToast('已复制联系邮箱 flvictory@gmail.com');
+      }
+    });
+  </script>
 </Layout>

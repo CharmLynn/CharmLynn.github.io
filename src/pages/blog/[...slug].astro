@@ -1,76 +1,230 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { getReadingTime, formatDotDate } from '../../utils/readingTime';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: { post },
+    props: {
+      post,
+      prevPost: posts[index + 1] || null,
+      nextPost: posts[index - 1] || null,
+    },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+const { post, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await render(post);
+const readingMinutes = getReadingTime(post.body || '');
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 ---
 
 <Layout
-  title={`${post.data.title} - 庄谷 (charmlynn)`}
+  title={`${post.data.title} — 庄谷 (charmlynn)`}
   description={post.data.description}
 >
-  <article class="space-y-8">
-    <!-- Back to blog link -->
-    <div>
-      <a
-        href="/blog"
-        class="inline-flex items-center gap-1.5 text-xs text-stone-500 hover:text-stone-900 transition-colors font-mono"
+  <div class="relative">
+    <!-- Desktop Marginalia Table of Contents (Visible on wide screens >= 1200px) -->
+    {tocHeadings.length > 0 && (
+      <aside
+        class="hidden xl:block fixed top-28 w-48 text-[13px]"
+        style="left: max(24px, calc(50% - 610px));"
+        aria-label="本文目录"
       >
-        <span>← 返回文章列表</span>
-      </a>
-    </div>
-
-    <!-- Article Header -->
-    <header class="space-y-3 border-b border-stone-200/80 pb-6">
-      <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-stone-400">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
-        <span>·</span>
-        <div class="flex items-center gap-1.5">
-          {post.data.tags.map((tag: string) => (
-            <span>#{tag}</span>
-          ))}
+        <div class="space-y-2.5">
+          <div class="font-medium text-[12px] tracking-wide" style="color: var(--ink-faint);">
+            本文目录
+          </div>
+          <ul class="space-y-1.5 border-l pl-3" style="border-color: var(--border-hairline);">
+            {tocHeadings.map((h) => (
+              <li class={h.depth === 3 ? 'pl-2.5' : ''}>
+                <a
+                  href={`#${h.slug}`}
+                  data-toc-link={h.slug}
+                  class="toc-link block leading-snug py-0.5 transition-colors"
+                  style="color: var(--ink-muted);"
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </aside>
+    )}
 
-      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900 leading-snug">
-        {post.data.title}
-      </h1>
-
-      <p class="text-sm text-stone-600 leading-relaxed font-normal">
-        {post.data.description}
-      </p>
-    </header>
-
-    <!-- Article Markdown Content -->
-    <div class="prose max-w-none pt-2">
-      <Content />
-    </div>
-
-    <!-- Article Footer -->
-    <footer class="border-t border-stone-200/80 pt-6 mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-stone-500">
-      <div>
-        <span>作者：<strong class="text-stone-800 font-medium">庄谷 (charmlynn)</strong></span>
-      </div>
-
-      <div class="flex items-center gap-3">
+    <!-- Centered Optimal Reading Column -->
+    <article class="max-w-[650px] mx-auto">
+      <!-- Top Breadcrumb -->
+      <div class="mb-8">
         <a
-          href="/saveanswer/"
-          class="text-blue-600 hover:underline"
+          href="/blog"
+          class="inline-flex items-center gap-1.5 text-[13.5px] transition-colors hover:text-[var(--ink)]"
+          style="color: var(--ink-muted);"
         >
-          探索自研项目 SaveAnswer →
+          <span>←</span>
+          <span>文章列表</span>
         </a>
       </div>
-    </footer>
-  </article>
+
+      <!-- Essay Header -->
+      <header class="space-y-4 pb-8 border-b" style="border-color: var(--border-hairline);">
+        <div class="flex flex-wrap items-center gap-2.5 font-tabular text-[13px]" style="color: var(--ink-muted);">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formatDotDate(post.data.pubDate)}
+          </time>
+          <span>·</span>
+          <span>约 {readingMinutes} 分钟阅读</span>
+          {post.data.tags.length > 0 && (
+            <>
+              <span>·</span>
+              <div class="flex items-center gap-2">
+                {post.data.tags.map((tag: string) => (
+                  <span>#{tag}</span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        <h1
+          class="font-editorial text-[26px] sm:text-[32px] font-semibold tracking-tight leading-[1.32]"
+          style="color: var(--ink);"
+        >
+          {post.data.title}
+        </h1>
+
+        <p class="text-[16px] leading-relaxed" style="color: var(--ink-secondary);">
+          {post.data.description}
+        </p>
+      </header>
+
+      <!-- Rendered Markdown Essay -->
+      <div class="prose pt-4">
+        <Content />
+      </div>
+
+      <!-- Author Colophon -->
+      <div
+        class="mt-14 pt-6 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13.5px]"
+        style="border-color: var(--border-hairline); color: var(--ink-muted);"
+      >
+        <div>
+          <span style="color: var(--ink); font-weight: 500;">庄谷 (charmlynn)</span>
+          <span class="mx-2" style="color: var(--ink-faint);">·</span>
+          <span>正在构建本地优先的 AI 知识工具</span>
+        </div>
+        <a href="/saveanswer/" class="link-inline inline-flex items-center gap-1 shrink-0">
+          <span>了解 SaveAnswer</span>
+          <span class="arrow-step">→</span>
+        </a>
+      </div>
+
+      <!-- Prev / Next Essay Navigation -->
+      {(prevPost || nextPost) && (
+        <nav
+          class="mt-8 pt-6 border-t grid grid-cols-1 sm:grid-cols-2 gap-4"
+          style="border-color: var(--border-hairline);"
+          aria-label="相邻文章导航"
+        >
+          <div>
+            {prevPost && (
+              <a
+                href={`/blog/${prevPost.id}/`}
+                class="group block p-3.5 -m-3.5 rounded-lg transition-colors hover:bg-[var(--bg-subtle)]/65"
+              >
+                <span class="block text-[12px] font-tabular mb-1" style="color: var(--ink-faint);">← 上一篇</span>
+                <span class="text-[14.5px] font-medium group-hover:text-[var(--accent)] transition-colors line-clamp-1" style="color: var(--ink);">
+                  {prevPost.data.title}
+                </span>
+              </a>
+            )}
+          </div>
+          <div class="sm:text-right">
+            {nextPost && (
+              <a
+                href={`/blog/${nextPost.id}/`}
+                class="group block p-3.5 -m-3.5 rounded-lg transition-colors hover:bg-[var(--bg-subtle)]/65"
+              >
+                <span class="block text-[12px] font-tabular mb-1" style="color: var(--ink-faint);">下一篇 →</span>
+                <span class="text-[14.5px] font-medium group-hover:text-[var(--accent)] transition-colors line-clamp-1" style="color: var(--ink);">
+                  {nextPost.data.title}
+                </span>
+              </a>
+            )}
+          </div>
+        </nav>
+      )}
+    </article>
+  </div>
+
+  <style>
+    .toc-link[data-active="true"] {
+      color: var(--accent) !important;
+      font-weight: 500;
+    }
+    .toc-link:hover {
+      color: var(--ink) !important;
+    }
+  </style>
+
+  <script is:inline>
+    (() => {
+      // 1. Copy button on code blocks (150ms checkmark swap per motion.md)
+      document.querySelectorAll('.prose pre').forEach((pre) => {
+        if (pre.querySelector('.code-copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy-btn';
+        btn.textContent = 'Copy';
+        btn.setAttribute('aria-label', '复制代码');
+        btn.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.innerText || pre.innerText;
+          try {
+            await navigator.clipboard.writeText(code);
+            btn.textContent = 'Copied ✓';
+            setTimeout(() => {
+              btn.textContent = 'Copy';
+            }, 1600);
+          } catch (_) {}
+        });
+        pre.appendChild(btn);
+      });
+
+      // 2. Active heading highlight for marginalia TOC
+      const tocLinks = Array.from(document.querySelectorAll('[data-toc-link]'));
+      if (!tocLinks.length || !('IntersectionObserver' in window)) return;
+
+      const headingEls = tocLinks
+        .map((link) => document.getElementById(link.getAttribute('data-toc-link') || ''))
+        .filter(Boolean);
+
+      const setActive = (id) => {
+        tocLinks.forEach((link) => {
+          const match = link.getAttribute('data-toc-link') === id;
+          if (match) link.setAttribute('data-active', 'true');
+          else link.removeAttribute('data-active');
+        });
+      };
+
+      if (headingEls[0]) setActive(headingEls[0].id);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
+      );
+
+      headingEls.forEach((el) => observer.observe(el));
+    })();
+  </script>
 </Layout>

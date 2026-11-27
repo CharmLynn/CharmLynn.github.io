@@ -3,57 +3,95 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="关于我 - 庄谷 (charmlynn)"
-  description="庄谷 (charmlynn) 的个人简介、技术栈与联系方式。"
+  title="关于我 — 庄谷 (charmlynn)"
+  description="庄谷 (charmlynn) 的技术经历、工程理念与联系方式。"
 >
-  <div class="space-y-8">
-    <div class="space-y-2 border-b border-stone-200/80 pb-4">
-      <h1 class="text-2xl font-semibold tracking-tight text-stone-900">关于我</h1>
-      <p class="text-stone-600 text-sm leading-relaxed">
-        我是庄谷 (charmlynn)，一名专注于大模型效能与本地优先体验的开发者。
-      </p>
-    </div>
+  <div class="space-y-12">
+    <!-- Bio Intro -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>关于</span>
+      </div>
+      <div class="space-y-4">
+        <h1 class="font-editorial text-[26px] sm:text-[28px] font-semibold tracking-tight leading-tight" style="color: var(--ink);">
+          庄谷 <span class="font-tabular font-normal text-[16px]" style="color: var(--ink-muted);">/ charmlynn</span>
+        </h1>
+        <p class="text-[16px] leading-[1.8]" style="color: var(--ink-secondary);">
+          我是一名全栈工程师与独立开发者。早年从事数据仓库建模、流式计算与后端架构；近年来随着大语言模型与智能体（Agent）技术演进，我的工作重心转向了 <strong style="color: var(--ink); font-weight: 600;">AI 时代的个人知识沉淀</strong> 与 <strong style="color: var(--ink); font-weight: 600;">开发者生产力工具</strong>。
+        </p>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <div class="space-y-6 text-sm text-stone-600 leading-relaxed">
-      <p>
-        我长期从事软件研发与数据工程。近年来随着以大语言模型（LLM）为代表的人工智能浪潮爆发，我的开发与思考重心逐步聚焦在 <strong>“AI 时代的个人知识沉淀”</strong> 与 <strong>“开发者生产力工具”</strong> 领域。
-      </p>
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
 
-      <h2 class="text-base font-semibold text-stone-900 pt-2">我的技术与产品哲学</h2>
-      <ul class="space-y-2 list-disc pl-5 text-stone-600">
-        <li>
-          <strong class="text-stone-800">Local-first（本地优先）</strong>：软件应将数据资产的所有权完整还给用户。零遥测、不搞不必要的云端中转、纯文本 Markdown 胜过封闭孤岛。
-        </li>
-        <li>
-          <strong class="text-stone-800">解决真痛点，拒绝伪需求</strong>：工具的存在是为了抹平繁琐与摩擦，而不是增加用户的认知负荷。
-        </li>
-        <li>
-          <strong class="text-stone-800">长周期价值</strong>：比起追逐转瞬即逝的噱头，更在意软件能否在五年、十年后依然稳定运转并被信赖。
-        </li>
-      </ul>
-
-      <h2 class="text-base font-semibold text-stone-900 pt-2">联系与交流</h2>
-      <div class="flex flex-col gap-2 pt-1 font-mono text-xs text-stone-600">
-        <div class="flex items-center gap-2">
-          <span class="text-stone-400 w-16">GitHub:</span>
-          <a href="https://github.com/charmlynn" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
-            github.com/charmlynn
-          </a>
+    <!-- Software Philosophy -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>工程信条</span>
+      </div>
+      <div class="space-y-5 text-[15.5px] leading-[1.78]" style="color: var(--ink-secondary);">
+        <div>
+          <h2 class="text-[15.5px] font-semibold mb-1" style="color: var(--ink);">数据主权与本地优先（Local-first）</h2>
+          <p>
+            真正重要的思考与笔记不该被锁在任何一家 SaaS 厂商的私有云表里。纯文本 Markdown、开放目录结构与零遥测设计，才能保证个人知识库跨越工具周期。
+          </p>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-stone-400 w-16">Email:</span>
-          <a href="mailto:flvictory@gmail.com" class="text-stone-700 hover:underline">
-            flvictory@gmail.com
-          </a>
+
+        <div>
+          <h2 class="text-[15.5px] font-semibold mb-1" style="color: var(--ink);">克制胜过堆砌</h2>
+          <p>
+            好的工具应当在你需要的那一秒出现，并在完成动作后立刻隐入背景，抹平工作流里的细碎摩擦，而不是制造新的信息噪音。
+          </p>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-stone-400 w-16">RSS:</span>
-          <a href="/rss.xml" class="text-stone-700 hover:underline">
-            /rss.xml
-          </a>
+
+        <div>
+          <h2 class="text-[15.5px] font-semibold mb-1" style="color: var(--ink);">确定性与智能体协同</h2>
+          <p>
+            确定性的工程代码负责边界、存储与安全；非确定性的大模型负责推理、归纳与探索。厘清两者的分工，才能做出真正可靠的 AI 软件。
+          </p>
         </div>
       </div>
-    </div>
+    </section>
+
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
+
+    <!-- Contact -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>联系交流</span>
+      </div>
+      <div class="space-y-3 text-[15px]">
+        <p class="text-[15px] mb-4" style="color: var(--ink-secondary);">
+          欢迎就 AI 工具设计、本地优先软件或技术话题随时来信交流：
+        </p>
+
+        <div class="space-y-2.5 font-tabular text-[13.5px]">
+          <div class="flex items-center gap-3">
+            <span class="w-20 shrink-0" style="color: var(--ink-faint);">GitHub</span>
+            <a
+              href="https://github.com/charmlynn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-inline inline-flex items-center gap-1"
+            >
+              <span>github.com/charmlynn</span>
+              <span class="arrow-step-ne text-[11px]">↗</span>
+            </a>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-20 shrink-0" style="color: var(--ink-faint);">Email</span>
+            <a href="mailto:flvictory@gmail.com" class="link-inline">
+              flvictory@gmail.com
+            </a>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-20 shrink-0" style="color: var(--ink-faint);">RSS</span>
+            <a href="/rss.xml" class="link-inline">
+              charmlynn.github.io/rss.xml
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>

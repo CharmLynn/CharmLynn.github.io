@@ -1,57 +1,180 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { getReadingTime, formatMonthDay } from '../utils/readingTime';
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = Array.from(new Set(posts.flatMap((p) => p.data.tags)));
+
+// Group posts by year for Swiss editorial index
+const postsByYear = posts.reduce<Record<string, typeof posts>>((acc, post) => {
+  const year = String(post.data.pubDate.getFullYear());
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {});
+const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
 ---
 
 <Layout
-  title="文章与思考 - 庄谷 (charmlynn)"
-  description="庄谷 (charmlynn) 关于 AI、Local-first 架构与独立开发的技术随笔。"
+  title="文章与思考 — 庄谷 (charmlynn)"
+  description="庄谷 (charmlynn) 关于 AI 应用、Context 工程、Local-first 软件架构与独立开发的思考。"
 >
-  <div class="space-y-8">
-    <div class="space-y-2 border-b border-stone-200/80 pb-4">
-      <h1 class="text-2xl font-semibold tracking-tight text-stone-900">文章与思考</h1>
-      <p class="text-stone-600 text-sm leading-relaxed">
-        记录在 AI 时代关于软件工程、本地优先（Local-first）设计与自研工具开发的技术随笔。
-      </p>
-    </div>
+  <div class="space-y-12">
+    <!-- Page Header -->
+    <section class="monograph-section">
+      <div class="rail-label">
+        <span>写作目录</span>
+      </div>
+      <div class="space-y-4">
+        <h1 class="font-editorial text-[26px] sm:text-[28px] font-semibold tracking-tight leading-tight" style="color: var(--ink);">
+          文章与思考
+        </h1>
+        <p class="text-[15.5px] leading-relaxed" style="color: var(--ink-secondary);">
+          聚焦大模型时代的软件形态、本地优先（Local-first）知识流与独立工程实践。
+        </p>
 
-    <!-- 博客文章列表 -->
-    <div class="space-y-8">
-      {posts.map((post) => (
-        <article class="space-y-1.5 group">
-          <div class="flex items-center justify-between text-xs text-stone-400 font-mono">
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-            </time>
-            <div class="flex items-center gap-2">
-              {post.data.tags.map((tag: string) => (
-                <span class="text-stone-400">#{tag}</span>
-              ))}
-            </div>
+        <!-- Interactive Tag Filter Bar -->
+        <div class="flex flex-wrap items-center gap-1.5 pt-1" role="tablist" aria-label="按主题筛选文章">
+          <button
+            type="button"
+            data-tag-filter="all"
+            aria-selected="true"
+            class="tag-pill px-2.5 py-1 rounded-md text-[13px] cursor-pointer transition-colors"
+          >
+            全部 ({posts.length})
+          </button>
+          {allTags.map((tag) => (
+            <button
+              type="button"
+              data-tag-filter={tag}
+              aria-selected="false"
+              class="tag-pill px-2.5 py-1 rounded-md text-[13px] font-tabular cursor-pointer transition-colors"
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
+
+    <!-- Year-grouped Chronological Index -->
+    <div class="space-y-12" id="blog-year-groups">
+      {years.map((year) => (
+        <section class="monograph-section year-group">
+          <div class="rail-label font-tabular text-[14px]" style="color: var(--ink-muted);">
+            <span>{year}</span>
           </div>
 
-          <h2 class="text-base sm:text-lg font-medium text-stone-900 group-hover:text-blue-600 transition-colors">
-            <a href={`/blog/${post.id}/`}>
-              {post.data.title}
-            </a>
-          </h2>
+          <div class="spotlight-list space-y-5">
+            {postsByYear[year].map((post) => {
+              const mins = getReadingTime(post.body || '');
+              return (
+                <article
+                  class="spotlight-item ledger-row post-entry group"
+                  data-tags={post.data.tags.join(',')}
+                >
+                  <a
+                    href={`/blog/${post.id}/`}
+                    class="block rounded-lg -mx-3 px-3 py-2.5 transition-colors hover:bg-[var(--bg-subtle)]/65"
+                  >
+                    <div class="flex items-baseline justify-between gap-6">
+                      <h2 class="text-[16.5px] font-medium tracking-tight leading-snug group-hover:text-[var(--accent)] transition-colors" style="color: var(--ink);">
+                        {post.data.title}
+                      </h2>
+                      <time
+                        datetime={post.data.pubDate.toISOString()}
+                        class="font-tabular text-[12.5px] shrink-0"
+                        style="color: var(--ink-muted);"
+                      >
+                        {formatMonthDay(post.data.pubDate)}
+                      </time>
+                    </div>
 
-          <p class="text-sm text-stone-600 leading-relaxed">
-            {post.data.description}
-          </p>
-        </article>
+                    <p class="text-[14.5px] leading-relaxed mt-1.5" style="color: var(--ink-secondary);">
+                      {post.data.description}
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-2 text-[12.5px] font-tabular" style="color: var(--ink-faint);">
+                      <span class="whitespace-nowrap">{mins} min read</span>
+                      <span>·</span>
+                      <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        {post.data.tags.map((t: string) => (
+                          <span class="whitespace-nowrap">#{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </section>
       ))}
     </div>
 
-    <!-- 历史归档入口 -->
-    <div class="pt-6 border-t border-stone-200/80 text-xs text-stone-500 flex items-center justify-between">
-      <span>旧版博客（2018 年技术文章）已移出主列表。</span>
-      <a href="/archive" class="text-stone-700 hover:text-blue-600 underline underline-offset-2">
-        查看 2018 历史技术归档 →
-      </a>
-    </div>
+    <hr class="border-0 border-t" style="border-color: var(--border-hairline);" />
+
+    <!-- 2018 Archive Colophon Row -->
+    <section class="monograph-section">
+      <div class="rail-label font-tabular">
+        <span>2018</span>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[14px]" style="color: var(--ink-muted);">
+        <span>早期关于数据仓库、Spark 流计算与后端研发的 8 篇旧文已移出主列表并独立封存。</span>
+        <a href="/archive" class="link-inline shrink-0 inline-flex items-center gap-1 text-[13.5px]">
+          <span>查阅历史归档</span>
+          <span class="arrow-step">→</span>
+        </a>
+      </div>
+    </section>
   </div>
+
+  <style>
+    .tag-pill {
+      background: transparent;
+      color: var(--ink-muted);
+      border: 1px solid var(--border-hairline);
+    }
+    .tag-pill:hover {
+      color: var(--ink);
+      border-color: var(--border-strong);
+    }
+    .tag-pill[aria-selected="true"] {
+      background: var(--ink);
+      color: var(--bg-canvas);
+      border-color: var(--ink);
+      font-weight: 500;
+    }
+  </style>
+
+  <script is:inline>
+    (() => {
+      const buttons = Array.from(document.querySelectorAll('[data-tag-filter]'));
+      const entries = Array.from(document.querySelectorAll('.post-entry'));
+      const groups = Array.from(document.querySelectorAll('.year-group'));
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const selected = btn.getAttribute('data-tag-filter') || 'all';
+          buttons.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+
+          entries.forEach((entry) => {
+            const tags = (entry.getAttribute('data-tags') || '').split(',');
+            const show = selected === 'all' || tags.includes(selected);
+            entry.classList.toggle('hidden', !show);
+          });
+
+          groups.forEach((group) => {
+            const visibleCount = group.querySelectorAll('.post-entry:not(.hidden)').length;
+            group.classList.toggle('hidden', visibleCount === 0);
+          });
+        });
+      });
+    })();
+  </script>
 </Layout>
