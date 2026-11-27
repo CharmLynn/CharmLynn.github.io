@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SaveAnswer 2.0 - 一键保存 AI 回答，打造本地知识库与 Cursor MCP 记忆 | Local-First AI Knowledge Hub &amp; MCP Memory</title>
-  <meta name="description" content="SaveAnswer 2.0 是一个 100% 本地优先的 AI 知识工作台 Chrome/Edge 扩展：支持 ChatGPT、Claude、DeepSeek、Gemini、Grok、通义千问、Kimi、豆包 8 个平台。支持 Alt+S 盲存、Alt+K 原地召回、Copy as Prompt 跨模型接力、回原位 2.0 高亮、Obsidian 直写与零配置 Agent MCP。">
-  <meta property="og:title" content="SaveAnswer 2.0 — Local-First AI Knowledge Hub &amp; MCP Memory">
-  <meta property="og:description" content="Save answers across 8 AI platforms into a 3-column local workspace. Recall inside any chat (Alt+K), copy as cross-model prompts, sync Markdown + INDEX.md to Obsidian, and mount as local MCP memory for Cursor. 100% free.">
+  <title>SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库 | Save the AI answers you'll reuse</title>
+  <meta name="description" content="SaveAnswer 是一个本地优先的 AI 回答收藏与知识库 Chrome/Edge 扩展：支持 ChatGPT、Claude、DeepSeek、Gemini、通义千问、Grok、豆包、Kimi 8 个平台。一键保存 AI 回答，420px 弹窗敏捷秒查，三栏桌面工作台深度查看，直写本地 Obsidian 并支持一键接入 Cursor MCP。">
+  <meta property="og:title" content="SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库">
+  <meta property="og:description" content="One-click save across ChatGPT, Claude, DeepSeek and 5 more platforms. Search saved answers in a 420px popup, read in a 3-column desktop workspace, sync to Obsidian, and plug into Cursor via MCP. 100% local-first.">
   <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/workspace-preview.png">
   <link rel="icon" href="assets/icon.png">
-  <link rel="stylesheet" href="style.css?v=2.0.0">
-  <meta name="sa-title" data-title-zh="SaveAnswer 2.0 - 本地优先 AI 知识工作台与 Agent MCP 记忆库" data-title-en="SaveAnswer 2.0 — Local-First AI Knowledge Hub &amp; MCP Memory">
+  <link rel="stylesheet" href="style.css?v=2.0.1">
+  <meta name="sa-title" data-title-zh="SaveAnswer - 一键保存 AI 回答，建立你的本地私域知识库" data-title-en="SaveAnswer - Save the AI answers you'll reuse">
 </head>
 <body>
   <!-- Floating Glassmorphism Nav -->
@@ -22,10 +22,11 @@
         <span class="brand-badge">v2.0</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
-        <a class="hide-sm" href="#features"><span data-lang="zh">核心工作流</span><span data-lang="en">Workflow</span></a>
-        <a class="hide-sm" href="#showcase"><span data-lang="zh">2.0 新特性</span><span data-lang="en">What's New</span></a>
-        <a class="hide-sm" href="#video"><span data-lang="zh">38 秒演示</span><span data-lang="en">Demo</span></a>
-        <a class="hide-sm" href="#compare"><span data-lang="zh">方案对比</span><span data-lang="en">Compare</span></a>
+        <a class="hide-sm" href="#features"><span data-lang="zh">核心特性</span><span data-lang="en">Features</span></a>
+        <a class="hide-sm" href="#workspace"><span data-lang="zh">工作台查看</span><span data-lang="en">Workspace</span></a>
+        <a class="hide-sm" href="#mcp"><span data-lang="zh">MCP 联动</span><span data-lang="en">Agent MCP</span></a>
+        <a class="hide-sm" href="#video"><span data-lang="zh">实机演示</span><span data-lang="en">Demo</span></a>
+        <a class="hide-sm" href="#compare"><span data-lang="zh">方案对比</span><span data-lang="en">Why SaveAnswer</span></a>
         <a class="hide-sm" href="#faq"><span data-lang="zh">常见问题</span><span data-lang="en">FAQ</span></a>
       </nav>
       <div class="nav-actions">
@@ -42,22 +43,22 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section: Grounded in Core Save & Read Value, Exact Original Title -->
     <section class="hero" id="top">
       <div class="wrap">
         <div class="hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">
-              <span data-lang="zh">SaveAnswer 2.0 · Chrome &amp; Edge · 100% 本地优先</span>
-              <span data-lang="en">SaveAnswer 2.0 · Chrome &amp; Edge · 100% Local-First</span>
+              <span data-lang="zh">Chrome &amp; Edge 扩展 · 本地优先</span>
+              <span data-lang="en">Chrome &amp; Edge extension · Local-first</span>
             </p>
             <h1>
-              <span data-lang="zh">把 8 个平台的 AI 回答，<br>变成你的本地知识库与 MCP 记忆。</span>
-              <span data-lang="en">Turn AI chats into a local-first knowledge hub &amp; MCP memory.</span>
+              <span data-lang="zh">把 AI 的回答，<br>变成你自己的知识库。</span>
+              <span data-lang="en">Turn AI answers into a library you own.</span>
             </h1>
             <p class="lead">
-              <span data-lang="zh">按 Alt+S 秒存精彩回答，Alt+K 在任意输入框原地召回，Copy as Prompt 跨模型接力。Markdown + INDEX.md 直写本地 Obsidian 目录，一键挂载为 Cursor 与 Claude Code 的本地 MCP 记忆。无账号、无云端、永久免费。</span>
-              <span data-lang="en">Save any reply across 8 AI platforms with Alt+S, recall notes inside any chat with Alt+K, and relay context with Copy as Prompt. Sync Markdown + INDEX.md straight to Obsidian and mount as local MCP memory for Cursor &amp; Claude Code. Zero servers, free forever.</span>
+              <span data-lang="zh">在 8 个平台的对话里点一下保存。420px 弹窗秒查，整页工作台深读，Markdown 直接落进你的本地文件夹。不注册账号，不上传云端。</span>
+              <span data-lang="en">Save any reply from ChatGPT, Claude, DeepSeek and five more. Search it in a 420px popup, read it full screen, and keep it as Markdown in your own folder. No account, no server.</span>
             </p>
             <div class="hero-actions">
               <a class="btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
@@ -71,35 +72,29 @@
               </a>
               <a class="btn-quiet" href="#video">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5 15.5 12 10 15.5Z" fill="currentColor" stroke="none"/></svg>
-                <span data-lang="zh">看 38 秒 2.0 演示</span>
-                <span data-lang="en">Watch 38s 2.0 demo</span>
+                <span data-lang="zh">看 38 秒演示</span>
+                <span data-lang="en">Watch the 38-second demo</span>
               </a>
-            </div>
-            <div class="v2-shortcuts-strip">
-              <span class="v2-kbd-pill"><kbd>Alt+S</kbd> <span data-lang="zh">盲存最新回答</span><span data-lang="en">Save Latest</span></span>
-              <span class="v2-kbd-pill"><kbd>Alt+W</kbd> <span data-lang="zh">唤出三栏工作台</span><span data-lang="en">Open Workspace</span></span>
-              <span class="v2-kbd-pill"><kbd>Alt+K</kbd> <span data-lang="zh">聊天框原地召回</span><span data-lang="en">In-Chat Recall</span></span>
-              <span class="v2-kbd-pill"><kbd>sa </kbd> <span data-lang="zh">地址栏全局秒搜</span><span data-lang="en">Omnibox Search</span></span>
             </div>
           </div>
 
           <div class="hero-card" aria-hidden="true">
             <div class="hc-top">
-              <span class="hc-brand"><i></i>DeepSeek-R1</span>
-              <span class="hc-model">Agent MCP Ready</span>
+              <span class="hc-brand"><i></i>ChatGPT</span>
+              <span class="hc-model">GPT-4o</span>
             </div>
-            <p class="hc-q">Design a zero-backend MCP memory bridge for local AI chat archives</p>
-            <p class="hc-a">Write atomic Markdown + <code>INDEX.md</code> to disk, then mount <code>@modelcontextprotocol/server-filesystem</code> straight into Cursor.</p>
+            <p class="hc-q">Why does Node.js RSS spike to 4 GB when streaming CSV to slow clients?</p>
+            <p class="hc-a">Pipe through <code>stream/promises.pipeline</code> so backpressure pauses the row generator instead of buffering it in the heap.</p>
             <div class="hc-actions">
-              <span class="hc-btn">Copy Prompt</span>
+              <span class="hc-btn">Copy</span>
               <span class="hc-btn hc-btn-brand">
                 <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-                Save · Alt+S
+                Save
               </span>
             </div>
             <div class="hc-toast">
               <span class="hc-check">✓</span>
-              <span>Auto-tagged · #mcp · #cursor</span>
+              <span>Round 1 → 2 · #NodeJS · #Architecture</span>
               <em>~/Obsidian/SaveAnswer</em>
             </div>
           </div>
@@ -119,18 +114,18 @@
       </div>
     </section>
 
-    <!-- Core Workflow Surfaces -->
+    <!-- Core Surfaces: Save Answers -> Look Up & View Answers -> Keep as Local Markdown -->
     <section class="surfaces" id="features">
       <div class="wrap">
         <header class="section-head">
-          <p class="eyebrow"><span data-lang="zh">核心工作流</span><span data-lang="en">How SaveAnswer 2.0 works</span></p>
+          <p class="eyebrow"><span data-lang="zh">怎么用</span><span data-lang="en">How it works</span></p>
           <h2>
-            <span data-lang="zh">从一键采集，到跨模型复用与 Agent 记忆。</span>
-            <span data-lang="en">From 1-click capture to cross-model relay &amp; Agent memory.</span>
+            <span data-lang="zh">三个小入口，一个知识库。</span>
+            <span data-lang="en">Three small surfaces, one library.</span>
           </h2>
           <p class="section-lead">
-            <span data-lang="zh">不打断你的对话节奏，把散落在 8 个平台的优质问答收束到本地工作台，再喂给下一个模型或编程助手。</span>
-            <span data-lang="en">Keep your best replies across 8 platforms in one local workspace, recall them in any chat, and plug them directly into Obsidian and Cursor.</span>
+            <span data-lang="zh">对话里存一下，弹窗里查一下，文件落进自己的硬盘。每一步都短，不打断你手上的事。</span>
+            <span data-lang="en">Save inside the reply, look it up in the popup, keep it on your own disk. Each step is short and stays out of the way.</span>
           </p>
         </header>
 
@@ -140,29 +135,29 @@
               <div class="frag-multi">
                 <div class="fm-row">
                   <span class="fm-src"><i class="fm-dot"></i>ChatGPT</span>
-                  <span class="fm-q">React useEventCallback hook</span>
-                  <span class="fm-save">Alt+S</span>
+                  <span class="fm-q">Why does RSS spike to 4 GB?</span>
+                  <span class="fm-save">Save</span>
                 </div>
                 <div class="fm-row">
                   <span class="fm-src"><i class="fm-dot d-claude"></i>Claude</span>
-                  <span class="fm-q">SQLite WAL production pragmas</span>
+                  <span class="fm-q">Compare CRDT and OT merging</span>
                   <span class="fm-save">Save</span>
                 </div>
                 <div class="fm-row">
                   <span class="fm-src"><i class="fm-dot d-deepseek"></i>DeepSeek</span>
-                  <span class="fm-q">Zero-backend MCP memory</span>
+                  <span class="fm-q">HNSW ef_search tuning</span>
                   <span class="fm-save">Save</span>
                 </div>
                 <div class="fm-more">
-                  <span data-lang="zh">+ Gemini · 通义千问 · Grok · 豆包 · Kimi · 划词保存</span>
-                  <span data-lang="en">+ Gemini · Qwen · Grok · Doubao · Kimi · Highlight-to-Save</span>
+                  <span data-lang="zh">+ Gemini · 通义千问 · Grok · 豆包 · Kimi</span>
+                  <span data-lang="en">+ Gemini · Qwen · Grok · Doubao · Kimi</span>
                 </div>
               </div>
             </div>
             <div class="surface-body">
-              <p class="surface-index">01 — <span data-lang="zh">极速采集</span><span data-lang="en">Capture</span></p>
-              <h3><span data-lang="zh">8 个平台，键盘盲存与划词摘录</span><span data-lang="en">Eight platforms, zero-friction capture</span></h3>
-              <p><span data-lang="zh">按 Alt+S 盲存最新回答、Alt+点击静默自动打标、支持划词仅存关键代码段，多轮追问（Round 1 → 2）一键合并。</span><span data-lang="en">Hit Alt+S to save the latest reply, Alt+Click for auto-tagged silent capture, highlight key excerpts, or bundle multi-turn follow-ups in one card.</span></p>
+              <p class="surface-index">01 — <span data-lang="zh">收藏答案</span><span data-lang="en">Capture</span></p>
+              <h3><span data-lang="zh">8 个平台，同一个保存按钮</span><span data-lang="en">One Save button, eight platforms</span></h3>
+              <p><span data-lang="zh">在每条 AI 回答下方点一下即可收藏（也支持 Alt+S 快捷键与选中文字划词保存），多轮追问一样能串成完整一条。</span><span data-lang="en">Click Save beneath any AI reply (or press Alt+S / highlight key excerpts). Multi-turn follow-ups stay bundled together in one clean note.</span></p>
             </div>
           </article>
 
@@ -170,134 +165,156 @@
             <div class="surface-frag">
               <div class="frag-popup">
                 <div class="frag-popup-head">
-                  <span>▮ Quick Recall · Alt+K <em>184</em></span>
+                  <span>▮ SaveAnswer <em>128</em></span>
                   <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </div>
-                <div class="frag-popup-search">sqlite wal pragmas…</div>
+                <div class="frag-popup-search">Search answers…</div>
                 <div class="frag-popup-item is-active">
-                  <span class="frag-src">DeepSeek</span>
-                  <b>SQLite WAL mode production pragmas ↵</b>
+                  <span class="frag-src">ChatGPT</span>
+                  <b>Why is Node.js RSS spiking?</b>
                 </div>
                 <div class="frag-popup-item">
-                  <span class="frag-src frag-src-blue">Copy Prompt</span>
-                  <b>Bundle 3 answers across models →</b>
+                  <span class="frag-src frag-src-blue">DeepSeek</span>
+                  <b>pgvector HNSW memory tuning</b>
                 </div>
               </div>
             </div>
             <div class="surface-body">
-              <p class="surface-index">02 — <span data-lang="zh">召回与接力</span><span data-lang="en">Recall &amp; Relay</span></p>
-              <h3><span data-lang="zh">Alt+K 原地召回 &amp; 跨模型接力</span><span data-lang="en">In-Chat Recall &amp; Copy as Prompt</span></h3>
-              <p><span data-lang="zh">在任意 AI 输入框按 Alt+K 插入历史经验；地址栏输入 sa 秒搜；点击回原位 2.0 精准滚动高亮原消息；多选一键 Copy as Prompt。</span><span data-lang="en">Press Alt+K inside any chat box to insert saved notes, type "sa " in the address bar, jump straight back to exact messages, or batch Copy as Prompt.</span></p>
+              <p class="surface-index">02 — <span data-lang="zh">随时查看</span><span data-lang="en">Lookup</span></p>
+              <h3><span data-lang="zh">420px 弹窗秒查答案</span><span data-lang="en">The 420px quick-view popup</span></h3>
+              <p><span data-lang="zh">在任意标签页点一下图标就能查看收藏：全文搜索、按模型与标签筛选、代码块一键复制，还能精准滚回原对话那条消息。</span><span data-lang="en">Open it from any tab to search and read saved answers: full-text search, platform &amp; tag filters, clean code copy, and 1-click jump-back to the exact message.</span></p>
             </div>
           </article>
 
           <article class="surface">
             <div class="surface-frag">
-              <div class="frag-md"><span class="n-key">"mcpServers"</span>: {
- <span class="n-key">"saveanswer-vault"</span>: {
-  <span class="n-key">"command"</span>: <span class="n-str">"npx"</span>,
-  <span class="n-key">"args"</span>: [<span class="n-str">"-y"</span>,
-   <span class="n-str">"@modelcontextprotocol/server-filesystem"</span>,
-   <span class="n-str">"~/Obsidian/SaveAnswer"</span>]
- }
-}</div>
+              <div class="frag-md"><span class="n-key">---</span>
+<span class="n-key">title</span>: <span class="n-str">"How do CRDTs converge?"</span>
+<span class="n-key">source</span>: <span class="n-val">ChatGPT</span>
+<span class="n-key">tags</span>: <span class="n-val">[architecture, dist]</span>
+<span class="n-key">---</span>
+
+<span class="n-com">## Answer</span>
+State-based CRDTs converge because the
+merge operator is commutative…</div>
             </div>
             <div class="surface-body">
-              <p class="surface-index">03 — <span data-lang="zh">本地 Vault 与 MCP</span><span data-lang="en">Vault &amp; MCP</span></p>
-              <h3><span data-lang="zh">Obsidian 直写 &amp; 零开发 Agent MCP</span><span data-lang="en">Obsidian Sync &amp; Instant MCP Memory</span></h3>
-              <p><span data-lang="zh">Markdown + YAML + INDEX.md 直写硬盘，内置 Agent MCP 配置生成器，10 秒挂载给 Cursor、Claude Code 与 Claude Desktop。</span><span data-lang="en">Write idempotent Markdown + YAML + INDEX.md directly to disk, then copy our 1-click MCP JSON to mount your vault into Cursor or Claude Code.</span></p>
+              <p class="surface-index">03 — <span data-lang="zh">本地沉淀</span><span data-lang="en">Keep</span></p>
+              <h3><span data-lang="zh">一个普通的 .md 文件</span><span data-lang="en">One ordinary .md file</span></h3>
+              <p><span data-lang="zh">带 YAML 元数据与自动索引 INDEX.md 写进你自己的本地目录。无论是自己用 Obsidian 查看，还是交给本地工具读取都毫无门槛。</span><span data-lang="en">Written with YAML frontmatter and an auto-maintained INDEX.md into your own local folder—ready for Obsidian or any local tool.</span></p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SaveAnswer 2.0 Visual Showcase Gallery -->
-    <section class="v2-showcase" id="showcase">
+    <!-- Full-Page Workspace Band: Deep Answer Reading & Organization -->
+    <section class="band" id="workspace">
+      <div class="wrap">
+        <div class="band-head">
+          <div>
+            <p class="eyebrow"><span data-lang="zh">整页工作台 · 深度查看</span><span data-lang="en">The workspace</span></p>
+            <h2>
+              <span data-lang="zh">需要细读时，展开成整页。</span>
+              <span data-lang="en">When a popup isn't enough.</span>
+            </h2>
+          </div>
+          <p>
+            <span data-lang="zh">三栏布局：左边按平台与标签分类，中间全文检索，右边宽屏看正文。舒适/紧凑双视图、代码语法高亮、思考链默认折叠、原文精准定位与纯净长图导出都在这里。弹窗右上角（或按 Alt+W）一键展开。</span>
+            <span data-lang="en">Categories on the left, full-text search in the middle, wide reading on the right. Comfortable &amp; compact views, syntax highlighting, folded reasoning chains, message-level jump-back, and share cards all live here — one click (or Alt+W) from the popup.</span>
+          </p>
+        </div>
+      </div>
+      <div class="band-visual">
+        <img src="assets/workspace-preview.png" width="2400" height="1500" loading="lazy"
+             alt="SaveAnswer 3-column full-tab workspace for browsing, searching and reading saved AI answers">
+      </div>
+    </section>
+
+    <!-- Dedicated New Module: Agent MCP & Cross-Chat Reuse -->
+    <section class="mcp-section" id="mcp">
       <div class="wrap">
         <header class="section-head">
-          <p class="eyebrow"><span data-lang="zh">SaveAnswer 2.0 实景一览</span><span data-lang="en">Inside SaveAnswer 2.0</span></p>
+          <p class="eyebrow"><span data-lang="zh">进阶能力 · Agent MCP 与跨对话复用</span><span data-lang="en">Agent MCP &amp; Cross-Chat Reuse</span></p>
           <h2>
-            <span data-lang="zh">从轻量收藏弹窗，进化为本地 AI 知识中枢。</span>
-            <span data-lang="en">Rebuilt into a desktop-grade local AI knowledge workspace.</span>
+            <span data-lang="zh">存下来的好答案，也能直接接进 Cursor。</span>
+            <span data-lang="en">Plug your saved library straight into Cursor.</span>
           </h2>
           <p class="section-lead">
-            <span data-lang="zh">每一项能力都在本地真实运行：三栏阅读、Obsidian &amp; MCP 联动、跨模型接力、回原位 2.0 高亮、以及无上限本地存储与安全归档。</span>
-            <span data-lang="en">Every feature runs 100% locally in your browser and on your disk—from the 3-column workspace and MCP bridge to Jump-Back 2.0 and safe archive backups.</span>
+            <span data-lang="zh">除了随时自己翻阅，你收藏在本地文件夹里的每一条回答，还可以零配置挂载给编程助手，或在新的 AI 对话里一键调出。</span>
+            <span data-lang="en">Beyond reading answers yourself, every note saved to your local folder can be mounted as local MCP context for coding agents or recalled inside your next AI chat.</span>
           </p>
         </header>
 
-        <div class="v2-showcase-grid">
-          <article class="v2-shot-card is-wide">
-            <img src="assets/v2/01_hero_workspace.png" width="2540" height="1520" loading="lazy"
-                 alt="SaveAnswer 2.0 3-column desktop workspace across 8 AI platforms">
-            <div class="v2-shot-meta">
-              <span class="v2-shot-kicker"><span data-lang="zh">三栏全屏桌面工作台 · Alt+W</span><span data-lang="en">3-Column Desktop Workspace · Alt+W</span></span>
-              <h3><span data-lang="zh">舒适 / 紧凑双密度视图，8 大 AI 平台统一管理</span><span data-lang="en">Comfortable &amp; Compact density across 8 AI platforms</span></h3>
-              <p><span data-lang="zh">左侧按平台、标签、Obsidian 同步状态与 Quick Launch 一键筛选，中间高效扫描，右侧宽屏阅读、内联编辑、代码复制与思考链折叠。</span><span data-lang="en">Filter by platform, tags, or Obsidian sync state on the left; scan in comfortable or compact density in the center; read, edit, and copy prompts on the right.</span></p>
+        <div class="mcp-grid">
+          <article class="mcp-card">
+            <div class="mcp-card-frag">
+              <div class="mcp-code-box"><div class="mcp-code-head"><span>~/.cursor/mcp.json</span><span class="mcp-code-badge">✓ Zero Backend</span></div><span class="n-key">"mcpServers"</span>: {
+  <span class="n-key">"saveanswer-vault"</span>: {
+    <span class="n-key">"command"</span>: <span class="n-str">"npx"</span>,
+    <span class="n-key">"args"</span>: [
+      <span class="n-str">"-y"</span>, <span class="n-str">"@modelcontextprotocol/server-filesystem"</span>,
+      <span class="n-str">"~/Obsidian/SaveAnswer"</span>
+    ]
+  }
+}</div>
+            </div>
+            <div class="mcp-card-body">
+              <p class="surface-index">MCP — <span data-lang="zh">零服务挂载</span><span data-lang="en">Local Agent Memory</span></p>
+              <h3><span data-lang="zh">10 秒接入 Cursor、Claude Code 与 Claude Desktop</span><span data-lang="en">1-click MCP config for Cursor &amp; Claude Code</span></h3>
+              <p><span data-lang="zh">点击工作台右上角「Agent MCP」，填入你的本地同步目录即可一键复制标准 MCP 配置。无需搭建后台服务、无需 API Key，写代码时直接让 Agent 查阅你收藏过的排错经验与架构方案。</span><span data-lang="en">Click <b>Agent MCP</b> in the workspace header to generate a ready-to-paste filesystem MCP config pointing to your local Markdown folder + <code>INDEX.md</code>. No daemon, no cloud sync, no API keys.</span></p>
             </div>
           </article>
 
-          <article class="v2-shot-card is-wide" id="mcp">
-            <img src="assets/v2/02_mcp_obsidian_memory.png" width="2540" height="1520" loading="lazy"
-                 alt="SaveAnswer 2.0 Direct Obsidian Vault Sync and Zero-Dev Agent MCP integration for Cursor">
-            <div class="v2-shot-meta">
-              <span class="v2-shot-kicker"><span data-lang="zh">Obsidian 本地同步 + Zero-Dev Agent MCP</span><span data-lang="en">Obsidian Vault Sync + Zero-Dev Agent MCP</span></span>
-              <h3><span data-lang="zh">把浏览器里攒的 AI 问答，10 秒变成 Cursor / Claude Code 的本地记忆</span><span data-lang="en">Turn browser AI answers into instant MCP memory for Cursor &amp; Claude Code</span></h3>
-              <p><span data-lang="zh">通过 File System Access API 幂等直写 Markdown 与自动目录索引 INDEX.md，点击右上角 Agent MCP 一键复制标准 JSON 配置，零后台服务、零 API Key。</span><span data-lang="en">Sync clean Markdown notes + INDEX.md directly to your folder, then copy our ready-made @modelcontextprotocol/server-filesystem JSON—zero backend daemon, zero API keys.</span></p>
+          <article class="mcp-card">
+            <div class="mcp-card-frag">
+              <div class="mcp-recall-box">
+                <div class="mcp-recall-top">
+                  <span>▮ <span data-lang="zh">聊天框原地召回</span><span data-lang="en">In-Chat Quick Recall</span></span>
+                  <kbd>Alt+K</kbd>
+                </div>
+                <div class="mcp-recall-item">
+                  <span><b>ChatGPT ·</b> Node.js stream backpressure fix</span>
+                  <em><span data-lang="zh">回车插入 ↵</span><span data-lang="en">Insert ↵</span></em>
+                </div>
+                <div class="mcp-recall-item">
+                  <span><b>DeepSeek ·</b> SQLite WAL production pragmas</span>
+                  <em>Copy as Prompt</em>
+                </div>
+                <div class="mcp-kbd-row">
+                  <span class="mcp-kbd-chip"><kbd>Alt+S</kbd> <span data-lang="zh">快捷保存</span><span data-lang="en">Quick Save</span></span>
+                  <span class="mcp-kbd-chip"><kbd>Alt+W</kbd> <span data-lang="zh">打开工作台</span><span data-lang="en">Workspace</span></span>
+                  <span class="mcp-kbd-chip"><kbd>sa </kbd> <span data-lang="zh">地址栏搜答案</span><span data-lang="en">Address Bar Search</span></span>
+                </div>
+              </div>
             </div>
-          </article>
-
-          <article class="v2-shot-card">
-            <img src="assets/v2/03_cross_model_relay.png" width="2540" height="1520" loading="lazy"
-                 alt="Keyboard shortcuts Alt+S, Alt+W, Alt+K and Batch Copy as Prompt">
-            <div class="v2-shot-meta">
-              <span class="v2-shot-kicker"><span data-lang="zh">跨模型接力 · Alt+S / Alt+K</span><span data-lang="en">Cross-Model Relay · Alt+S / Alt+K</span></span>
-              <h3><span data-lang="zh">单条与批量 Copy as Prompt</span><span data-lang="en">Synthesize multi-model prompts in 1 click</span></h3>
-              <p><span data-lang="zh">勾选来自不同模型的精选回答，一键拼装为干净的结构化上下文 Prompt，无缝粘贴给下一个 AI 继续深入。</span><span data-lang="en">Select curated answers from ChatGPT, Claude, and DeepSeek and copy a structured context block ready for your next model.</span></p>
-            </div>
-          </article>
-
-          <article class="v2-shot-card">
-            <img src="assets/v2/04_precision_craft.png" width="2540" height="1520" loading="lazy"
-                 alt="Jump-Back 2.0 Scroll and Highlight, DeepSeek think folding, and 4-theme Share Cards">
-            <div class="v2-shot-meta">
-              <span class="v2-shot-kicker"><span data-lang="zh">回原位 2.0 · 细节打磨</span><span data-lang="en">Jump-Back 2.0 · Precision Ergonomics</span></span>
-              <h3><span data-lang="zh">精准滚动定位高亮、思考链折叠与纯净分享卡</span><span data-lang="en">Message-level Jump-Back, &lt;think&gt; folding &amp; PNG cards</span></h3>
-              <p><span data-lang="zh">点击「查看原对话」不仅打开页面，还会自动滚动到那一条回答并触发森林绿微光高亮；DeepSeek 推理过程默认折叠，支持导出 4 套主题高清分享长图。</span><span data-lang="en">Reopen original threads and scroll straight to the exact message with an emerald glow, collapse DeepSeek reasoning chains, and share 4-theme PNG cards.</span></p>
-            </div>
-          </article>
-
-          <article class="v2-shot-card is-wide">
-            <img src="assets/v2/05_local_first_privacy.png" width="2540" height="1520" loading="lazy"
-                 alt="SaveAnswer 2.0 100% Local-First Privacy Promise and Local Storage Monitor">
-            <div class="v2-shot-meta">
-              <span class="v2-shot-kicker"><span data-lang="zh">100% 本地优先 · 数据主权</span><span data-lang="en">100% Local-First · Data Sovereignty</span></span>
-              <h3><span data-lang="zh">无上限本地存储监控 + 自动安全备份清理</span><span data-lang="en">Unlimited local storage meter &amp; safe archive cleanup</span></h3>
-              <p><span data-lang="zh">内置实时存储容量条、整库 JSON 备份与去重导入、按 30 天 / 90 天安全归档清理（清理前自动强制下载 JSON 安全备份），彻底告别数据焦虑。</span><span data-lang="en">Monitor local usage with unlimitedStorage enabled, export or deduplicated-import full JSON backups, and archive old entries with automatic safety backups.</span></p>
+            <div class="mcp-card-body">
+              <p class="surface-index">RELAY — <span data-lang="zh">原地召回与接力</span><span data-lang="en">In-Chat Recall &amp; Relay</span></p>
+              <h3><span data-lang="zh">在任意聊天框按 Alt+K 调出，或打包喂给下一个 AI</span><span data-lang="en">Recall inside any chat box, or Copy as Prompt</span></h3>
+              <p><span data-lang="zh">提问时不用切窗口翻旧笔记：在任意 AI 输入框内按 Alt+K 就能搜索并插入存过的答案；在工作台勾选多条不同模型的回答，还可一键 Copy as Prompt 继续深度追问。</span><span data-lang="en">Press <b>Alt+K</b> inside any AI input box to search and insert saved notes without leaving your chat, or select multiple answers in the workspace and <b>Copy as Prompt</b> for your next model.</span></p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Video Walkthrough Section (38-Second 1080p 2.0 Demo) -->
+    <!-- Video Walkthrough Section -->
     <section class="video-section" id="video">
       <div class="wrap">
         <div class="section-head">
           <div class="section-head-main">
             <div class="section-badge">
-              <span data-lang="zh">2.0 实机演示</span><span data-lang="en">2.0 Launch Demo</span>
+              <span data-lang="zh">实机演示</span><span data-lang="en">Product Demo</span>
             </div>
             <h2>
-              <span data-lang="zh">38 秒完整体验 SaveAnswer 2.0</span>
-              <span data-lang="en">See SaveAnswer 2.0 in 38 Seconds</span>
+              <span data-lang="zh">38 秒快速了解 SaveAnswer 核心体验</span>
+              <span data-lang="en">Experience SaveAnswer in 38 Seconds</span>
             </h2>
           </div>
           <div class="section-head-desc">
             <p>
-              <span data-lang="zh">完整呈现 Alt+S 秒存、Alt+W 三栏工作台、回原位 2.0 滚动高亮、Alt+K 原地召回、Copy as Prompt 与 Obsidian + Cursor MCP 联动。</span>
-              <span data-lang="en">Watch Alt+S instant save, the 3-column workspace, Jump-Back 2.0 glow highlight, Alt+K In-Chat Recall, Copy as Prompt, and Obsidian + Cursor MCP live.</span>
+              <span data-lang="zh">体验网页一键保存答案、弹窗与三栏桌面工作台查看、回原对话定位，以及本地 Obsidian 与 MCP 联动。</span>
+              <span data-lang="en">Watch 1-click answer saving, popup &amp; 3-column workspace reading, message-level jump-back, and local Obsidian + MCP sync.</span>
             </p>
           </div>
         </div>
@@ -318,17 +335,17 @@
         <div class="section-head">
           <div class="section-head-main">
             <div class="section-badge">
-              <span data-lang="zh">方案对比 · 核心优势</span><span data-lang="en">Why SaveAnswer 2.0</span>
+              <span data-lang="zh">方案对比 · 核心优势</span><span data-lang="en">Why SaveAnswer</span>
             </div>
             <h2>
-              <span data-lang="zh">不是又一个复制粘贴或云端付费插件</span>
-              <span data-lang="en">Not another cloud clipper or copy-paste workaround</span>
+              <span data-lang="zh">不是又一个复制粘贴工具</span>
+              <span data-lang="en">Not another copy-paste tool</span>
             </h2>
           </div>
           <div class="section-head-desc">
             <p>
-              <span data-lang="zh">和手动整理、云端收藏类插件放在一起看，差别在数据最终落在哪、能否被你的编程助手和下一个模型直接复用。</span>
-              <span data-lang="en">Compare SaveAnswer 2.0 against manual copy-pasting and cloud bookmark SaaS tools: own your files on disk and plug them straight into your AI workflow.</span>
+              <span data-lang="zh">和手动整理、云端收藏类插件放在一起看，差别在查起来顺不顺手、数据最终落在哪。</span>
+              <span data-lang="en">Put next to manual copy-pasting and cloud bookmark extensions, the difference is how fast you find answers and where your data lives.</span>
             </p>
           </div>
         </div>
@@ -337,33 +354,33 @@
           <article class="compare-col is-muted">
             <p class="compare-label"><span data-lang="zh">手动复制 / 笔记粘贴</span><span data-lang="en">Manual copy-paste</span></p>
             <ul>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">没有元数据与溯源</span><span data-lang="en">No metadata or jump-back</span></b><span data-lang="zh">来源链接、模型与日期全靠回忆</span><span data-lang="en">Source links, models, and dates lost quickly</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">没有元数据与回跳</span><span data-lang="en">No metadata or jump-back</span></b><span data-lang="zh">文件散落在各处，来源链接和日期靠回忆</span><span data-lang="en">Files scattered around; source and date from memory</span></span></li>
               <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">格式常坏</span><span data-lang="en">Formatting breaks</span></b><span data-lang="zh">缩进和代码块粘贴后变形</span><span data-lang="en">Indentation and code blocks arrive mangled</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">跨模型接力繁琐</span><span data-lang="en">Messy cross-model relay</span></b><span data-lang="zh">多轮上下文和跨平台引用全靠手拼</span><span data-lang="en">Stitching context across models by hand</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">上下文靠手动</span><span data-lang="en">Context by hand</span></b><span data-lang="zh">上一轮追问要自己再复制一遍</span><span data-lang="en">Prior turns have to be copied again</span></span></li>
               <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">思考链淹没正文</span><span data-lang="en">Reasoning buries the answer</span></b><span data-lang="zh">几千字推导盖过结论</span><span data-lang="en">Thousands of words of traces over the conclusion</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">无法原地召回</span><span data-lang="en">No in-chat recall</span></b><span data-lang="zh">切窗口翻笔记打断提问思路</span><span data-lang="en">Window-switching breaks your flow</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">命名混乱难查找</span><span data-lang="en">Hard to search later</span></b><span data-lang="zh">几个月后自己也翻不到</span><span data-lang="en">Unfindable a few months later</span></span></li>
             </ul>
           </article>
 
           <article class="compare-col is-muted">
-            <p class="compare-label"><span data-lang="zh">云端收藏类插件</span><span data-lang="en">Cloud extension SaaS</span></p>
+            <p class="compare-label"><span data-lang="zh">云端收藏类插件</span><span data-lang="en">Cloud extension tools</span></p>
             <ul>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">必须注册账号 + 付费墙</span><span data-lang="en">Account &amp; subscription wall</span></b><span data-lang="zh">问答先上传至第三方服务器</span><span data-lang="en">Conversations sit on someone else's server</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">只有一个小弹窗</span><span data-lang="en">Cramped popup only</span></b><span data-lang="zh">长代码横向溢出，难以深度复盘</span><span data-lang="en">No room for wide code or batch synthesis</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">数据锁死在云端</span><span data-lang="en">Vendor lock-in</span></b><span data-lang="zh">Cursor / Obsidian 无法直接读本地文件</span><span data-lang="en">Unreadable by local Obsidian vaults or MCP</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">无消息级精准回跳</span><span data-lang="en">No message-level jump-back</span></b><span data-lang="zh">打开长对话还得自己慢慢往上翻</span><span data-lang="en">Still scrolling long threads manually</span></span></li>
-              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">过度索取权限</span><span data-lang="en">Broad permissions</span></b><span data-lang="zh">常申请全网读写或埋点追踪</span><span data-lang="en">Often requests all-site access &amp; telemetry</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">必须注册账号</span><span data-lang="en">Account required</span></b><span data-lang="zh">问答先上传至第三方服务器</span><span data-lang="en">Conversations pass through their servers</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">只有一个小弹窗</span><span data-lang="en">One cramped popup</span></b><span data-lang="zh">长代码横向溢出，没法细读</span><span data-lang="en">Code overflows; no room to read</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">单条切片</span><span data-lang="en">Single-turn slices</span></b><span data-lang="zh">前后几轮追问彼此断开</span><span data-lang="en">Turns stored in isolation</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">没有思考链折叠</span><span data-lang="en">No reasoning folding</span></b><span data-lang="zh">DeepSeek-R1 的推导全量铺开</span><span data-lang="en">DeepSeek-R1 traces laid out in full</span></span></li>
+              <li><span class="ci ci-no">✕</span><span><b><span data-lang="zh">专有云端格式</span><span data-lang="en">Proprietary format</span></b><span data-lang="zh">导出受限，Obsidian 与本地工具读不了</span><span data-lang="en">Limited export, unreadable locally</span></span></li>
             </ul>
           </article>
 
           <article class="compare-col is-us">
-            <p class="compare-label">SaveAnswer 2.0</p>
+            <p class="compare-label">SaveAnswer</p>
             <ul>
-              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">100% 本地优先 &amp; 永久免费</span><span data-lang="en">100% local-first &amp; free forever</span></b><span data-lang="zh">无服务器、无账号、无埋点，支持 unlimitedStorage</span><span data-lang="en">No server, no account, no telemetry</span></span></li>
-              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">Obsidian 直写 + Zero-Dev MCP</span><span data-lang="en">Obsidian Sync + Zero-Dev MCP</span></b><span data-lang="zh">Markdown + INDEX.md 落盘，10 秒接进 Cursor</span><span data-lang="en">Real Markdown on disk, ready for Cursor &amp; Claude Code</span></span></li>
-              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">Alt+K 原地召回 + Copy as Prompt</span><span data-lang="en">Alt+K Recall + Copy as Prompt</span></b><span data-lang="zh">任意聊天框召回历史笔记，多模型一键接力</span><span data-lang="en">Insert saved notes in-chat or synthesize multi-model prompts</span></span></li>
-              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">回原位 2.0 精准滚动高亮</span><span data-lang="en">Jump-Back 2.0 scroll &amp; glow</span></b><span data-lang="zh">直达原对话对应回答并微光高亮定位</span><span data-lang="en">Scrolls directly to the exact original message</span></span></li>
-              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">三栏工作台 + 思考链折叠</span><span data-lang="en">3-column workspace + &lt;think&gt; fold</span></b><span data-lang="zh">Round 1 → 2 合并、划词保存、4 色分享长图</span><span data-lang="en">Multi-turn merge, Highlight-to-Save &amp; 4-theme PNG cards</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">本地存储 + 你自己的文件夹</span><span data-lang="en">Local storage, your own folder</span></b><span data-lang="zh">没有服务器，没有账号，永久免费</span><span data-lang="en">No server, no account, free forever</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">双模查看：弹窗与整页工作台</span><span data-lang="en">Two modes: popup and workspace</span></b><span data-lang="zh">随手查用 420px，细读展开三栏整页</span><span data-lang="en">420px for a quick lookup, full page to read</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">Round 1 → 2 合成一条 + 精准回原位</span><span data-lang="en">Round 1 → 2 merge + exact jump-back</span></b><span data-lang="zh">保留完整上下文，一键滚回原对话消息</span><span data-lang="en">Keeps full thread &amp; scrolls back to exact message</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">&lt;think&gt; 默认折叠</span><span data-lang="en">&lt;think&gt; folded by default</span></b><span data-lang="zh">结论在前，推导过程按需展开</span><span data-lang="en">Conclusion first, reasoning on demand</span></span></li>
+              <li><span class="ci ci-yes">✓</span><span><b><span data-lang="zh">纯 Markdown + 一键接入 MCP</span><span data-lang="en">Plain Markdown + 1-click MCP</span></b><span data-lang="zh">Obsidian、Cursor、Claude Code 直接可读</span><span data-lang="en">Ready for Obsidian, Cursor &amp; Claude Code</span></span></li>
             </ul>
           </article>
         </div>
@@ -379,42 +396,47 @@
               <span data-lang="zh">答疑解惑 · 常见问题</span><span data-lang="en">FAQ &amp; Architecture Notes</span>
             </div>
             <h2>
-              <span data-lang="zh">常见问题解答</span>
+              <span data-lang="zh">常见问题解答与深度指南</span>
               <span data-lang="en">Frequently Asked Questions</span>
             </h2>
           </div>
           <div class="section-head-desc">
             <p>
-              <span data-lang="zh">关于 Zero-Dev MCP、本地隐私、快捷键工作流、数据备份迁移与永久免费承诺的解答。</span>
-              <span data-lang="en">Everything you need to know about local MCP integration, privacy guarantees, shortcuts, and backups.</span>
+              <span data-lang="zh">关于收藏与查看答案、弹窗与工作台双模式、本地隐私、Obsidian &amp; MCP 联动与备份迁移的解答。</span>
+              <span data-lang="en">Everything you need to know about saving &amp; viewing answers, local storage privacy, Obsidian + MCP sync, and backups.</span>
             </p>
           </div>
         </div>
 
         <div class="faq-list">
           <details class="faq-item" open>
-            <summary><span data-lang="zh">零开发 Agent MCP 是怎么把本地知识库接进 Cursor / Claude Code 的？</span><span data-lang="en">How does Zero-Dev Agent MCP work without installing a custom server?</span></summary>
-            <p><span data-lang="zh">SaveAnswer 2.0 通过浏览器原生 File System Access API，把你保存的问答写成标准的本地 Markdown 文件（附带 YAML Frontmatter 和自动目录 <code>INDEX.md</code>）。点击工作台右上角 <b>Agent MCP</b>，输入你的本地目录路径，即可一键生成 Anthropic 官方开源 <code>@modelcontextprotocol/server-filesystem</code> 的 JSON 配置——粘贴进 <code>~/.cursor/mcp.json</code> 或 Claude Desktop 即可直接检索你的历史 AI 问答！</span><span data-lang="en">SaveAnswer 2.0 writes clean, idempotent Markdown notes (with YAML frontmatter + <code>INDEX.md</code>) directly to your local folder via the browser's File System Access API. Clicking <b>Agent MCP</b> generates the standard <code>@modelcontextprotocol/server-filesystem</code> JSON config pointing to that folder—paste it into <code>~/.cursor/mcp.json</code> or Claude Desktop with zero custom daemon required.</span></p>
+            <summary><span data-lang="zh">420px 侧边轻弹窗和三栏全屏桌面工作台，分别在什么时候使用？</span><span data-lang="en">When should I use the 420px popup versus the 3-column desktop workspace?</span></summary>
+            <p><span data-lang="zh"><b>420px 弹窗是高频日常查看答案的第一入口</b>：浏览网页或写代码时点一下图标（或在地址栏输入 <code>sa 关键词</code>），即可秒搜历史问答、复制代码或跳回原对话；当需要阅读数千字长文、按平台与标签系统整理、或跨多条答案对比复盘时，点击弹窗右上角（或按 <b>Alt+W</b>）展开<b>三栏全屏工作台</b>，享受宽屏语法高亮与舒适/紧凑双视图阅读。</span><span data-lang="en"><b>The 420px popup is your everyday quick lookup</b>: search saved answers from any tab (or type <code>sa </code> in the address bar), copy code snippets, and jump back to original chats. When reading long technical replies or organizing tags across platforms, click expand (or press <b>Alt+W</b>) to open the <b>3-column full-page workspace</b>.</span></p>
           </details>
 
           <details class="faq-item">
-            <summary><span data-lang="zh">SaveAnswer 2.0 支持哪些全局快捷键？</span><span data-lang="en">What keyboard shortcuts are built into SaveAnswer 2.0?</span></summary>
-            <p><span data-lang="zh"><b>Alt+S</b>：免鼠标盲存当前页面最新一条 AI 回答；<b>Alt+W</b>：随时一键呼出三栏桌面工作台；<b>Alt+K</b>：在任意 AI 聊天输入框内呼出原地召回面板，搜索并插入已存 Markdown；在浏览器地址栏输入 <code>sa 关键词</code> 还可跨标签页全局秒搜。</span><span data-lang="en"><b>Alt+S</b> saves the latest AI answer without touching the mouse; <b>Alt+W</b> opens the 3-column desktop workspace; <b>Alt+K</b> opens In-Chat Quick Recall inside any AI chat box; and typing <code>sa </code> + keyword in the browser address bar searches your library from any tab.</span></p>
+            <summary><span data-lang="zh">和直接使用 ChatGPT / DeepSeek 自带的历史记录搜索有什么区别？</span><span data-lang="en">How is this different from built-in chat history search?</span></summary>
+            <p><span data-lang="zh">自带历史记录只能搜单一平台，而且真正有用的结论深埋在大量闲聊与试错里。SaveAnswer 只收录你明确点过「保存」的精选回答，把散落在 8 个平台的优质答案统一收进一个库里，支持按问题、正文、平台和标签秒级检索，点击还能直接滚回原对话那一条回答的位置。</span><span data-lang="en">Built-in history covers only one site and buries great answers under hundreds of throwaway threads. SaveAnswer keeps only the replies you explicitly save across 8 AI platforms in one unified, full-text-searchable library—with message-level jump-back.</span></p>
+          </details>
+
+          <details class="faq-item">
+            <summary><span data-lang="zh">如何与 Obsidian 以及 Cursor / Claude Code（MCP）联动？</span><span data-lang="en">How does it sync with Obsidian and AI Coding Agents via MCP?</span></summary>
+            <p><span data-lang="zh">在扩展中授权你的本地笔记文件夹（如 <code>SaveAnswer/</code>），每次收藏回答都会自动写入带 YAML 元数据的标准 Markdown 文件并更新 <code>INDEX.md</code>，Obsidian 打开即用。若想接入编程助手，点击工作台右上角「Agent MCP」即可一键复制标准 <code>@modelcontextprotocol/server-filesystem</code> JSON 配置，粘贴到 Cursor 或 Claude Desktop 即可直接检索你的本地问答库。</span><span data-lang="en">Authorize a local folder via the browser's File System Access API to write clean Markdown files + <code>INDEX.md</code> directly into your Obsidian vault. To connect coding agents, click <b>Agent MCP</b> in the workspace to copy a standard <code>@modelcontextprotocol/server-filesystem</code> config for Cursor or Claude Code.</span></p>
           </details>
 
           <details class="faq-item">
             <summary><span data-lang="zh">我的数据真的不会上传到任何服务器吗？</span><span data-lang="en">Are my answers truly stored locally?</span></summary>
-            <p><span data-lang="zh">绝无任何上传。所有内容仅保存在当前浏览器的本地存储与你主动授权的本地目录中。无云端后台、无用户追踪、无账号登录，扩展仅声明 <code>storage</code>、<code>unlimitedStorage</code> 与 8 个目标 AI 网站权限。</span><span data-lang="en">Zero servers, zero cloud sync, zero telemetry, and no accounts. All answers live strictly inside your browser's local storage and the local folder you authorize.</span></p>
+            <p><span data-lang="zh">绝无任何上传。所有收藏内容仅保存在当前浏览器的本地存储与你主动授权的本地文件夹中。没有后台服务器，没有用户追踪，无需注册登录，扩展仅声明目标 AI 网站与本地存储权限。</span><span data-lang="en">Zero servers. All saved answers live strictly in your browser's local storage and the local folder you authorize. No cloud backend, no telemetry, and no accounts required.</span></p>
           </details>
 
           <details class="faq-item">
-            <summary><span data-lang="zh">换电脑或存了很多条之后，怎么备份、迁移和清理？</span><span data-lang="en">How do I back up, migrate across devices, or clean up old items?</span></summary>
-            <p><span data-lang="zh">工作台左下角内置实时存储监控与 <b>Backup / Import / Manage</b> 工具：支持一键全量 JSON 备份、换机去重合并导入、以及按 30 天 / 90 天安全归档清理（若未手动备份，清理前会自动为你下载一份 JSON 安全备份）。</span><span data-lang="en">The workspace footer includes a live storage meter plus <b>Import</b>, <b>Backup</b>, and <b>Manage</b> controls: export lossless JSON or Markdown archives, merge-import backups on a new machine without duplicates, and clean older entries with an automatic safety backup.</span></p>
+            <summary><span data-lang="zh">换电脑或存了很多条之后，如何备份、迁移与管理空间？</span><span data-lang="en">How do I back up or migrate my library across computers?</span></summary>
+            <p><span data-lang="zh">工作台左下角提供实时本地存储显示以及<b>备份 / 导入 / 清理</b>工具：支持一键导出整库 JSON 备份并在新电脑上去重合并导入，也支持批量导出 Markdown 归档；清理旧条目时若未备份还会自动下载安全备份文件。</span><span data-lang="en">Use the storage bar in the bottom-left of the workspace to export a full JSON backup, merge-import onto a new machine without duplicates, export Markdown archives, or safely archive older items.</span></p>
           </details>
 
           <details class="faq-item">
-            <summary><span data-lang="zh">是否收费？2.0 的 MCP 和工作台功能会收费吗？</span><span data-lang="en">Is SaveAnswer 2.0 free?</span></summary>
-            <p><span data-lang="zh">100% 免费，永久本地优先。没有 Token 订阅制、没有会员墙，三栏工作台、Obsidian 同步、Agent MCP 与跨模型接力全部免费开放。</span><span data-lang="en">Yes—100% free and local-first. No paywalls, no subscriptions, and all 2.0 workspace, Obsidian sync, and MCP features are included free.</span></p>
+            <summary><span data-lang="zh">是否收费？MCP 和整页工作台功能收费吗？</span><span data-lang="en">Is SaveAnswer free?</span></summary>
+            <p><span data-lang="zh">100% 免费，永久本地优先。没有订阅制、没有付费会员墙，从一键收藏、三栏工作台查看，到 Obsidian 同步与 Agent MCP 全部免费开放。</span><span data-lang="en">Yes—100% free and local-first. No subscriptions, no paywalls, and every feature from 1-click saving to the full workspace and MCP config is free.</span></p>
           </details>
         </div>
 
@@ -434,12 +456,12 @@
     <section class="closing">
       <div class="wrap closing-inner">
         <h2>
-          <span data-lang="zh">把下一次灵光一现的 AI 回答，真正留下来。</span>
-          <span data-lang="en">Own your AI knowledge starting today.</span>
+          <span data-lang="zh">下次看到好答案，别再让它溜走。</span>
+          <span data-lang="en">Don't let the next good answer get away.</span>
         </h2>
         <p>
-          <span data-lang="zh">2 秒装好就能用，无需注册，也不用把对话交给任何第三方服务器。</span>
-          <span data-lang="en">Install SaveAnswer 2.0 in two seconds. No sign-up, no subscription, and no cloud server holding your chats.</span>
+          <span data-lang="zh">装好就能用，不用注册，也不用把对话交给第二台服务器。</span>
+          <span data-lang="en">Install it and start saving. No sign-up, and no second server holding your conversations.</span>
         </p>
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
           <a class="btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
@@ -453,7 +475,7 @@
           </a>
         </div>
         <p class="closing-note">
-          <span data-lang="zh">8 个平台 · 100% 本地 · 无需账号 · 支持 MCP &amp; Obsidian</span>
+          <span data-lang="zh">8 个平台 · 100% 本地 · 无需账号 · 支持 Obsidian &amp; MCP</span>
           <span data-lang="en">8 platforms · 100% local · no account · Obsidian &amp; MCP ready</span>
         </p>
       </div>
@@ -470,19 +492,19 @@
             <span>SaveAnswer</span>
           </h4>
           <p>
-            <span data-lang="zh">面向工程师与研究者的本地优先 AI 知识库与 Agent MCP 记忆中枢，让每一次深度对话都沉淀为长期资产。</span>
-            <span data-lang="en">Local-first AI knowledge workspace &amp; MCP memory hub for engineers and researchers.</span>
+            <span data-lang="zh">面向高频 AI 使用者与开发者的本地优先知识库，让每一次有价值的回答都留得下、查得到、用得上。</span>
+            <span data-lang="en">Local-first AI answer library for everyday learners, researchers, and developers.</span>
           </p>
         </div>
 
         <div class="footer-col">
-          <h5><span data-lang="zh">核心能力</span><span data-lang="en">Features</span></h5>
+          <h5><span data-lang="zh">功能特性</span><span data-lang="en">Features</span></h5>
           <ul>
-            <li><a href="#features"><span data-lang="zh">Alt+S 盲存 &amp; 划词保存</span><span data-lang="en">Alt+S &amp; Highlight Save</span></a></li>
-            <li><a href="#features"><span data-lang="zh">Alt+K 原地召回</span><span data-lang="en">Alt+K In-Chat Recall</span></a></li>
-            <li><a href="#showcase"><span data-lang="zh">三栏桌面工作台</span><span data-lang="en">3-Col Workspace</span></a></li>
+            <li><a href="#features"><span data-lang="zh">网页一键保存</span><span data-lang="en">In-Situ Save</span></a></li>
+            <li><a href="#features"><span data-lang="zh">420px 弹窗秒查</span><span data-lang="en">420px Popup</span></a></li>
+            <li><a href="#workspace"><span data-lang="zh">三栏桌面工作台</span><span data-lang="en">3-Col Workspace</span></a></li>
             <li><a href="#mcp"><span data-lang="zh">Obsidian &amp; Agent MCP</span><span data-lang="en">Obsidian &amp; Agent MCP</span></a></li>
-            <li><a href="#showcase"><span data-lang="zh">回原位 2.0 &amp; 分享长图</span><span data-lang="en">Jump-Back 2.0 &amp; Cards</span></a></li>
+            <li><a href="#workspace"><span data-lang="zh">纯净 4 色长图分享</span><span data-lang="en">Pristine Share Cards</span></a></li>
           </ul>
         </div>
 
@@ -520,8 +542,8 @@
           <span data-lang="en">© 2026 SaveAnswer (v2.0.0). 100% Local-First &amp; Free Forever.</span>
         </div>
         <div>
-          <span data-lang="zh">为高频 AI 使用者与开发者打造的本地知识中枢。</span>
-          <span data-lang="en">Built for heavy AI users and developers who own their knowledge.</span>
+          <span data-lang="zh">为追求极致设计品位的开发者精心打造。</span>
+          <span data-lang="en">Crafted for developers with high design taste.</span>
         </div>
       </div>
     </div>
