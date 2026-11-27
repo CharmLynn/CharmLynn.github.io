@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>给 Obsidian 与 Cursor / Claude Code 搭建本地 AI 知识库模板 | Local AI Vault for Obsidian &amp; Coding Agents</title>
+  <meta name="description" content="免费获取 Obsidian Dataview AI 知识库看板模板与 Cursor / Claude Code 本地 @SaveAnswer/INDEX.md 挂载指南。将 ChatGPT、Claude、DeepSeek、Kimi 排错方案一键同步为本地纯净 Markdown。">
+  <meta property="og:title" content="Local-First AI Knowledge Vault for Obsidian, Cursor & Claude Code">
+  <meta property="og:description" content="Free Dataview dashboard template + INDEX.md workflow to turn web AI debugging sessions into reusable local context for Obsidian and AI Coding Agents.">
+  <meta property="og:image" content="https://charmlynn.github.io/saveanswer/assets/obsidian-sync.png">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css?v=1.2.0">
+  <meta name="sa-title" data-title-zh="Obsidian 与 Cursor 本地 AI 知识库实战模板 - SaveAnswer" data-title-en="Obsidian & Coding Agent AI Vault Template - SaveAnswer">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Build a Local AI Knowledge Vault for Obsidian and Cursor",
+    "description": "Automatically sync web AI answers into a local Markdown folder with YAML frontmatter and INDEX.md for Obsidian Dataview and AI coding agents.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install SaveAnswer",
+        "text": "Install SaveAnswer on Chrome or Microsoft Edge."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Authorize Local Vault Folder",
+        "text": "Click the Obsidian icon in SaveAnswer and pick your local Vault or project docs directory."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Query with Dataview or @SaveAnswer/INDEX.md",
+        "text": "Use the Dataview snippet in Obsidian or reference @SaveAnswer/INDEX.md inside Cursor and Claude Code."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><img src="assets/icon.png" alt="">SaveAnswer</a>
+      <div class="nav-links">
+        <a href="./"><span data-lang="zh">首页</span><span data-lang="en">Home</span></a>
+        <a href="obsidian-sync-ai-answers.html"><span data-lang="zh">Obsidian 同步教程</span><span data-lang="en">Obsidian Sync</span></a>
+        <a href="feedback.html"><span data-lang="zh">反馈</span><span data-lang="en">Feedback</span></a>
+        <button class="lang-toggle" type="button"><span data-lang="zh">English</span><span data-lang="en">中文</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="padding-top: 40px; padding-bottom: 60px; max-width: 820px;">
+    <!-- Chinese Version -->
+    <article data-lang="zh">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">高阶工作流与免费模板</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">如何把网页端 AI 排错精华，变成 Obsidian 与 Cursor 的「本地外脑」？</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">更新日期：2026-11-25 · 含可直接复制的 Dataview 模板与 Agent 索引配置</p>
+      </div>
+
+      <p class="lead">
+        绝大多数开发者在网页端和 Claude、ChatGPT、DeepSeek 推敲完复杂的系统架构或排掉一个隐蔽报错后，关掉标签页知识就彻底蒸发了——下次在 <strong>Cursor</strong> 或 <strong>Claude Code</strong> 遇到同类问题，又得从零描述上下文。
+      </p>
+
+      <h2>60 秒打通「网页采集 ➔ 本地硬盘 ➔ IDE / 笔记复用」闭环</h2>
+      <div class="steps" style="margin: 20px 0;">
+        <div class="step">
+          <div class="step-body">
+            <h3>第一步：授权本地目录（零云端直写）</h3>
+            <p>安装 SaveAnswer 后，点击扩展顶部文件夹图标选择你的本地 Obsidian 库或工程文档目录。每次在 8 大 AI 网页点击 <strong>Save</strong>（或 <code>Alt+点击</code> 极速保存），扩展会通过浏览器原生 File System Access API 写入带标准 YAML Frontmatter 的 <code>.md</code> 文件，并自动更新目录索引 <code>SaveAnswer/INDEX.md</code>。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-body">
+            <h3>第二步：复制下方 Obsidian Dataview 自动看板模板</h3>
+            <p>在你的 Obsidian 库新建一篇 <code>AI 知识中枢.md</code>，粘贴以下 Dataview 查询代码，所有跨模型保存的回答会自动按日期与标签聚合：</p>
+          </div>
+        </div>
+      </div>
+
+      <pre style="background: #141d1b; color: #e2ece9; padding: 18px 20px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.6;"><code>```dataview
+TABLE WITHOUT ID
+  file.link AS "问题 / 主题",
+  source AS "来源模型",
+  tags AS "标签",
+  date AS "沉淀时间"
+FROM "SaveAnswer"
+WHERE file.name != "INDEX"
+SORT date DESC
+LIMIT 50
+```</code></pre>
+
+      <h2 style="margin-top: 32px;">在 Cursor / Claude Code 中挂载 <code>INDEX.md</code>（省 Token 高精度模式）</h2>
+      <p>
+        如果直接把几百篇长笔记全部塞进 Agent 上下文，会迅速撑爆窗口。SaveAnswer 每次同步时会自动维护轻量级的 <code>SaveAnswer/INDEX.md</code>（包含标题、模型、标签与相对路径）。你可以在项目根目录的 <code>.cursorrules</code> 或 <code>CLAUDE.md</code> 中加入以下两行指令：
+      </p>
+
+      <pre style="background: #141d1b; color: #e2ece9; padding: 18px 20px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.6;"><code>## Local Verified Knowledge Base
+Before debugging recurring architecture, SQL, or framework issues, read `SaveAnswer/INDEX.md` first.
+Only open specific Markdown files referenced in `INDEX.md` when their title or tags match the current task.</code></pre>
+
+      <h2 style="margin-top: 32px;">网页对话内直接复用：按 <code>Alt+K</code> 秒级召回</h2>
+      <p>
+        不在 IDE 里？当你在网页端从 Claude 切到 DeepSeek 或 ChatGPT 时，直接在聊天输入框按下 <strong><code>Alt+K</code></strong>，即可唤出本地秒搜面板，回车将历史保存的架构约束或代码片段一键插入当前 Prompt；或者在浏览器地址栏输入 <strong><code>sa 关键词</code></strong> 全局直达。
+      </p>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">立即免费安装 SaveAnswer，激活这套本地工作流</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">100% 免费 · 100% 本地优先 · 无需注册账号</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" style="background: #0D6E5C; border-color: rgba(13, 110, 92, 0.25);" href="https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk" target="_blank" rel="noopener">
+            Edge 商店免费直装（国内免翻墙）
+          </a>
+          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+            免费添加到 <span data-store-name>Chrome</span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- English Version -->
+    <article data-lang="en">
+      <div style="margin-bottom: 24px;">
+        <span class="eyebrow">Workflow &amp; Free Template</span>
+        <h1 style="font-size: 32px; line-height: 1.3; margin-top: 12px; margin-bottom: 12px;">Turn Web AI Debugging Sessions into a Local Knowledge Base for Obsidian &amp; Cursor</h1>
+        <p style="color: var(--text-secondary); font-size: 15px;">Updated: 2026-11-25 · Includes copy-ready Dataview dashboard &amp; Agent rules</p>
+      </div>
+
+      <p class="lead">
+        When you solve a tricky architectural bug in Claude, ChatGPT, or DeepSeek and close the tab, that hard-won context disappears. With SaveAnswer's local vault sync and auto-generated <code>INDEX.md</code>, every saved reply becomes immediately queryable in <strong>Obsidian</strong>, <strong>Cursor</strong>, and <strong>Claude Code</strong>—with zero cloud servers in between.
+      </p>
+
+      <h2>1. Copy-Ready Obsidian Dataview Dashboard</h2>
+      <p>Connect your Obsidian vault in SaveAnswer once, then paste this snippet into any note to build a live cross-LLM hub:</p>
+      <pre style="background: #141d1b; color: #e2ece9; padding: 18px 20px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.6;"><code>```dataview
+TABLE WITHOUT ID
+  file.link AS "Question / Topic",
+  source AS "Model",
+  tags AS "Tags",
+  date AS "Saved"
+FROM "SaveAnswer"
+WHERE file.name != "INDEX"
+SORT date DESC
+LIMIT 50
+```</code></pre>
+
+      <h2 style="margin-top: 32px;">2. Context-Efficient Agent Rule (Cursor / Claude Code)</h2>
+      <p>SaveAnswer automatically maintains <code>SaveAnswer/INDEX.md</code> so coding agents read a compact index first instead of polluting their context window:</p>
+      <pre style="background: #141d1b; color: #e2ece9; padding: 18px 20px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.6;"><code>## Local Verified Knowledge Base
+Before debugging recurring architecture, SQL, or framework issues, read `SaveAnswer/INDEX.md` first.
+Only open specific Markdown files referenced in `INDEX.md` when their title or tags match the current task.</code></pre>
+
+      <h2 style="margin-top: 32px;">3. Recall Straight into Web Prompts with <code>Alt+K</code></h2>
+      <p>Switching from Claude to ChatGPT? Press <strong><code>Alt+K</code></strong> inside any AI chat box to search your saved library and insert formatted Markdown context straight into your prompt—or type <strong><code>sa keyword</code></strong> in the browser address bar.</p>
+
+      <div style="background: var(--primary-light); border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 8px;">Install SaveAnswer Free on Chrome &amp; Edge</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 15px;">100% Free · 100% Local-First · Zero Cloud · No Account</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" data-install="primary" href="https://chromewebstore.google.com/detail/saveanswer-save-ai-answer/iminapemlncanmmaadedieifgkaeoljm" target="_blank" rel="noopener">
+            Add to <span data-store-name>Chrome</span> — Free
+          </a>
+          <a class="btn btn-primary" style="background: #0D6E5C; border-color: rgba(13, 110, 92, 0.25);" href="https://microsoftedge.microsoft.com/addons/detail/saveanswer-save-ai-answ/akmhodipofnnogbilbjkmphhikkdjehk" target="_blank" rel="noopener">
+            Get it on Edge Add-ons
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script src="site.js?v=1.2.0"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b4ba7bf8b4364ba891876910f6af5ec2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
